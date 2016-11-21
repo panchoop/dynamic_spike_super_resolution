@@ -14,7 +14,6 @@ function run_simulation(model, thetas, weights, noise_level=0.0)
             return false
         end
         # Inverse problem
-        println(sum(weights))
         (thetas_est,weights_est) = ADCG(model, LSLoss(), target,sum(weights), callback=callback, max_iters=200)
         return (thetas_est, weights_est)
     else

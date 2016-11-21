@@ -1,6 +1,6 @@
 push!(LOAD_PATH, "./models")
 using PyCall
-using SparseInverseProblems
+@everywhere using SparseInverseProblems
 if length(ARGS) > 0
     parameters_file = ARGS[1]
 else
