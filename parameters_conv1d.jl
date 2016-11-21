@@ -1,12 +1,12 @@
 # Static parameters
 f_c = 10
 x_max = 0.01
-filter = x -> exp(-(x/x_max)^2/2*f_c^2)
-filter_grad = x -> -x/x_max*f_c^2 * filter(x)
+filter = x -> 1 + 2*sum([cos(2*pi*k*x/x_max) for k in 1:f_c])
+filter_grad = x -> 2*sum([-2*pi*k/x_max*sin(2*pi*k*x/x_max) for k in 1:f_c])
 pix_size = 0.5 * x_max/f_c
 model_static = Conv1d(filter, filter_grad, -x_max:pix_size:2*x_max, 0:0.5*pix_size:x_max, x_max)
 # Dynamic parameters
-K = 1
+K = 2
 tau = 1.0/(K*30)
 v_max = 0.05
 num_v = 10

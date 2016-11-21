@@ -44,10 +44,10 @@ immutable DynamicConv1d<: DynamicSuperRes
 end
 function getStartingPoint(model :: DynamicConv1d, v :: Vector{Float64})
     # This function gets an initial value for the location
-    vals = Float64[dot(v,psi(model, [x; vel])) for x = model.static.eval_grid, vel = model.grid_v]
+    vals = Float64[dot(v,psi(model, [x; vel])) for x = model.static.approx_grid, vel = model.grid_v]
     ind = indmin(vals);
     i,j = ind2sub(vals, ind)
-    return [model.static.eval_grid[i]; model.grid_v[j]]
+    return [model.static.approx_grid[i]; model.grid_v[j]]
 end
 
 parameterBounds(model :: DynamicConv1d) = [0.0; -model.v_max], [model.static.x_max; model.v_max] # Bounds for the parameters
