@@ -53,3 +53,27 @@ function two_points_2d_ortho_same(x_max,dx,dv)
     thetas = [pts_x'; pts_y'; velocities_x'; velocities_y']
     return (thetas, weights)
 end
+function random_point_cloud(dx)
+    pts = dx + (1.0-3*dx)*rand()
+    pts = [0.0; pts; pts+dx; 1.0]
+    is_valid = (pt, pts) -> pt > dx &&
+                            pt < 1-dx &&
+                            minimum(abs(pts[2:end-1] - pt)) > dx
+    while maximum(mod(pts - circshift(pts, 1), 1.0)) > 2*dx
+        new_pt = rand()
+        while !is_valid(new_pt, pts)
+            new_pt = rand()
+        end
+        pts = sort([pts; new_pt])
+    end
+    return pts[2:end-1]
+end
+function two_groups_1d(x_max, dx, dv)
+    pts_1 = x_max * random_point_cloud(dx/x_max)
+    pts_2 = x_max * random_point_cloud(dx/x_max)
+    pts = [pts_1; pts_2]
+    velocities = [-dv/2*ones(size(pts_1)); dv/2*ones(size(pts_2))]
+    weights = ones(size(pts))
+    thetas = [pts'; velocities']
+    return (thetas, weights)
+end
