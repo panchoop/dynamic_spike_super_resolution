@@ -40,7 +40,6 @@ close(iostream)
         temp_static = false
         if do_static
             for k = 1:length(model_dynamic.times)
-k = K + 1
                 thetas_t = to_static(thetas, model_dynamic.times[k])
                 (thetas_est, weights_est) = run_simulation(model_static, thetas_t, weights)
                 thetas_est = thetas_est[:, weights_est .> threshold_weight]
