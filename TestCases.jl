@@ -28,7 +28,7 @@ function three_points_2d(x_max, dx, dv, direction="x")
 end
 function two_points_2d(x_max, dx, dv)
     pts_x = [0.5*x_max - 0.5*dx, 0.5*x_max + 0.5 * dx]
-    pts_y = [0.5*x_max, 0.5*x_max, 0.5*x_max]
+    pts_y = [0.5*x_max, 0.5*x_max]
     weights = [1.0, 1.0]
     velocities_x = [-dv/2 ; dv/2]
     velocities_y = [0.0 ; 0.0]
@@ -37,7 +37,7 @@ function two_points_2d(x_max, dx, dv)
 end
 function two_points_2d_ortho(x_max, dx, dv)
     pts_x = [0.5*x_max - 0.5*dx, 0.5*x_max + 0.5 * dx]
-    pts_y = [0.5*x_max, 0.5*x_max, 0.5*x_max]
+    pts_y = [0.5*x_max, 0.5*x_max]
     weights = [1.0, 1.0]
     velocities_y = [-dv/2 ; dv/2]
     velocities_x = [0.0 ; 0.0]
