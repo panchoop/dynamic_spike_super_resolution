@@ -17,7 +17,7 @@ v_max = 0.05
 num_v = 10
 model_dynamic = DynamicFourier2d(model_static, v_max, tau, K, num_v)
 # Particles
-test_case = (dx, dv) -> three_points_2d(x_max, dx, dv)
+test_case = (dx, dv) -> two_points_2d_ortho(x_max, dx, dv)
 # Parameter range
 vec_dx = linspace(0.0001, 0.004, 10)
 vec_dv = linspace(0.0, 0.03, 10)
