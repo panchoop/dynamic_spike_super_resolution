@@ -47,10 +47,11 @@ function match_points(theta_1, theta_2)
     return corres
 end
 
-function to_static(thetas, t)
+function to_static(thetas, t, x_max)
     d = div(size(thetas, 1),2)
     pts = thetas[1:d,:]
     velocities = thetas[d+1:2*d,:]
     pts_t = pts + velocities * t
+    pts_t = mod(pts_t, x_max)
     return pts_t
 end
