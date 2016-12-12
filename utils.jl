@@ -17,7 +17,7 @@ function run_simulation(model, thetas, weights, noise_level=0.0)
         (thetas_est,weights_est) = ADCG(model, LSLoss(), target,sum(weights), callback=callback, max_iters=200)
         return (thetas_est, weights_est)
     else
-        error("Out of bounds !")
+        warn("Out of bounds !")
         return ([], [])
     end
 end
