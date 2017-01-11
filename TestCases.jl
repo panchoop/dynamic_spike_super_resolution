@@ -68,6 +68,46 @@ function random_point_cloud(dx)
     end
     return pts[2:end-1]
 end
+function random_position_and_velocity(dx, dv)
+    pts = dx + (1.0 - 2*dx) * rand()
+    velocities = (1.0 - dv) * rand() 
+    velocities = velocities
+    is_valid = (pt, vel, pts, vels) -> pt > dx &&
+                                    pt < 1-dx &&
+                                    (minimum(abs(pts - pt)) > dx ||
+                                     minimum(abs(vels - vel)) > dv)
+    while((maximum([abs(v1-v2) for v1 in velocities, v2 in velocities]) > 2*dv && 
+          maximum([abs(x1-x2) for x1 in pts, x2 in pts]) > 2*dx) || length(velocities) == 1)
+        new_pt = rand()
+        new_vel = rand()
+        iter = 0
+        notFound = false;
+        while !is_valid(new_pt, new_vel, pts, velocities)
+            new_pt = rand()
+            new_vel = rand()
+            iter = iter + 1
+            if (iter > 100)
+                notFound = true;
+                break;
+            end
+        end
+        if (notFound)
+            break;
+        end
+        pts = [pts; new_pt]
+        velocities = [velocities; new_vel]
+        if (length(pts) > 20)
+            break;
+        end
+    end
+    return (pts, velocities)
+end
+function cloud_1d(x_max, v_max, dx, dv)
+    (pts, velocities) = random_position_and_velocity(dx/x_max, dv/(2*v_max))
+    weights = ones(size(pts))
+    thetas = [x_max * pts'; v_max - 2*v_max*velocities']
+    return (thetas, weights)
+end
 function two_groups_1d(x_max, dx, dv)
     pts_1 = x_max * random_point_cloud(dx/x_max)
     pts_2 = x_max * random_point_cloud(dx/x_max)
@@ -75,5 +115,16 @@ function two_groups_1d(x_max, dx, dv)
     velocities = [-dv/2*ones(size(pts_1)); dv/2*ones(size(pts_2))]
     weights = ones(size(pts))
     thetas = [pts'; velocities']
+    return (thetas, weights)
+end
+function two_groups_2d(x_max, dx, dy, dv)
+    pts_1 = x_max * random_point_cloud(dx/x_max)
+    pts_2 = x_max * random_point_cloud(dx/x_max)
+    pts_x = [pts_1; pts_2]
+    pts_y = [0.5*x_max * ones(size(pts_1)) + dy/2; 0.5*x_max * ones(size(pts_2)) - dy/2]
+    velocities_y = [zeros(size(pts_1)); zeros(size(pts_2))]
+    velocities_x = [-dv/2*ones(size(pts_1)); dv/2*ones(size(pts_2))]
+    weights = ones(size(pts_x))
+    thetas = [pts_x'; pts_y'; velocities_x'; velocities_y']
     return (thetas, weights)
 end
