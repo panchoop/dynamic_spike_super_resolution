@@ -7,6 +7,7 @@ else
     parameters_file = "parameters.jl"
 end
 @everywhere using SuperResModels
+@everywhere do_allfreqs = false
 @eval @everywhere parameters_file=$parameters_file
 println("Using parameter file: ", parameters_file)
 @everywhere begin
@@ -22,6 +23,7 @@ close(iostream)
     ### Both in the static and dynamic caseska
     ok_dynamic = 0.0
     ok_static = 0.0
+    ok_allfreqs = 0.0
     for i in 1:iter
         (thetas, weights) = test_case(dx, dv)
         (thetas, weights) = measure_noise(thetas, weights, dx*noise_level_x, dv*noise_level_v, noise_level_weights)
@@ -53,17 +55,34 @@ close(iostream)
                     end
                 end
             end
+            ok_static += temp_static
         end
-        ok_static += temp_static
+        if do_allfreqs
+            thetas[2,:] = thetas[2,:] + model_allfreqs.z_max/2
+            d = size(thetas, 1)
+            (thetas_est, weights_est) = run_simulation(model_allfreqs, thetas, weights)
+            if (length(thetas_est) > 0)
+                thetas_est = thetas_est[:, weights_est .> threshold_weight]
+                weights_est = weights_est[weights_est .> threshold_weight]
+            end
+            if (length(thetas) == length(thetas_est))
+                corres = match_points(thetas, thetas_est)
+                dist_x = norm(thetas[1:d, :] - thetas_est[1:d, corres], Inf)
+                if (dist_x < threshold)
+                    ok_allfreqs += 1
+                end
+            end
+        end
     end
     println("dx = ", dx, ", dv = ", dv, ", static: ", ok_static/iter, ", dynamic: ", ok_dynamic/iter)
-    return (ok_static/iter, ok_dynamic/iter)
+    return (ok_static/iter, ok_dynamic/iter, ok_allfreqs/iter)
 end
 DX = [dx for dx = vec_dx, dv = vec_dv]
 DV = [dv for dx = vec_dx, dv = vec_dv]
 res = reshape(pmap((dx, dv) -> generate_and_reconstruct(dx, dv, iter_mc), DX, DV), size(DX))
 res_static = [x[1] for x = res]
 res_dynamic = [x[2] for x = res]
+res_allfreqs = [x[3] for x = res]
 
 # Save results
 id = string(now())
@@ -78,6 +97,7 @@ numpy.save("x.npy", x)
 numpy.save("y.npy", y)
 numpy.save("res_static.npy", res_static)
 numpy.save("res_dynamic.npy", res_dynamic)
+numpy.save("res_allfreqs.npy", res_allfreqs)
 iostream = open("parameters.jl", "w")
 write(iostream, parameters_str)
 close(iostream)
@@ -86,13 +106,15 @@ close(iostream)
 @pyimport matplotlib as mpl
 mpl.use("Agg")
 @pyimport matplotlib.pyplot as plt
-plt.figure()
-plt.imshow(res_static, interpolation="none",extent=[minimum(x); maximum(x); maximum(y); minimum(y)])
-plt.xlim((minimum(x), maximum(x)))
-plt.ylim((minimum(y), maximum(y)))
-plt.xlabel("velocity * T")
-plt.ylabel("distance")
-plt.savefig("static.png")
+if (do_static)
+    plt.figure()
+    plt.imshow(res_static, interpolation="none",extent=[minimum(x); maximum(x); maximum(y); minimum(y)])
+    plt.xlim((minimum(x), maximum(x)))
+    plt.ylim((minimum(y), maximum(y)))
+    plt.xlabel("velocity * T")
+    plt.ylabel("distance")
+    plt.savefig("static.png")
+end
 plt.figure()
 plt.imshow(res_dynamic, interpolation="none",extent=[minimum(x); maximum(x); maximum(y); minimum(y)])
 plt.xlim((minimum(x), maximum(x)))
@@ -100,6 +122,15 @@ plt.ylim((minimum(y), maximum(y)))
 plt.xlabel("velocity * T")
 plt.ylabel("distance")
 plt.savefig("dynamic.png")
+if (do_allfreqs)
+    plt.figure()
+    plt.imshow(res_allfreqs, interpolation="none",extent=[minimum(x); maximum(x); maximum(y); minimum(y)])
+    plt.xlim((minimum(x), maximum(x)))
+    plt.ylim((minimum(y), maximum(y)))
+    plt.xlabel("velocity * T")
+    plt.ylabel("distance")
+    plt.savefig("allfreqs.png")
+end
 
 #Return to origin
 cd("../..")

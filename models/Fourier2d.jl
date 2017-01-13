@@ -23,6 +23,9 @@ immutable Fourier2d <: SuperRes #1D Static model
                    grid_x,
                    grid_z)
     end
+    function Fourier2d(x_max, filter, n_approx_x, n_approx_z)
+        return Fourier2d(x_max, x_max, filter, n_approx_x, n_approx_z) 
+    end
 end
 
 function psi(model :: Fourier2d, theta :: Vector{Float64})
@@ -36,7 +39,7 @@ function dpsi(model :: Fourier2d, theta :: Vector{Float64})
   # This function computes the gradient of psi
   dx1 = vec(Complex128[-model.filter[k] *
     model.freqs[k][1] / model.x_max * 2im * pi *
-    exp(-2im * pi / (model.freqs[k][1]  * theta[1]/model.x_max +  model.freqs[k][2] * theta[2]/model.z_max )) for k in eachindex(model.freqs)])
+    exp(-2im * pi * (model.freqs[k][1]  * theta[1]/model.x_max +  model.freqs[k][2] * theta[2]/model.z_max )) for k in eachindex(model.freqs)])
   dx2 = vec(Complex128[-model.filter[k] *
     model.freqs[k][2] / model.z_max * 2im * pi *
     exp(-2im * pi * (model.freqs[k][1] * theta[1]/model.x_max + model.freqs[k][2] * theta[2]/model.z_max )) for k in eachindex(model.freqs)])
