@@ -2,9 +2,10 @@ immutable Fourier2d <: SuperRes #1D Static model
     freqs :: Vector{Tuple{Int, Int}}
     filter :: Vector{Float64}
     x_max :: Float64
+    z_max :: Float64
     approx_grid_x :: Vector{Float64}
     approx_grid_z :: Vector{Float64}
-    function Fourier2d(x_max, filter, n_approx_x, n_approx_z)
+    function Fourier2d(x_max, z_max, filter, n_approx_x, n_approx_z)
         ind = find(filter)
         f_c_x = div(size(filter, 1) - 1, 2)
         f_c_z = div(size(filter, 2) - 1, 2)
@@ -14,10 +15,11 @@ immutable Fourier2d <: SuperRes #1D Static model
         freqs2d = freqs2d[ind]
         filter2d = filter[ind]
         grid_x = linspace(0, x_max, n_approx_x)
-        grid_z = linspace(0, x_max, n_approx_z)
+        grid_z = linspace(0, z_max, n_approx_z)
         return new(freqs2d,
                    filter2d,
                    x_max,
+                   z_max,
                    grid_x,
                    grid_z)
     end
@@ -26,7 +28,7 @@ end
 function psi(model :: Fourier2d, theta :: Vector{Float64})
   # This function computes the direct problem for a single point theta
   psi_cpx = vec(Complex128[model.filter[k] *
-    exp(-2im * pi * (model.freqs[k][1] / model.x_max * theta[1] + model.freqs[k][2] / model.x_max * theta[2] )) for k in eachindex(model.freqs)])
+    exp(-2im * pi * (model.freqs[k][1] / model.x_max * theta[1] + model.freqs[k][2] / model.z_max * theta[2] )) for k in eachindex(model.freqs)])
   return [real(psi_cpx); imag(psi_cpx)]
 end
 
@@ -34,10 +36,10 @@ function dpsi(model :: Fourier2d, theta :: Vector{Float64})
   # This function computes the gradient of psi
   dx1 = vec(Complex128[-model.filter[k] *
     model.freqs[k][1] / model.x_max * 2im * pi *
-    exp(-2im * pi / model.x_max * (model.freqs[k][1]  * theta[1] +  model.freqs[k][2] * theta[2] )) for k in eachindex(model.freqs)])
+    exp(-2im * pi / (model.freqs[k][1]  * theta[1]/model.x_max +  model.freqs[k][2] * theta[2]/model.z_max )) for k in eachindex(model.freqs)])
   dx2 = vec(Complex128[-model.filter[k] *
-    model.freqs[k][2] / model.x_max * 2im * pi *
-    exp(-2im * pi / model.x_max * (model.freqs[k][1] * theta[1] + model.freqs[k][2] * theta[2] )) for k in eachindex(model.freqs)])
+    model.freqs[k][2] / model.z_max * 2im * pi *
+    exp(-2im * pi * (model.freqs[k][1] * theta[1]/model.x_max + model.freqs[k][2] * theta[2]/model.z_max )) for k in eachindex(model.freqs)])
   return [[real(dx1); imag(dx1)] [real(dx2); imag(dx2)]]
 end
 
@@ -50,7 +52,7 @@ function getStartingPoint(model :: Fourier2d, v :: Vector{Float64})
 end
 
 parameterBounds(model :: Fourier2d) =
-[0.0; 0.0], [model.x_max; model.x_max]
+[0.0; 0.0], [model.x_max; model.z_max]
 
 dim(model :: Fourier2d) = 2
 
@@ -74,4 +76,4 @@ function getStartingPoint(model :: DynamicFourier2d, v :: Vector{Float64})
 end
 
 parameterBounds(model :: DynamicFourier2d) =
-  [0; 0; -model.v_max;-model.v_max], [model.static.x_max; model.static.x_max; model.v_max; model.v_max]
+  [0; 0; -model.v_max;-model.v_max], [model.static.x_max; model.static.z_max; model.v_max; model.v_max]

@@ -9,7 +9,7 @@ filter_z = ones(2*f_c_x+1);
 filter2d = filter_x * filter_z'
 n_approx_x = 10*f_c_x
 n_approx_z = 10*f_c_x
-model_static = Fourier2d(x_max, filter2d, n_approx_x, n_approx_z)
+model_static = Fourier2d(x_max, x_max, filter2d, n_approx_x, n_approx_z)
 # Dynamic parameters
 K = 2
 tau = 1.0/(K*30)
