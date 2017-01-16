@@ -96,7 +96,7 @@ function random_position_and_velocity(dx, dv)
         end
         pts = [pts; new_pt]
         velocities = [velocities; new_vel]
-        if (length(pts) > 20)
+        if (length(pts) > 10)
             break;
         end
     end
