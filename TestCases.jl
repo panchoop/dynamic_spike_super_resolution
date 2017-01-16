@@ -108,6 +108,13 @@ function cloud_1d(x_max, v_max, dx, dv)
     thetas = [x_max * pts'; v_max - 2*v_max*velocities']
     return (thetas, weights)
 end
+function cloud_1d(x_max, v_max, n::Int)
+    pts = x_max * rand(n)
+    velocities =  v_max + 2*v_max*rand(n)
+    thetas = [pts'; velocities']
+    weights = ones(size(pts))
+    return (thetas, weights)
+end
 function two_groups_1d(x_max, dx, dv)
     pts_1 = x_max * random_point_cloud(dx/x_max)
     pts_2 = x_max * random_point_cloud(dx/x_max)
