@@ -2,7 +2,7 @@ function run_simulation(model, thetas, weights, noise_level=0.0)
     if is_in_bounds(model, thetas)
         target = phi(model, thetas, weights)
         noise = randn(size(target))
-        noise = noise_level * noise / norm(noise) * norm(target)
+        noise = noise_level * noise
         target = target + noise
         function callback(old_thetas, thetas, weights, output, old_obj_val)
             #evalute current OV

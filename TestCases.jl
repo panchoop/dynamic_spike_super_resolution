@@ -108,9 +108,9 @@ function cloud_1d(x_max, v_max, dx, dv)
     thetas = [x_max * pts'; v_max - 2*v_max*velocities']
     return (thetas, weights)
 end
-function cloud_1d(x_max, v_max, n::Int)
+function cloud_1d(x_max, v_max, n)
     pts = x_max * rand(n)
-    velocities =  v_max + 2*v_max*rand(n)
+    velocities =  v_max - 2*v_max*rand(n)
     thetas = [pts'; velocities']
     weights = ones(size(pts))
     return (thetas, weights)
