@@ -1,10 +1,11 @@
-immutable Fourier2d <: SuperRes #1D Static model
+type Fourier2d <: SuperRes #1D Static model
     freqs :: Vector{Tuple{Int, Int}}
     filter :: Vector{Float64}
     x_max :: Float64
     z_max :: Float64
     approx_grid_x :: Vector{Float64}
     approx_grid_z :: Vector{Float64}
+    bounds :: Tuple{Array{Float64}, Array{Float64}}
     function Fourier2d(x_max, z_max, filter, n_approx_x, n_approx_z)
         ind = find(filter)
         f_c_x = div(size(filter, 1) - 1, 2)
@@ -21,11 +22,17 @@ immutable Fourier2d <: SuperRes #1D Static model
                    x_max,
                    z_max,
                    grid_x,
-                   grid_z)
+                   grid_z,
+                   ([0.0; 0.0], [x_max; z_max]))
     end
     function Fourier2d(x_max, filter, n_approx_x, n_approx_z)
         return Fourier2d(x_max, x_max, filter, n_approx_x, n_approx_z) 
     end
+end
+function setBounds(model :: Fourier2d, bounds)
+    model.bounds = bounds
+    model.approx_grid_x = linspace(bounds[1][1], bounds[2][1], length(model.approx_grid_x))
+    model.approx_grid_z = linspace(bounds[1][2], bounds[2][2], length(model.approx_grid_z))
 end
 
 function psi(model :: Fourier2d, theta :: Vector{Float64})
@@ -55,19 +62,22 @@ function getStartingPoint(model :: Fourier2d, v :: Vector{Float64})
 end
 
 parameterBounds(model :: Fourier2d) =
-[0.0; 0.0], [model.x_max; model.z_max]
+    model.bounds
 
 dim(model :: Fourier2d) = 2
 
-immutable DynamicFourier2d <: DynamicSuperRes #1D Space-time model
+type DynamicFourier2d <: DynamicSuperRes #1D Space-time model
     static :: Fourier2d
     times :: Vector{Float64}
     v_max :: Float64
     grid_v :: Vector{Float64}
+    bounds :: Tuple{Array{Float64}, Array{Float64}}
     DynamicFourier2d(static, v_max, tau, K, num_v = 20) = new(static,
                                                               linspace(-tau*K, tau*K, 2*K+1),
                                                               v_max,
-                                                              linspace(-v_max, v_max, num_v))
+                                                              linspace(-v_max, v_max, num_v),
+                                                              ([0; 0; -v_max;v_max], [static.x_max; static.z_max; v_max; v_max]))
+
 end
 
 function getStartingPoint(model :: DynamicFourier2d, v :: Vector{Float64})
@@ -79,4 +89,4 @@ function getStartingPoint(model :: DynamicFourier2d, v :: Vector{Float64})
 end
 
 parameterBounds(model :: DynamicFourier2d) =
-  [0; 0; -model.v_max;-model.v_max], [model.static.x_max; model.static.z_max; model.v_max; model.v_max]
+    model.bounds

@@ -1,16 +1,23 @@
-immutable Fourier1d <: SuperRes #1D Static model
+type Fourier1d <: SuperRes #1D Static model
     freqs :: Vector{Int}
     filter :: Vector{Float64}
     x_max :: Float64
     approx_grid :: Vector{Float64}
+    bounds :: Tuple{Vector{Float64},Vector{Float64}}
     function Fourier1d(f_c, x_max, filter = ones(2*f_c+1), n_approx = 10*f_c+1)
         ind = find(filter)
         freqs = -f_c:f_c
         filter = filter[ind]
         freqs = freqs[ind]
         new(freqs, filter, x_max,
-            linspace(0, x_max))
+            linspace(0, x_max),
+            ([0.0], [x_max]))
     end
+end
+
+function setBounds(model :: Fourier1d, bounds)
+    model.bounds = bounds
+    model.approx_grid = linspace(bounds[1][1], bounds[2][1], length(model.approx_grid))
 end
 
 function psi(model :: Fourier1d, theta :: Vector{Float64})
@@ -33,18 +40,25 @@ function getStartingPoint(model :: Fourier1d, v :: Vector{Float64})
     return [model.approx_grid[ind]]
 end
 
-parameterBounds(model :: Fourier1d) = [0.0], [model.x_max] # Bounds for the parameters
+parameterBounds(model :: Fourier1d) = model.bounds # Bounds for the parameters
 dim(model :: Fourier1d) = 1
 
-immutable DynamicFourier1d <: DynamicSuperRes #1D Space-time model
+type DynamicFourier1d <: DynamicSuperRes #1D Space-time model
     static :: Fourier1d
     times :: Vector{Float64}
     v_max :: Float64
     grid_v :: Vector{Float64}
+    bounds :: Tuple{Vector{Float64},Vector{Float64}}
     DynamicFourier1d(static, v_max, tau, K, num_v = 20) = new(static,
                                                               linspace(-tau*K, tau*K, 2*K+1),
                                                               v_max,
-                                                              linspace(-v_max, v_max, num_v))
+                                                              linspace(-v_max, v_max, num_v),
+                                                              ([0; -v_max], [static.x_max; v_max]))
+end
+function setBounds(model :: DynamicFourier1d, bounds)
+    setBounds(model.static, (bounds[1][1], bounds[2][1]))
+    model.bounds = bounds
+    model.grid_v = linspace(bounds[1][2], bounds[2][2], length(grid_v))
 end
 
 function getStartingPoint(model :: DynamicFourier1d, v :: Vector{Float64})
@@ -55,5 +69,4 @@ function getStartingPoint(model :: DynamicFourier1d, v :: Vector{Float64})
     return [model.static.approx_grid[i]; model.grid_v[j]]
 end
 
-parameterBounds(model :: DynamicFourier1d) =
-    [0; -model.v_max], [model.static.x_max; model.v_max] # Bounds for the parameters
+parameterBounds(model :: DynamicFourier1d) = model.bounds

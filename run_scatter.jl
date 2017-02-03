@@ -56,7 +56,6 @@ close(iostream)
         ok_static = temp_static
     end
     if do_allfreqs
-        thetas[2,:] = thetas[2,:] + model_allfreqs.z_max/2
         d = size(thetas, 1)
         (thetas_est, weights_est) = run_simulation(model_allfreqs, thetas, weights, noise_level_data)
         if (length(thetas_est) > 0)
