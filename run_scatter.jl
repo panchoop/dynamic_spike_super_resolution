@@ -56,7 +56,6 @@ close(iostream)
         ok_static = temp_static
     end
     if do_allfreqs
-        d = size(thetas, 1)
         (thetas_est, weights_est) = run_simulation(model_allfreqs, thetas, weights, noise_level_data)
         if (length(thetas_est) > 0)
             thetas_est = thetas_est[:, weights_est .> threshold_weight]
@@ -73,7 +72,7 @@ close(iostream)
     end
     dx = minimum([abs(thetas[1, i] - thetas[1, j]) + (i==j) for i in 1:size(thetas, 2), j in 1:size(thetas, 2)])
     dv = minimum([abs(thetas[2, i] - thetas[2, j]) + (i==j) for i in 1:size(thetas, 2), j in 1:size(thetas, 2)])
-    println("dx = ", dx, ", dv = ", dv, ", static: ", ok_static, ", dynamic: ", ok_dynamic)
+    println("dx = ", dx, ", dv = ", dv, ", static: ", ok_static, ", dynamic: ", ok_dynamic, ", afreq: ", ok_allfreqs)
     return (dx, dv, ok_static, ok_dynamic, ok_allfreqs)
 end
 res = pmap(x -> generate_and_reconstruct(), 1:num_trials)
