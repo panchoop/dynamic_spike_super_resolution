@@ -1,6 +1,18 @@
-function run_simulation(model, thetas, weights, noise_level=0.0)
+function psi_noisy_displacement(model::SuperRes, theta, sigma)
+    d = dim(model)
+    theta = theta + sigma*randn(size(theta))
+    return psi(model, theta)
+end
+function psi_noisy_displacement(model::DynamicSuperRes, theta, sigma)
+    d = dim(model)
+    return vcat([psi(model.static, theta[1:d] + t * theta[d+1:end] + sigma*randn(d)) for t in model.times]...)
+end
+function phi_noisy_displacement(model, thetas, weights, sigma)
+    return sum([weights[i] * psi_noisy_displacement(model, vec(thetas[:, i]), sigma) for i in 1:size(thetas, 2)])
+end
+function run_simulation(model, thetas, weights, noise_level=0.0, noise_position=0.0)
     if is_in_bounds(model, thetas)
-        target = phi(model, thetas, weights)
+        target =  phi_noisy_displacement(model, thetas, weights, noise_position)
         noise = randn(size(target))
         noise = noise_level * noise
         target = target + noise

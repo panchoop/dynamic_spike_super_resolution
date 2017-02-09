@@ -26,7 +26,7 @@ close(iostream)
     ok_allfreqs = false
     (thetas, weights) = test_case()
     d = dim(model_dynamic)
-    (thetas_est, weights_est) = run_simulation(model_dynamic, thetas, weights, noise_level_data)
+    (thetas_est, weights_est) = run_simulation(model_dynamic, thetas, weights, noise_level_data, noise_level_position)
     thetas_est = thetas_est[:, weights_est .> threshold_weight]
     weights_est = weights_est[weights_est .> threshold_weight]
     if (length(thetas) == length(thetas_est))
@@ -41,7 +41,7 @@ close(iostream)
     if do_static
         for k = 1:length(model_dynamic.times)
             thetas_t = to_static(thetas, model_dynamic.times[k], model_static.x_max)
-            (thetas_est, weights_est) = run_simulation(model_static, thetas_t, weights, noise_level_data)
+            (thetas_est, weights_est) = run_simulation(model_static, thetas_t, weights, noise_level_data, noise_level_position)
             thetas_est = thetas_est[:, weights_est .> threshold_weight]
             weights_est = weights_est[weights_est .> threshold_weight]
             if (length(thetas_t) == length(thetas_est))
@@ -56,7 +56,7 @@ close(iostream)
         ok_static = temp_static
     end
     if do_allfreqs
-        (thetas_est, weights_est) = run_simulation(model_allfreqs, thetas, weights, noise_level_data)
+        (thetas_est, weights_est) = run_simulation(model_allfreqs, thetas, weights, noise_level_data, noise_level_position)
         if (length(thetas_est) > 0)
             thetas_est = thetas_est[:, weights_est .> threshold_weight]
             weights_est = weights_est[weights_est .> threshold_weight]
