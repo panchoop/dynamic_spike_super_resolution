@@ -72,8 +72,9 @@ close(iostream)
     end
     dx = minimum([abs(thetas[1, i] - thetas[1, j]) + (i==j) for i in 1:size(thetas, 2), j in 1:size(thetas, 2)])
     dv = minimum([abs(thetas[2, i] - thetas[2, j]) + (i==j) for i in 1:size(thetas, 2), j in 1:size(thetas, 2)])
+    norm_1 = minimum([abs(thetas[1, i] - thetas[1, j]) + model_dynamic.times[end]* abs(thetas[2, i] - thetas[2, j]) + (i==j) for i in 1:size(thetas, 2), j in 1:size(thetas, 2)])
     println("dx = ", dx, ", dv = ", dv, ", static: ", ok_static, ", dynamic: ", ok_dynamic, ", afreq: ", ok_allfreqs)
-    return (dx, dv, ok_static, ok_dynamic, ok_allfreqs)
+    return (dx, dv, ok_static, ok_dynamic, ok_allfreqs, norm_1)
 end
 res = pmap(x -> generate_and_reconstruct(), 1:num_trials)
 dx = [x[1] for x = res]
@@ -81,6 +82,7 @@ dv = [x[2] for x = res]
 res_static = [x[3] for x = res]
 res_dynamic = [x[4] for x = res]
 res_allfreqs = [x[5] for x = res]
+norm_1  = [x[6] for x = res]
 
 # Save results
 id = string(now())
@@ -130,6 +132,9 @@ if (do_allfreqs)
     binary_scatter(x, y, res_allfreqs)
     plt.savefig("allfreqs.png")
 end
+plt.figure()
+plt.scatter(norm_1, res_dynamic)
+plt.savefig("norm1.png")
 
 #Return to origin
 cd("../..")
