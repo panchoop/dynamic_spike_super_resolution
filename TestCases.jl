@@ -1,3 +1,5 @@
+module TestCases
+export three_points_1d, two_points_1d, three_points_2d, two_points_2d, random_point_cloud, cloud_1d
 function three_points_1d(x_max, dx, dv)
     pts = [0.5*x_max-0.5*dx, 0.5*x_max, 0.5*x_max + 0.5*dx]
     weights = [1.0; 1.0; 1.0]
@@ -35,30 +37,12 @@ function two_points_2d(x_max, dx, dv)
     thetas = [pts_x'; pts_y'; velocities_x'; velocities_y']
     return (thetas, weights)
 end
-function two_points_2d_ortho(x_max, dx, dv)
-    pts_x = [0.5*x_max - 0.5*dx, 0.5*x_max + 0.5 * dx]
-    pts_y = [0.5*x_max, 0.5*x_max]
-    weights = [1.0, 1.0]
-    velocities_y = [-dv/2 ; dv/2]
-    velocities_x = [0.0 ; 0.0]
-    thetas = [pts_x'; pts_y'; velocities_x'; velocities_y']
-    return (thetas, weights)
-end
-function two_points_2d_ortho_same(x_max,dx,dv)
-    pts_x = [0.5*x_max - 0.5*dx, 0.5*x_max + 0.5 * dx]
-    pts_y = [0.5*x_max, 0.5*x_max]
-    weights = [1.0, 1.0]
-    velocities_y = [dv/2 ; dv]
-    velocities_x = [0.0 ; 0.0]
-    thetas = [pts_x'; pts_y'; velocities_x'; velocities_y']
-    return (thetas, weights)
-end
 function random_point_cloud(dx)
     pts = dx + (1.0-3*dx)*rand()
     pts = [0.0; pts; pts+dx; 1.0]
     is_valid = (pt, pts) -> pt > dx &&
-                            pt < 1-dx &&
-                            minimum(abs(pts[2:end-1] - pt)) > dx
+    pt < 1-dx &&
+    minimum(abs(pts[2:end-1] - pt)) > dx
     while maximum(mod(pts - circshift(pts, 1), 1.0)) > 2*dx
         new_pt = rand()
         while !is_valid(new_pt, pts)
@@ -73,11 +57,11 @@ function random_position_and_velocity(dx, dv)
     velocities = (1.0 - dv) * rand() 
     velocities = velocities
     is_valid = (pt, vel, pts, vels) -> pt > dx &&
-                                    pt < 1-dx &&
-                                    (minimum(abs(pts - pt)) > dx ||
-                                     minimum(abs(vels - vel)) > dv)
+    pt < 1-dx &&
+    (minimum(abs(pts - pt)) > dx ||
+     minimum(abs(vels - vel)) > dv)
     while((maximum([abs(v1-v2) for v1 in velocities, v2 in velocities]) > 2*dv && 
-          maximum([abs(x1-x2) for x1 in pts, x2 in pts]) > 2*dx) || length(velocities) == 1)
+           maximum([abs(x1-x2) for x1 in pts, x2 in pts]) > 2*dx) || length(velocities) == 1)
         new_pt = rand()
         new_vel = rand()
         iter = 0
@@ -141,4 +125,5 @@ function aligned_1d(x_max, dx, n)
     thetas = [pts'; velocities']
     weights = ones(size(pts))
     return (thetas, weights)
+end
 end
