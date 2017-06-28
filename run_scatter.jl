@@ -26,7 +26,9 @@ close(iostream)
     ok_allfreqs = false
     (thetas, weights) = test_case()
     d = dim(model_dynamic)
+    tic()
     (thetas_est, weights_est) = run_simulation(model_dynamic, thetas, weights, noise_level_data, noise_level_position)
+    time_dynamic = toc()
     thetas_est = thetas_est[:, weights_est .> threshold_weight]
     weights_est = weights_est[weights_est .> threshold_weight]
     if (length(thetas) == length(thetas_est))
@@ -38,10 +40,13 @@ close(iostream)
         end
     end
     temp_static = false
+    time_static = 0.0
     if do_static
         for k = 1:length(model_dynamic.times)
             thetas_t = to_static(thetas, model_dynamic.times[k], model_static.x_max)
+            tic()
             (thetas_est, weights_est) = run_simulation(model_static, thetas_t, weights, noise_level_data, noise_level_position)
+            time_static = time_static + toc()
             thetas_est = thetas_est[:, weights_est .> threshold_weight]
             weights_est = weights_est[weights_est .> threshold_weight]
             if (length(thetas_t) == length(thetas_est))
@@ -74,7 +79,7 @@ close(iostream)
     dv = minimum([abs(thetas[2, i] - thetas[2, j]) + (i==j) for i in 1:size(thetas, 2), j in 1:size(thetas, 2)])
     norm_1 = minimum([abs(thetas[1, i] - thetas[1, j]) + model_dynamic.times[end]* abs(thetas[2, i] - thetas[2, j]) + (i==j) for i in 1:size(thetas, 2), j in 1:size(thetas, 2)])
     println("dx = ", dx, ", dv = ", dv, ", static: ", ok_static, ", dynamic: ", ok_dynamic, ", afreq: ", ok_allfreqs)
-    return (dx, dv, ok_static, ok_dynamic, ok_allfreqs, norm_1)
+    return (dx, dv, ok_static, ok_dynamic, ok_allfreqs, norm_1, time_static, time_dynamic)
 end
 res = pmap(x -> generate_and_reconstruct(), 1:num_trials)
 dx = [x[1] for x = res]
@@ -82,8 +87,14 @@ dv = [x[2] for x = res]
 res_static = [x[3] for x = res]
 res_dynamic = [x[4] for x = res]
 res_allfreqs = [x[5] for x = res]
+times_static = [x[7] for x = res]
+times_dynamic = [x[8] for x = res]
 norm_1  = [x[6] for x = res]
-
+# Mean time:
+time_static = mean(times_static)
+time_dynamic = mean(times_dynamic)
+println(time_static)
+println(time_dynamic)
 # Save results
 id = string(now())
 id = split(id, '.')[1]
@@ -118,6 +129,8 @@ function binary_scatter(x, y, bin)
                 alpha=0.3, edgecolors="none")
     plt.xlim((minimum(x), maximum(x)))
     plt.ylim((minimum(y), maximum(y)))
+    plt.xlabel("$\delta * \Delta_v$", usetex=true)
+    plt.ylabel("$\Delta_x", usetex=true)
 end
 if (do_static)
     plt.figure()

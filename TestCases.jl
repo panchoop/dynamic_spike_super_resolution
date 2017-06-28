@@ -135,3 +135,10 @@ function two_groups_2d(x_max, dx, dy, dv)
     thetas = [pts_x'; pts_y'; velocities_x'; velocities_y']
     return (thetas, weights)
 end
+function aligned_1d(x_max, dx, n)
+    pts = dx * (1:n)
+    velocities = zeros(size(pts))
+    thetas = [pts'; velocities']
+    weights = ones(size(pts))
+    return (thetas, weights)
+end

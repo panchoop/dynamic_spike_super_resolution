@@ -1,18 +1,18 @@
-function psi_noisy_displacement(model::SuperRes, theta, sigma)
-    d = dim(model)
-    theta = theta + sigma*randn(size(theta))
-    return psi(model, theta)
+function phi_noise(model, thetas, weights, sigma)
+    return sum([weights[i] * psi_noise(model, vec(thetas[:, i]), sigma) for i in 1:size(thetas, 2)])
 end
-function psi_noisy_displacement(model::DynamicSuperRes, theta, sigma)
+function psi_noise(model :: DynamicSuperRes, theta :: Vector{Float64}, dsec :: Float64)
+    # This function computes the direct problem for a single point theta
     d = dim(model)
-    return vcat([psi(model.static, theta[1:d] + t * theta[d+1:end] + sigma*randn(d)) for t in model.times]...)
-end
-function phi_noisy_displacement(model, thetas, weights, sigma)
-    return sum([weights[i] * psi_noisy_displacement(model, vec(thetas[:, i]), sigma) for i in 1:size(thetas, 2)])
+    return vcat([psi(model.static, theta[1:d] + t * theta[d+1:end] + t^2*dsec) for t in model.times]...)
 end
 function run_simulation(model, thetas, weights, noise_level=0.0, noise_position=0.0)
-    if is_in_bounds(model, thetas)
-        target =  phi_noisy_displacement(model, thetas, weights, noise_position)
+    if is_in_bounds(model, thetas) 
+        if noise_position > 0
+            target =  phi_noise(model, thetas, weights, noise_position)
+        else
+            target = phi(model, thetas, weights)
+        end
         noise = randn(size(target))
         noise = noise_level * noise
         target = target + noise
