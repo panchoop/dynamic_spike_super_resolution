@@ -3,7 +3,7 @@ push!(LOAD_PATH, ".")
 module Utils
 using SparseInverseProblems
 using SuperResModels
-threshold_weight = 1e-2
+threshold_weight = 1e-1
 export run_simulation, generate_and_reconstruct_all
 function phi_noise(model, thetas, weights, sigma)
     return sum([weights[i] * psi_noise(model, vec(thetas[:, i]), sigma) for i in 1:size(thetas, 2)])
@@ -85,7 +85,7 @@ function generate_and_reconstruct_dynamic(model_dynamic, thetas, weights, noise_
         dist_v = norm(thetas[d+1:end, :] - thetas_est[d+1:end, corres], Inf)
         return (dist_x, dist_v)
     end
-    return model_dynamic.static.x_max, model_dynamic.static.x_max
+    return model_dynamic.static.x_max, model_dynamic.v_max
 end
 function generate_and_reconstruct_static(model_static, thetas, weights, noise_data, noise_position)
     d = dim(model_static)
@@ -120,10 +120,10 @@ function generate_and_reconstruct_all(model_static, model_dynamic, test_case, no
     # Dynamic case, no noise
     (results[1, 1], results[1, 2]) = generate_and_reconstruct_dynamic(model_dynamic, thetas, weights, 0.0, 0.0)
     # Static case, no noise
-    temp = 0
+    temp = model_static.x_max
     for k = 1:length(model_dynamic.times)
         thetas_t = to_static(thetas, model_dynamic.times[k], model_static.x_max)
-        temp = max(temp, generate_and_reconstruct_static(model_static, thetas_t, weights, 0.0, 0.0))
+        temp = min(temp, generate_and_reconstruct_static(model_static, thetas_t, weights, 0.0, 0.0))
     end
     results[1, 3] = temp
     i = 2
@@ -131,10 +131,10 @@ function generate_and_reconstruct_all(model_static, model_dynamic, test_case, no
         # Dynamic case, noisy
         (results[i, 1], results[i, 2]) = generate_and_reconstruct_dynamic(model_dynamic, thetas, weights, noise_data, 0.0)
         # Static case, noisy
-        temp = 0.0
+        temp = model_static.x_max
         for k = 1:length(model_dynamic.times)
             thetas_t = to_static(thetas, model_dynamic.times[k], model_static.x_max)
-            temp = max(temp, generate_and_reconstruct_static(model_static, thetas_t, weights, noise_data, 0.0))
+            temp = min(temp, generate_and_reconstruct_static(model_static, thetas_t, weights, noise_data, 0.0))
         end
         results[i, 3] = temp
         i = i + 1

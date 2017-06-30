@@ -36,14 +36,14 @@ model_dynamic = SuperResModels.DynamicFourier1d(model_static, dynamic_parameters
     model_dynamic = $model_dynamic
     x_max = $x_max
     v_max = $v_max
-    test_case = () -> TestCases.cloud_1d(x_max, v_max, rand(4:10))
+    test_case = () -> TestCases.cloud_1d(x_max, v_max, rand(3:10))
     noises_data = linspace(0, 0.1, 5)
     noises_data = noises_data[2:end]
     noises_position = linspace(0, 3e-3, 5)
     noises_position = noises_position[2:end]
 end
 
-num_trials = 10000
+num_trials = 1000
 results = pmap(x -> Utils.generate_and_reconstruct_all(model_static, model_dynamic, test_case, noises_data, noises_position), 1:num_trials)
 results_array = vcat([result[4] for result in results]...)
 norm_array = vcat([result[3] for result in results])

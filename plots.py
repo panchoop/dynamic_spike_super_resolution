@@ -3,6 +3,7 @@ from matplotlib import pyplot as plt
 
 x_max = 0.01
 delta = 1.0/30
+v_max = 0.05
 f_c = 20
 
 dx = np.load("dx.npy")
@@ -17,8 +18,8 @@ N = len(norm)
 
 
 # Plot bins
-def plot_success(norm, success, n_bins = 10, **kwargs):
-    bins = np.linspace(np.percentile(norm, 10), np.percentile(norm, 90), n_bins)
+def plot_success(norm, success, n_bins = 20, **kwargs):
+    bins = np.linspace(np.percentile(norm, 5), np.percentile(norm, 95), n_bins)
     vals = np.zeros(len(bins) - 1)
     norm_success = norm[success]
     for i in range(len(bins) - 1):
@@ -28,6 +29,8 @@ def plot_success(norm, success, n_bins = 10, **kwargs):
     centers = 0.5 * (bins[0:len(bins) - 1] + bins[1:len(bins)])
     plt.plot(centers, vals, **kwargs)
     plt.ylim((0, 1))
+    plt.xlabel("$\Delta$", usetex=True)
+    plt.ylabel("Correct recontruction rate")
 
 
 # Noiseless case
@@ -46,6 +49,7 @@ plot_success(norm, success, linestyle="solid")
 plt.legend(["static", "dynamic"])
 
 styles = ["solid", "dashed", "dotted", "dashdot", "solid", "solid"]
+plt.savefig("noiseless.pdf")
 
 # Noise comparison
 plt.figure()
@@ -59,6 +63,7 @@ for i in range(len(datanoise)):
     plot_success(norm, success, linestyle=styles[i])
 
 plt.legend([str(int(100*datanoise[i])) + "% noise" for i in range(len(datanoise))])
+plt.savefig("noisecomp-dyn.pdf")
 plt.figure()
 for i in range(len(datanoise)):
     dx_static = results[i::(1+len(datanoise)+len(positionnoise)), 2]
@@ -67,6 +72,7 @@ for i in range(len(datanoise)):
     plot_success(norm, success, linestyle=styles[i])
 
 plt.legend([str(int(100*datanoise[i])) + "% noise" for i in range(len(datanoise))])
+plt.savefig("noisecomp-static.pdf")
 
 # Nonlinearity comparison
 plt.figure()
@@ -79,6 +85,7 @@ for i in range(3):
     success = np.nonzero(srf_dyn > srf_threshold)
     plot_success(norm, success, linestyle=styles[i])
 
-plt.legend([str(positionnoise[i]) + " curvature" for i in range(3)])
+plt.legend([str(2*positionnoise[i] * delta / v_max) + " curvature" for i in range(3)])
+plt.savefig("curvcomp.pdf")
 # SRF comparison
 plt.show()
