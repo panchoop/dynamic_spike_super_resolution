@@ -1,4 +1,4 @@
-abstract SuperRes <: BoxConstrainedDifferentiableModel
+abstract type SuperRes <: BoxConstrainedDifferentiableModel end
 
 function to_static(thetas, t)
     d = div(size(thetas, 1),2)

@@ -1,4 +1,4 @@
-abstract DynamicSuperRes <: SuperRes
+abstract type DynamicSuperRes <: SuperRes end
 
 dim(model :: DynamicSuperRes) = dim(model.static)
 
