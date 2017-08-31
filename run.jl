@@ -18,14 +18,14 @@ type DynamicParameters
 end
 # Static parameters
 f_c = 20
-x_max = 0.01
+x_max = 1.0
 num_x = 10*f_c
 filter_x =  ones(2*f_c+1);
 static_parameters = StaticParameters(f_c, x_max, num_x, filter_x)
 model_static = SuperResModels.Fourier1d(static_parameters.f_c, static_parameters.x_max, static_parameters.filter_x, static_parameters.num_x)
 # Dynamic parameters
 K = 2
-tau = 1.0/(K*30)
+tau = 1.0/(K*1.0)
 v_max = 0.05
 num_v = 10
 dynamic_parameters = DynamicParameters(K, tau, v_max, num_v)
@@ -39,11 +39,11 @@ model_dynamic = SuperResModels.DynamicFourier1d(model_static, dynamic_parameters
     test_case = () -> TestCases.cloud_1d(x_max, v_max, rand(3:10))
     noises_data = linspace(0, 0.1, 5)
     noises_data = noises_data[2:end]
-    noises_position = linspace(0, 3e-3, 5)
+    noises_position = linspace(0, 2.5e-3, 5)
     noises_position = noises_position[2:end]
 end
 
-num_trials = 1000
+num_trials = 5000
 results = pmap(x -> Utils.generate_and_reconstruct_all(model_static, model_dynamic, test_case, noises_data, noises_position), 1:num_trials)
 results_array = vcat([result[4] for result in results]...)
 norm_array = vcat([result[3] for result in results])

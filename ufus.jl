@@ -4,24 +4,24 @@ using SparseInverseProblems
 
 @everywhere begin
 # Domain
-x_max = 0.02
+x_max = 0.01
 
 # Models
-sigma = 0.001
+sigma = 0.0004
 filter = (x, y) -> exp(-(x^2 + y^2)/2/sigma^2)
 filter_dx = (x, y) -> -x/sigma^2*filter(x, y)
 filter_dy = (x, y) -> -y/sigma^2*filter(x, y)
 parameters = SuperResModels.Conv2dParameters(x_max, x_max, filter, filter_dx, filter_dy, sigma, sigma, sigma, sigma)
 model_static = SuperResModels.Conv2d(parameters)
 K = 2
-v_max = 0.02
-tau = 1/(K*30)
+v_max = 0.05
+tau = 1/200
 dynamic_parameters = SuperResModels.DynamicConv2dParameters(K, tau, v_max, 20)
 model_dynamic = SuperResModels.DynamicConv2d(model_static, dynamic_parameters)
 
 # Medium
-n_im = 1000
-dx = 0.001
+n_im = 400
+dx = 0.0002
 particles_m = [x_max * rand()]
 particles_p = [x_max * rand()]
 n_x = model_static.n_x
@@ -57,7 +57,7 @@ video = Matrix{Float64}(n_x * n_y, 0)
 #(thetas_est,weights_est) = ADCG(model_dynamic, LSLoss(), target, sum(weights), callback=callback, max_iters=200)
 
 # Sequence
-p = 0.1
+p = 0.05
 for i in 1:n_im
     thetas = hcat([(x_max/2 - dx) * ones(1, length(particles_m)); particles_m'],
                   [(x_max/2 + dx) * ones(1, length(particles_p)); particles_p'])
@@ -116,7 +116,7 @@ end
 
 
 #Plots
-using PyCall
+#using PyCall
 #@pyimport matplotlib
 #matplotlib.use("Agg")
 #@pyimport matplotlib.pyplot as plt

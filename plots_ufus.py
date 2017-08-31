@@ -1,0 +1,18 @@
+import numpy as np
+from matplotlib import pyplot as plt
+all_thetas = np.load("all_thetas.npy")
+video = np.load("video.npy")
+plt.scatter(all_thetas[0,:], all_thetas[1,:], c=all_thetas[3,:])
+plt.colorbar()
+plt.xlim((0, 0.01))
+plt.ylim((0, 0.01))
+plt.savefig("superres.pdf")
+plt.figure()
+plt.pcolormesh(np.linspace(0, 0.01, 26), np.linspace(0, 0.01, 26),np.sum(video, 1).reshape((26,26)))
+plt.colorbar()
+plt.savefig("bmode.pdf")
+plt.figure()
+plt.pcolormesh(np.linspace(0, 0.01, 26), np.linspace(0, 0.01, 26), video[:,0].reshape(26,26))
+plt.colorbar()
+plt.savefig("singleframe.pdf")
+plt.show()
