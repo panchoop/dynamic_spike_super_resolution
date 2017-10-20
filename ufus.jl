@@ -29,6 +29,8 @@ n_y = model_static.n_y
 end
 video = Matrix{Float64}(n_x * n_y, 0)
 
+# L2 norm single particle
+
 # Sequence
 p = 0.05
 for i in 1:n_im
@@ -60,13 +62,9 @@ for i in 1:n_im
     end
 end
 @everywhere video = $video
-
-cur_frames = []
-frame_packs = []
-for i in 1:n_im
-end
+frame_norms = [norm(video[:, i]) for i in 1:n_im]
 @everywhere frame_norms = $frame_norms
-@everywhere frame_packs = $frame_packs
+println(frame_norms)
 @everywhere function from_pack(frames)
     target = video[:,frames][:]
     function callback(old_thetas, thetas, weights, output, old_obj_val)
@@ -78,7 +76,7 @@ end
         end
         return false
     end
-    (thetas_est,weights_est) = SparseInverseProblems.ADCG(model_dynamic, SparseInverseProblems.LSLoss(), target, 1.1*frame_norms[frames[1]], callback=callback, max_iters=200)
+    (thetas_est,weights_est) = SparseInverseProblems.ADCG(model_dynamic, SparseInverseProblems.LSLoss(), target, frame_norms[frames[1]], callback=callback, max_iters=200)
     println(thetas_est)
     if length(thetas_est) > 0
         return [thetas_est; weights_est']
@@ -87,7 +85,7 @@ end
     end
 end
 
-bundles = [(5*i+1):(5*i+5) for i in 0:(n_im/5 - 1)]
+bundles = [(5*i+1):(5*i+5) for i in 0:(div(n_im, 5) - 1)]
 all_thetas = pmap(bundle -> from_pack(bundle), bundles)
 
 # Reprojection error
