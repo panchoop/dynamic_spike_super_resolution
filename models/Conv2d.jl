@@ -148,7 +148,7 @@ function dpsi(model :: DynamicConv2d, theta :: Vector{Float64}, w = 1.0, acc=fal
     for i in 1:length(model.eval_grid_x)
         model.eval_array_grad[i, 1] = - model.static.filter_dx(model.eval_grid_x[i] - theta[1] - theta[3]*model.eval_grid_t[i],
                                                              model.eval_grid_y[i] - theta[2] - theta[4]*model.eval_grid_t[i])
-        model.eval_array_grad[i, 2] = - model.static.filter_dy(model.eval_grid_x[i] - theta[2] - theta[3]*model.eval_grid_t[i],
+        model.eval_array_grad[i, 2] = - model.static.filter_dy(model.eval_grid_x[i] - theta[1] - theta[3]*model.eval_grid_t[i],
                                                              model.eval_grid_y[i] - theta[2] - theta[4]*model.eval_grid_t[i])
         model.eval_array_grad[i, 3] = - model.eval_grid_t[i] * model.static.filter_dx(model.eval_grid_x[i] - theta[1] - theta[3]*model.eval_grid_t[i],
                                                                                       model.eval_grid_y[i] - theta[2] - theta[4]*model.eval_grid_t[i])
