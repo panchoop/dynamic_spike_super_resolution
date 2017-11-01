@@ -15,7 +15,7 @@ end
 # L2 norm single particle
 thetas = reshape([x_max/2; x_max/2], 2, 1)
 weights = [1.0]
-single_particle_norm = norm(phi(model_static, thetas, weights), lp_norm)
+@everywhere single_particle_norm = norm(phi(model_static, thetas, weights), lp_norm)
 println("norm = ", single_particle_norm)
 
 
