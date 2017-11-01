@@ -39,7 +39,7 @@ immutable Conv2d <: SuperRes
 end
 function psi(model :: Conv2d, theta :: Vector{Float64})
     # This function computes the direct problem for a single point theta
-    return Float64[model.eval_array[i] = model.filter(model.eval_grid_x[i] - theta[1], model.eval_grid_y[i] - theta[2]) for i in 1:length(model.eval_grid_x)]
+    return Float64[model.filter(model.eval_grid_x[i] - theta[1], model.eval_grid_y[i] - theta[2]) for i in 1:length(model.eval_grid_x)]
 end
 
 function dpsi(model :: Conv2d, theta :: Vector{Float64})
@@ -51,7 +51,7 @@ end
 
 function phi(model :: Conv2d, parameters :: Matrix{Float64}, weights :: Vector{Float64})
     # Evaluates the direct problem
-    return sum([psi(model, weights[i]*vec(parameters[:, i])) for i in 1:length(weights)])
+    return sum([weights[i] * psi(model, vec(parameters[:, i])) for i in 1:length(weights)])
 end
 
 function getStartingPoint(model :: Conv2d, v :: Vector{Float64})
@@ -122,7 +122,7 @@ end
 
 function phi(model :: DynamicConv2d, parameters :: Matrix{Float64}, weights :: Vector{Float64})
     # Evaluates the direct problem
-    return sum([psi(model, weights[i]*vec(parameters[:, i])) for i in 1:length(weights)])
+    return sum([weights[i] * psi(model, vec(parameters[:, i])) for i in 1:length(weights)])
 end
 
 function getStartingPoint(model :: DynamicConv2d, v :: Vector{Float64})

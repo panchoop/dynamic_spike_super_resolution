@@ -3,41 +3,33 @@ using SuperResModels
 using SparseInverseProblems
 
 @everywhere begin
-# Domain
-x_max = 0.01
-
-# Models
-sigma = 0.0004
-filter = (x, y) -> exp(-(x^2 + y^2)/2/sigma^2)
-filter_dx = (x, y) -> -x/sigma^2*filter(x, y)
-filter_dy = (x, y) -> -y/sigma^2*filter(x, y)
-parameters = SuperResModels.Conv2dParameters(x_max, x_max, filter, filter_dx, filter_dy, sigma, sigma, sigma, sigma)
-model_static = SuperResModels.Conv2d(parameters)
-K = 2
-v_max = 0.05
-tau = 1/200
-dynamic_parameters = SuperResModels.DynamicConv2dParameters(K, tau, v_max, 20)
-model_dynamic = SuperResModels.DynamicConv2d(model_static, dynamic_parameters)
-
-# Medium
-n_im = 400
-dx = 0.0002
-particles_m = [x_max * rand()]
-particles_p = [x_max * rand()]
-n_x = model_static.n_x
-n_y = model_static.n_y
+    include("ufus_parameters.jl")
+    parameters = SuperResModels.Conv2dParameters(x_max, x_max, filter, filter_dx, filter_dy, sigma, sigma, sigma, sigma)
+    model_static = SuperResModels.Conv2d(parameters)
+    dynamic_parameters = SuperResModels.DynamicConv2dParameters(K, tau, v_max, 20)
+    model_dynamic = SuperResModels.DynamicConv2d(model_static, dynamic_parameters)
+    n_x = model_static.n_x
+    n_y = model_static.n_y
 end
-video = Matrix{Float64}(n_x * n_y, 0)
 
 # L2 norm single particle
+thetas = reshape([x_max/2; x_max/2], 2, 1)
+weights = [1.0]
+single_particle_norm = norm(phi(model_static, thetas, weights), lp_norm)
+println("norm = ", single_particle_norm)
 
-# Sequence
-p = 0.05
+
+# Generate sequence
+println("Generating sequence...")
+video = SharedArray{Float64}(n_x * n_y, n_im)
+particles_m = [initial_position_generator()]
+particles_p = [initial_position_generator()]
 for i in 1:n_im
+    println(i, "/", n_im)
     thetas = hcat([(x_max/2 - dx) * ones(1, length(particles_m)); particles_m'],
                   [(x_max/2 + dx) * ones(1, length(particles_p)); particles_p'])
     weights = ones(size(thetas, 2))
-    video = hcat(video, phi(model_static, thetas, weights))
+    video[:,i] = phi(model_static, thetas, weights)
     particles_m -= v_max/2 * tau
     particles_p += v_max/2 * tau
     remove = []
@@ -54,19 +46,38 @@ for i in 1:n_im
         end
     end
     deleteat!(particles_p, remove)
-    if rand() < p
-        push!(particles_m, rand() * x_max)
+    if length(weights) == 0
+        push!(particles_m, initial_position_generator())
+        push!(particles_p, initial_position_generator())
     end
     if rand() < p
-        push!(particles_p, rand() * x_max)
+        push!(particles_m, initial_position_generator())
+    end
+    if rand() < p
+        push!(particles_p, initial_position_generator())
     end
 end
-@everywhere video = $video
-frame_norms = [norm(video[:, i]) for i in 1:n_im]
-@everywhere frame_norms = $frame_norms
-println(frame_norms)
-@everywhere function from_pack(frames)
-    target = video[:,frames][:]
+
+# Getting frame sequences
+println("Getting short sequences without jump...")
+@everywhere frame_norms = [norm(video[:, i], lp_norm) for i in 1:n_im]
+println("norms: ", frame_norms)
+jumps = find(abs.(frame_norms[2:end] - frame_norms[1:end-1]) .> jump_threshold)
+jumps = [0; jumps; n_im]
+short_seqs = []
+for i in 1:length(jumps)-1
+    append!(short_seqs, [(jumps[i] + 5*j + 1):(jumps[i] + 5*j + 5) for j in 0:(div(jumps[i+1] - jumps[i], 5) -1)])
+end
+println("jumps: ", jumps)
+println("short seqs: ", short_seqs)
+
+@everywhere function posvel_from_seq(video, seq)
+    assert(length(seq) == 5)
+    target = video[:,seq][:]
+    est_num_particles = div(frame_norms[seq[1]], single_particle_norm*0.95)
+    if (est_num_particles == 0)
+        return Matrix{Float64}(5,0)
+    end
     function callback(old_thetas, thetas, weights, output, old_obj_val)
         #evalute current OV
         new_obj_val,t = SparseInverseProblems.loss(SparseInverseProblems.LSLoss(), output - target)
@@ -76,21 +87,25 @@ println(frame_norms)
         end
         return false
     end
-    (thetas_est,weights_est) = SparseInverseProblems.ADCG(model_dynamic, SparseInverseProblems.LSLoss(), target, frame_norms[frames[1]], callback=callback, max_iters=200)
-    println(thetas_est)
+    (thetas_est,weights_est) = SparseInverseProblems.ADCG(model_dynamic, SparseInverseProblems.LSLoss(), target, frame_norms[seq[1]], callback=callback, max_iters=200)
     if length(thetas_est) > 0
+        println("est_num = ", est_num_particles)
+        println("thetas = ", thetas_est) 
+        println("weights = ", weights_est)
         return [thetas_est; weights_est']
     else
         return Matrix{Float64}(5,0)
     end
 end
 
-bundles = [(5*i+1):(5*i+5) for i in 0:(div(n_im, 5) - 1)]
-all_thetas = pmap(bundle -> from_pack(bundle), bundles)
+#Inverse problem
+println("Inverting...")
+all_thetas = pmap(seq -> posvel_from_seq(video, seq), short_seqs)
 
+println("Reprojecting...")
 # Reprojection error
 for bundle in bundles
     target = video[:, bundle][:]
     reprojection = phi(model_dynamic, all_thetas[1:4,:], all_thetas[5,:])
-    println(norm(target-reprojection))
+    println("error = ", norm(target-reprojection))
 end
