@@ -106,8 +106,8 @@ all_thetas = pmap(seq -> posvel_from_seq(video, seq), short_seqs)
 
 println("Reprojecting...")
 # Reprojection error
-for bundle in bundles
-    target = video[:, bundle][:]
+for seq in short_seqs
+    target = video[:, seq][:]
     reprojection = phi(model_dynamic, all_thetas[1:4,:], all_thetas[5,:])
     println("error = ", norm(target-reprojection))
 end
