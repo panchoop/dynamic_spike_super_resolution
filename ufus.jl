@@ -19,18 +19,42 @@ single_particle_norm = norm(phi(model_static, thetas, weights), lp_norm)
 @everywhere single_particle_norm = $single_particle_norm
 println("norm = ", single_particle_norm)
 
+# Test dynamic
+println("Testing dynamic...")
+particles_m = [x_max/4]
+#particles_p = [3*x_max/4]
+thetas = hcat([(x_max/2 - dx) * ones(1, length(particles_m)); particles_m'; 0.0; -v_max/2])
+              #[(x_max/2 + dx) * ones(1, length(particles_p)); particles_p'; 0.0; v_max/2])
+weights = ones(1)
+target = phi(model_dynamic, thetas, weights)
+function callback(old_thetas, thetas, weights, output, old_obj_val)
+    #evalute current OV
+    new_obj_val,t = SparseInverseProblems.loss(SparseInverseProblems.LSLoss(), output - target)
+    #println("gap = $(old_obj_val - new_obj_val)")
+    if old_obj_val - new_obj_val < 1E-4
+        return true
+    end
+    return false
+end
+(thetas_est,weights_est) = SparseInverseProblems.ADCG(model_dynamic, SparseInverseProblems.LSLoss(), target, 2.0, callback=callback, max_iters=200)
+println("theta = ", thetas, ", weights = ", weights)
+println("theta_est = ", thetas_est, ", weights_est = ", weights_est)
+
 
 # Generate sequence
 println("Generating sequence...")
 video = SharedArray{Float64}(n_x * n_y, n_im)
-particles_m = [initial_position_generator()]
-particles_p = [initial_position_generator()]
+particles_m = [x_max/4]
+particles_p = [3*x_max/4]
+p=0.02
 for i in 1:n_im
     println(i, "/", n_im)
     thetas = hcat([(x_max/2 - dx) * ones(1, length(particles_m)); particles_m'],
                   [(x_max/2 + dx) * ones(1, length(particles_p)); particles_p'])
     weights = ones(size(thetas, 2))
-    video[:,i] = phi(model_static, thetas, weights)
+    if (length(weights) > 0)
+        video[:,i] = phi(model_static, thetas, weights)
+    end
     particles_m -= v_max/2 * tau
     particles_p += v_max/2 * tau
     remove = []
@@ -64,7 +88,7 @@ println("Getting short sequences without jump...")
 frame_norms = [norm(video[:, i], lp_norm) for i in 1:n_im]
 @everywhere frame_norms = $frame_norms
 println("norms: ", frame_norms)
-jumps = find(abs.(frame_norms[2:end] - frame_norms[1:end-1]) .> jump_threshold)
+jumps = find(abs.(frame_norms[2:end] - frame_norms[1:end-1]) .> jump_threshold*single_particle_norm)
 jumps = [0; jumps; n_im]
 short_seqs = []
 for i in 1:length(jumps)-1
@@ -89,7 +113,7 @@ println("short seqs: ", short_seqs)
         end
         return false
     end
-    (thetas_est,weights_est) = SparseInverseProblems.ADCG(model_dynamic, SparseInverseProblems.LSLoss(), target, frame_norms[seq[1]], callback=callback, max_iters=200)
+    (thetas_est,weights_est) = SparseInverseProblems.ADCG(model_dynamic, SparseInverseProblems.LSLoss(), target, frame_norms[seq[1]], callback=callback, max_iters=2000)
     if length(thetas_est) > 0
         println("est_num = ", est_num_particles)
         println("thetas = ", thetas_est) 
@@ -106,8 +130,11 @@ all_thetas = pmap(seq -> posvel_from_seq(video, seq), short_seqs)
 
 println("Reprojecting...")
 # Reprojection error
-for seq in short_seqs
+for i in 1:length(short_seqs)
+    seq=  short_seqs[i]
     target = video[:, seq][:]
-    reprojection = phi(model_dynamic, all_thetas[1:4,:], all_thetas[5,:])
-    println("error = ", norm(target-reprojection))
+    if length(all_thetas[i]) > 0
+        reprojection = phi(model_dynamic, all_thetas[i][1:4,:], all_thetas[i][5,:])
+        println("error = ", norm(target-reprojection))
+    end
 end
