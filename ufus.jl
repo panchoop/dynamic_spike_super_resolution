@@ -60,7 +60,8 @@ end
 
 # Getting frame sequences
 println("Getting short sequences without jump...")
-@everywhere frame_norms = [norm(video[:, i], lp_norm) for i in 1:n_im]
+frame_norms = [norm(video[:, i], lp_norm) for i in 1:n_im]
+@everywhere frame_norms = $frame_norms
 println("norms: ", frame_norms)
 jumps = find(abs.(frame_norms[2:end] - frame_norms[1:end-1]) .> jump_threshold)
 jumps = [0; jumps; n_im]
