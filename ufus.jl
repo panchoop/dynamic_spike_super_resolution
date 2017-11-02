@@ -153,7 +153,7 @@ end
 using PyCall
 @pyimport numpy as np
 mkdir(now_str)
-cp("ufus_parameters.jl", now_str)
+cp("ufus_parameters.jl", string(now_str, "/ufus_parameters.jl"))
 cd(now_str)
 short_seq_array = hcat(short_seqs...)
 np.save("video", video)
