@@ -1,5 +1,5 @@
 # Domain
-x_max = 0.005
+x_max = 0.01
 
 # Models
 sigma = 0.0004
@@ -9,6 +9,9 @@ filter_dy = (x, y) -> -y/sigma^2*filter(x, y)
 K = 2
 v_max = 0.05
 tau = 1/200
+
+# Noise
+sigma = 0.01
 
 # Medium
 n_im = 2000

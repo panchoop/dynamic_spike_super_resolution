@@ -12,6 +12,11 @@ using SparseInverseProblems
     n_y = model_static.n_y
 end
 
+# Get time of script start
+now_str = string(now())
+now_str = replace(now_str, ":", "-")
+now_str = replace(now_str, ".", "-")
+
 # L2 norm single particle
 thetas = reshape([x_max/2; x_max/2], 2, 1)
 weights = [1.0]
@@ -54,6 +59,7 @@ for i in 1:n_im
     weights = ones(size(thetas, 2))
     if (length(weights) > 0)
         video[:,i] = phi(model_static, thetas, weights)
+        video[:,i] = video[:,i] + sigma * randn(size(video[:,i]))
     end
     particles_m -= v_max/2 * tau
     particles_p += v_max/2 * tau
@@ -129,6 +135,7 @@ println("Inverting...")
 all_thetas = pmap(seq -> posvel_from_seq(video, seq), short_seqs)
 
 println("Reprojecting...")
+errors = zeros(length(short_seqs))
 # Reprojection error
 for i in 1:length(short_seqs)
     seq=  short_seqs[i]
@@ -136,5 +143,25 @@ for i in 1:length(short_seqs)
     if length(all_thetas[i]) > 0
         reprojection = phi(model_dynamic, all_thetas[i][1:4,:], all_thetas[i][5,:])
         println("error = ", norm(target-reprojection))
+        errors[i] = norm(target-reprojection)
+    else
+        errors[i] = norm(target)
     end
 end
+
+# Save data
+using PyCall
+@pyimport numpy as np
+mkdir(now_str)
+cp("ufus_parameters.jl", now_str)
+cd(now_str)
+short_seq_array = hcat(short_seqs...)
+np.save("video", video)
+np.save("frame_norms", frame_norms)
+np.save("jumps", jumps)
+np.save("short_seq_array", short_seq_array)
+for i in 1:length(short_seqs)
+    np.save(string("thetas-", i), all_thetas[i])
+end
+np.save("errors", errors)
+cd("..")
