@@ -11,7 +11,7 @@ v_max = 0.05
 tau = 1/200
 
 # Noise
-sigma = 0.01
+sigma_noise = 0.01
 
 # Medium
 n_im = 2000

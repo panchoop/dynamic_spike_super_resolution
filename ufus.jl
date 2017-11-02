@@ -59,7 +59,7 @@ for i in 1:n_im
     weights = ones(size(thetas, 2))
     if (length(weights) > 0)
         video[:,i] = phi(model_static, thetas, weights)
-        video[:,i] = video[:,i] + sigma * randn(size(video[:,i]))
+        video[:,i] = video[:,i] + sigma_noise * randn(size(video[:,i]))
     end
     particles_m -= v_max/2 * tau
     particles_p += v_max/2 * tau
