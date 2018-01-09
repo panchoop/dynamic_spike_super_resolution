@@ -10,7 +10,6 @@ end
 
 function is_in_bounds(model::SuperRes, thetas)
     bounds = parameterBounds(model)
-    is_good = true
     for i = 1:size(thetas,1)
         for j = 1:size(thetas,2)
             if thetas[i,j] < bounds[1][i] || thetas[i,j] > bounds[2][i]

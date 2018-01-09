@@ -5,12 +5,13 @@ type Fourier1d <: SuperRes #1D Static model
     approx_grid :: Vector{Float64}
     bounds :: Tuple{Vector{Float64},Vector{Float64}}
     function Fourier1d(f_c, x_max, filter = ones(2*f_c+1), n_approx = 10*f_c+1)
+        # step to get rid of the unused frequencies
         ind = find(filter)
         freqs = -f_c:f_c
         filter = filter[ind]
         freqs = freqs[ind]
         new(freqs, filter, x_max,
-            linspace(0, x_max),
+            linspace(0, x_max, n_approx),
             ([0.0], [x_max]))
     end
 end

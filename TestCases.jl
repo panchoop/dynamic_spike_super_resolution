@@ -54,13 +54,13 @@ function random_point_cloud(dx)
 end
 function random_position_and_velocity(dx, dv)
     pts = dx + (1.0 - 2*dx) * rand()
-    velocities = (1.0 - dv) * rand() 
+    velocities = (1.0 - dv) * rand()
     velocities = velocities
     is_valid = (pt, vel, pts, vels) -> pt > dx &&
     pt < 1-dx &&
     (minimum(abs(pts - pt)) > dx ||
      minimum(abs(vels - vel)) > dv)
-    while((maximum([abs(v1-v2) for v1 in velocities, v2 in velocities]) > 2*dv && 
+    while((maximum([abs(v1-v2) for v1 in velocities, v2 in velocities]) > 2*dv &&
            maximum([abs(x1-x2) for x1 in pts, x2 in pts]) > 2*dx) || length(velocities) == 1)
         new_pt = rand()
         new_vel = rand()
@@ -97,6 +97,39 @@ function cloud_1d(x_max, v_max, n)
     velocities =  v_max - 2*v_max*rand(n)
     thetas = [pts'; velocities']
     weights = ones(size(pts))
+    return (thetas, weights)
+end
+function cloud_1d_full(x_max,v_max,K,tau,n)
+# We generate random particles, uniform on the rectangle [0,x_max]x[-v_max,v_max]
+# under the condition of belonging to the set Omega.
+    pts = rand(0)
+    velocities = rand(0)
+    while size(pts)[1]<n
+	newPts = rand()*x_max
+	newVel = (rand()-0.5)*2*v_max
+	if newPts + K*tau*abs(newVel) <= x_max && newPts - K*tau*abs(newVel) >= 0
+	   push!(pts,newPts)
+	   push!(velocities,newVel)
+	end
+    end
+    thetas = [pts'; velocities']
+    weights = ones(size(pts))
+    return (thetas, weights)
+end
+function cloud_1d_full(x_max,v_max,w_min,w_max,K,tau,n)
+# Same as the before one, but we are considering random weights.
+    pts = rand(0)
+    velocities = rand(0)
+    while size(pts)[1]<n
+	newPts = rand()*x_max
+	newVel = (rand()-0.5)*2*v_max
+	if newPts + K*tau*abs(newVel) <= x_max && newPts - K*tau*abs(newVel) >= 0
+	   push!(pts,newPts)
+	   push!(velocities,newVel)
+	end
+    end
+    thetas = [pts'; velocities']
+    weights = w_min + rand(size(pts))*(w_max-w_min)
     return (thetas, weights)
 end
 function two_groups_1d(x_max, dx, dv)
