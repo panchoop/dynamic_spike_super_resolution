@@ -142,15 +142,13 @@ norm = (x,v) -> abs(x) + delta*abs(v)
 return minimum([norm(thetas[1,i] - thetas[1,j], thetas[2,i] - thetas[2,j]) + (i==j)*Inf for i in size(thetas,2), j in 1:size(thetas,2) ])
 end
 
-function Rejection_sampling(test_case, dataFolder, K, tau, x_max)
+function Rejection_sampling(test_case, bins, density, K, tau, x_max)
     # We use a rejection sampling algorithm to generate test_cases that whose
     # separation is distributed uniformly. This wil save time in Montecarlo simulations
     # to have adequate resolution in the final plots.
     # The distribution is unknown but we have simulated it enough times to approximate
     # it (see separationDistribution.jl)
     # On average, this method takes 1/bins[end]/minimum(density)
-    bins = np.load(dataFolder*"/separationDistribBins.npy")
-    density = np.load(dataFolder*"/separationDistribVal.npy")
     dx = bins[2]-bins[1]
     minDensity = minimum(density)
     densityFunc = y -> density[floor(Int,y/dx)+1]
@@ -266,16 +264,17 @@ function generate_and_reconstuct_static_best(model_dynamic, model_static, thetas
     # the second two outpust are the third best case with the worse weight.
     return dist_x[1], dist_w[1], dist_x[3], maximum(dist_w[1:3])
 end
-function generate_and_reconstruct_all(model_static, model_dynamic, dataFolder, test_case, noises_data, noises_position)
+function generate_and_reconstruct_all(model_static, model_dynamic, bins, density, test_case, noises_data, noises_position)
     ### This function generates a test case and returns the distances between the generated particles
     ### given by dx, dv and norm. Furthermore it returns a result matrix that contains
     ### the first 3 colums correspond to the dynamic results, (space x velocity x weights)
     ### whereas the last 4 columns correspond to the static results-: best measurement location
     ### and weight, third best location, worse weight difference among the best 3.
     ### The rows are respectively no noise, noises in data, noises in position.
+    println("### Beggining round ###")
     K = div(length(model_dynamic.times)-1,2)
     tau = maximum(model_dynamic.times)/K
-    (thetas, weights) =  Rejection_sampling(test_case, dataFolder, K, tau, model_static.x_max)
+    (thetas, weights) =  Rejection_sampling(test_case, bins, density, K, tau, model_static.x_max)
     d = dim(model_dynamic)
     results = zeros(1 + length(noises_data) + length(noises_position), 7)
     # Obtain the separation of the configuration of particles
@@ -295,9 +294,15 @@ function generate_and_reconstruct_all(model_static, model_dynamic, dataFolder, t
     for noise_data in noises_data
         # We generate target measure with the included noise
         target = generate_target(model_dynamic,thetas,weights, noise_data, 0.0)
+	println("---- Printing setup: ")
+	println("thetas:",thetas)
+	println("weights:",weights)
+	println("target:",target)
         # Dynamic case
+        println("#### going for noise_data dynamic ",noise_data," ###")
         (results[i, 1], results[i, 2], results[i,3]) = generate_and_reconstruct_dynamic(model_dynamic, thetas, weights, target)
         # Static case
+        println("#### going for noise_data static ",noise_data ,"###")
         (results[i,4], results[i,5], results[i,6], results[i,7]) = generate_and_reconstuct_static_best(model_dynamic, model_static, thetas, weights, target)
         i = i + 1
     end
@@ -305,6 +310,7 @@ function generate_and_reconstruct_all(model_static, model_dynamic, dataFolder, t
         # We generate target measure with the included noise
         target = generate_target(model_dynamic,thetas, weights, 0.0, noise_position)
         # This result is only analyzed in the Dynamic case for the moment
+        println("#### going for noise_position dynamic ",noise_position, " ###")
         (results[i, 1], results[i, 2], results[i,3]) = generate_and_reconstruct_dynamic(model_dynamic, thetas, weights, target)
         results[i, 4] = 0.0
         results[i, 5] = 0.0
@@ -312,6 +318,15 @@ function generate_and_reconstruct_all(model_static, model_dynamic, dataFolder, t
         results[i, 7] = 0.0
         i = i + 1
     end
+    println("#########################################################")
+    println("#########################################################")
+    println("#########################################################")
+    println("#########################################################")
+    println("             FINISHED ONE ROUND                          ")
+    println("#########################################################")
+    println("#########################################################")
+    println("#########################################################")
+    println("#########################################################")
     return separation, separation_dyn, results
 end
 end

@@ -46,6 +46,10 @@ minWeights = 1
 maxWeights = 10
 ### Location of data folder
 dataFolder = "data/1Dsimulations"
+using PyCall
+@pyimport numpy as np
+bins = np.load(dataFolder*"/separationDistribBins.npy")
+density = np.load(dataFolder*"/separationDistribVal.npy")
 
 ### Number of points
 @everywhere begin
@@ -63,10 +67,12 @@ dataFolder = "data/1Dsimulations"
     noises_data = noises_data[2:end]
     noises_position = linspace(0, 0.01, 5)
     noises_position = noises_position[2:end]
+    bins = $bins
+    density = $density
 end
 
-num_trials = 50
-results = pmap(x -> Utils.generate_and_reconstruct_all(model_static, model_dynamic, dataFolder, test_case, noises_data, noises_position), 1:num_trials)
+num_trials = 10
+results = pmap(x -> Utils.generate_and_reconstruct_all(model_static, model_dynamic, bins, density, test_case, noises_data, noises_position), 1:num_trials)
 results_array = vcat([result[3] for result in results]...)
 separations_array = vcat([result[1] for result in results]...)
 separation_dyn_array = vcat([result[2] for result in results]...)
@@ -81,8 +87,7 @@ saveFolder = dataFolder*"/"*now_str
 mkdir(saveFolder)
 println(" The results are : ", results_array)
 println(" Simulations finished, we save the files into folder :/" *saveFolder )
-using PyCall
-@pyimport numpy as np
+
 np.save(saveFolder*"/datanoise.npy", noises_data)
 np.save(saveFolder*"/positionnoise.npy", noises_position)
 np.save(saveFolder*"/separationDynamic.npy", separation_dyn_array)
