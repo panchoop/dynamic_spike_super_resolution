@@ -207,7 +207,7 @@ end
 function generate_and_reconstruct_dynamic(model_dynamic, thetas, weights, target)
     d = dim(model_dynamic)
     # run the algorithm on the points thetas with the respective noises.
-    (thetas_est, weights_est) = try run_simulation_target(model_dynamic, thetas, weights, target) catch ([0], [0]) end
+    (thetas_est, weights_est) = try run_simulation_target(model_dynamic, thetas, weights, target) catch  ([0], [0]) end
     # Discard any reconstruction with smaller weight than some threshold.
     thetas_est = thetas_est[:, weights_est .> threshold_weight]
     weights_est = weights_est[weights_est .> threshold_weight]
@@ -271,6 +271,7 @@ function generate_and_reconstruct_all(model_static, model_dynamic, bins, density
     ### whereas the last 4 columns correspond to the static results-: best measurement location
     ### and weight, third best location, worse weight difference among the best 3.
     ### The rows are respectively no noise, noises in data, noises in position.
+    srand(100000000)
     println("### Beggining round ###")
     K = div(length(model_dynamic.times)-1,2)
     tau = maximum(model_dynamic.times)/K
