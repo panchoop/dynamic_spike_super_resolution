@@ -71,7 +71,7 @@ density = np.load(dataFolder*"/separationDistribVal.npy")
     density = $density
 end
 
-num_trials = 10
+num_trials = 100
 results = pmap(x -> Utils.generate_and_reconstruct_all(model_static, model_dynamic, bins, density, test_case, noises_data, noises_position), 1:num_trials)
 results_array = vcat([result[3] for result in results]...)
 separations_array = vcat([result[1] for result in results]...)
