@@ -156,7 +156,7 @@ data_folder = "data/2Dsimulations/"*now_str
 using PyCall
 @pyimport numpy as np
 mkdir(data_folder)
-cp("ufus_parameters.jl", string(data_folder, "/ufus_parameters.jl"))
+cp("2d_parameters.jl", string(data_folder, "/2d_parameters.jl"))
 cd(data_folder)
 short_seq_array = hcat(short_seqs...)
 np.save("video", video)
