@@ -39,9 +39,7 @@ particles_m = [x_max/4]
 particles_p = [3*x_max/4]
 
 
-activation_probability=0.02
 for i in 1:n_im
-    println(i, "/", n_im) 
     # Obtain the current static particles, just spatial, there is no speed.
     thetas = hcat([(x_max/2 - dx) * ones(1, length(particles_m)); particles_m'],
                   [(x_max/2 + dx) * ones(1, length(particles_p)); particles_p'])
@@ -88,7 +86,6 @@ println("Getting short sequences without jump...")
 # get the total mass at each time step
 frame_norms = [norm(video[:, i], lp_norm) for i in 1:n_im]
 @everywhere frame_norms = $frame_norms
-println("norms: ", frame_norms)
 # Find locations in which there was a significative mass difference between two time steps.
 jumps = find(abs.(frame_norms[2:end] - frame_norms[1:end-1]) .> jump_threshold*single_particle_norm)
 jumps = [0; jumps; n_im]
@@ -97,8 +94,6 @@ short_seqs = []
 for i in 1:length(jumps)-1
     append!(short_seqs, [(jumps[i] + 5*j + 1):(jumps[i] + 5*j + 5) for j in 0:(div(jumps[i+1] - jumps[i], 5) -1)])
 end
-println("jumps: ", jumps)
-println("short seqs: ", short_seqs)
 
 ### Function that given the a subquence of the total video, will estimate the locations and weights of the
 ### involved particles. 

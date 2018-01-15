@@ -47,8 +47,8 @@ now_str = replace(now_str, ".", "-")
 # Save results
 saveFolder = dataFolder*"/"*now_str
 mkdir(saveFolder)
-cp("1d_parameters.jl", string(data_folder, "/1d_parameters.jl"))
-cd(data_folder)
+cp("1d_parameters.jl", string(saveFolder, "/1d_parameters.jl"))
+cd(saveFolder)
 
 println(" Simulations finished, we save the files into folder :/" *saveFolder )
 

@@ -32,7 +32,7 @@ sigma_noise = 0.01
 
 ### Sequence ###
 # Probability of a particle to activate or deactivate
-	p = 0.05
+	activation_probability=0.02
 # Function that gives the position of the new activated particle.
 initial_position_generator = 
     () -> x_max/2 + (1-2*rand()) * x_max/4 
