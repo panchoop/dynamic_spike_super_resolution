@@ -1,7 +1,14 @@
 using PyCall
 @pyimport numpy as np
 @pyimport matplotlib.pyplot as plt
-folder = ARGS[1]
+# Change for the respective example to load
+ example = "/2017-11-03T09-40-41-038"
+# example = "/2017-11-03T10-05-27-667"
+# example = "/2017-11-04T08-04-38-411"
+# example = "/2017-11-04T11-57-14-36"
+folder = "data/2Dsimulations"*example
+
+
 include(folder * "/ufus_parameters.jl")
 errors = np.load(folder * "/errors.npy")
 video = np.load(folder * "/video.npy")
@@ -23,20 +30,17 @@ plt.scatter(all_thetas[1,:], all_thetas[2,:], c=all_thetas[4,:], s=all_thetas[5,
 plt.colorbar()
 plt.xlim((0, x_max))
 plt.ylim((0, x_max))
-plt.savefig("superres.pdf")
+plt.savefig(folder*"/superres.pdf")
 plt.show()
 
-println(size(video))
-println(length(np.sum(video,1)))
 plt.pcolormesh(np.linspace(0, 0.01, 13), np.linspace(0, 0.01, 13),reshape(np.sum(video, 1),13,13))
 plt.colorbar()
-plt.savefig("bmode.pdf")
+plt.savefig(folder*"/bmode.pdf")
 plt.show()
 
 
-println(size(video[:,1]))
 plt.figure()
 plt.pcolormesh(np.linspace(0, 0.01, 13), np.linspace(0, 0.01, 13), reshape(video[:,1],13,13))
 plt.colorbar()
-plt.savefig("singleframe.pdf")
+plt.savefig(folder*"/singleframe.pdf")
 plt.show()

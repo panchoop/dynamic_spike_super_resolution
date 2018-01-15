@@ -58,5 +58,5 @@ plt.figure()
 plt.plot(binss[1:end-1], vals)
 plt.show()
 
-np.save("data/separationDistribVal.npy", vals)
-np.save("data/separationDistribBins.npy", binss)
+np.save("data/1Dsimulations/separationDistribVal.npy", vals)
+np.save("data/1Dsimulations/separationDistribBins.npy", binss)

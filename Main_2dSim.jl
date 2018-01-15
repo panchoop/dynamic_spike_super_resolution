@@ -151,11 +151,13 @@ for i in 1:length(short_seqs)
 end
 
 ### Save the simulated data ###
+data_folder = "data/2Dsimulations/"*now_str
+
 using PyCall
 @pyimport numpy as np
-mkdir(now_str)
-cp("ufus_parameters.jl", string(now_str, "/ufus_parameters.jl"))
-cd(now_str)
+mkdir(data_folder)
+cp("ufus_parameters.jl", string(data_folder, "/ufus_parameters.jl"))
+cd(data_folder)
 short_seq_array = hcat(short_seqs...)
 np.save("video", video)
 np.save("frame_norms", frame_norms)
