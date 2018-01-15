@@ -3,7 +3,7 @@ using SuperResModels
 using SparseInverseProblems
 
 @everywhere begin
-    include("ufus_parameters.jl")
+    include("2d_parameters.jl")
     parameters = SuperResModels.Conv2dParameters(x_max, x_max, filter, filter_dx, filter_dy, sigma, sigma, sigma, sigma)
     model_static = SuperResModels.Conv2d(parameters)
     dynamic_parameters = SuperResModels.DynamicConv2dParameters(K, tau, v_max, 20)
