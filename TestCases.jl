@@ -1,5 +1,7 @@
+# Module with different test cases to simulate with the Main_1dSim.jl script. 
+
 module TestCases
-export three_points_1d, two_points_1d, three_points_2d, two_points_2d, random_point_cloud, cloud_1d
+export three_points_1d, two_points_1d, three_points_2d, two_points_2d, random_point_cloud, cloud_1d, cloud_1d_full
 function three_points_1d(x_max, dx, dv)
     pts = [0.5*x_max-0.5*dx, 0.5*x_max, 0.5*x_max + 0.5*dx]
     weights = [1.0; 1.0; 1.0]
@@ -117,7 +119,7 @@ function cloud_1d_full(x_max,v_max,K,tau,n)
     return (thetas, weights)
 end
 function cloud_1d_full(x_max,v_max,w_min,w_max,K,tau,n)
-# Same as the before one, but we are considering random weights.
+# As before, with random weights.
     pts = rand(0)
     velocities = rand(0)
     while size(pts)[1]<n

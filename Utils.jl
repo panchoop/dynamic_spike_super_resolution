@@ -39,7 +39,7 @@ function run_simulation_target(model, thetas, weights, target)
 end
 function generate_target(model, thetas, weights, noise_level = 0.0, noise_position = 0.0)
     # Noise is added to the simulations. Noise_level is a percentage of the total
-    # signal in L2 norm, in other words, it is the 1/signa-to-noise.
+    # signal in L2 norm, in other words, it is the 1/signal-to-noise.
     if noise_position > 0
         target =  phi_noise(model, thetas, weights, noise_position)
     else
@@ -51,6 +51,7 @@ function generate_target(model, thetas, weights, noise_level = 0.0, noise_positi
 end
 
 function match_points(theta_1, theta_2)
+    # Method to match the reconstruction's particles with the given ones.
     n_points = size(theta_1, 2)
     corres = zeros(Int, n_points)
     for i = 1:n_points
@@ -66,6 +67,7 @@ function match_points(theta_1, theta_2)
 end
 
 function to_static(thetas, t, x_max)
+    # For a moving particle and a time, gives its static position.
     d = div(size(thetas, 1),2)
     pts = thetas[1:d,:]
     velocities = thetas[d+1:2*d,:]
@@ -75,6 +77,7 @@ function to_static(thetas, t, x_max)
 end
 
 function target_to_static(target_dynamic, times)
+    # For time dependent measurements, return a container with each static measurement.
     static_size = div(length(target_dynamic), length(times))
     static_target = []
     for k = 1:length(times)
@@ -101,42 +104,39 @@ end
 
 function separation_norm(thetas,K,tau,x_max)
 # function that evaluates the separation between the particles, but in terms
-# of the dynamic norm. We ommited the toroidal geometry for this norm.
+# of the dynamic norm.
 delta = K*tau
 norm = (x,v) -> abs(x) + delta*abs(v)
 return minimum([norm(thetas[1,i] - thetas[1,j], thetas[2,i] - thetas[2,j]) + (i==j)*Inf for i in size(thetas,2), j in 1:size(thetas,2) ])
 end
 
 function Rejection_sampling(test_case, bins, density, K, tau, x_max)
-    # We use a rejection sampling algorithm to generate test_cases that whose
-    # separation is distributed uniformly. This wil save time in Montecarlo simulations
-    # to have adequate resolution in the final plots.
-    # The distribution is unknown but we have simulated it enough times to approximate
-    # it (see separationDistribution.jl)
-    # On average, this method takes 1/bins[end]/minimum(density)
+    # We use a rejection sampling algorithm to generate test_cases whose
+    # separation is distributed uniformly. To save time in Montecarlo simulations.
+    # Since we have no formula for the distribution of separations for random particles,
+    # the distribution is estimated with separationDistribution.jl script
+    # WARNING: This works only for cloud_1d_full in TestCases.jl. 
     dx = bins[2]-bins[1]
     minDensity = minimum(density)
     densityFunc = y -> density[floor(Int,y/dx)+1]
     safetyInd = 1
     (thetas, weights) = test_case()
     y = separation_val(thetas,K,tau,x_max)
-    # in case we escape of our selected interval. -we discard the simulation,
-    # we select the desired separation interval when computing the density function
-    #(see separationDistribution.jl).
+    # Reject all the particules outside the desired interval.
     while y > bins[end-1]
         (thetas, weights) = test_case()
         y = separation_val(thetas,K,tau,x_max)
     end
-    # rejection variable
-    u = rand()
-    while safetyInd<1e6 && u >= minDensity/densityFunc(y)
+    # rejection-aceptation method
+    reject_var = rand()
+    while safetyInd<1e6 && reject_var >= minDensity/densityFunc(y)
         (thetas, weights) = test_case()
         y = separation_val(thetas,K,tau,x_max)
         while y > bins[end-1]
             (thetas, weights) = test_case()
             y = separation_val(thetas,K,tau,x_max)
         end
-        u = rand()
+        reject_var = rand()
     end
     if safetyInd == 1e6
         error(" Something is going wrong with the rejection algorithm ! We are
@@ -224,9 +224,7 @@ function generate_and_reconstruct_all(model_static, model_dynamic, bins, density
     separation = separation_val(thetas,K,tau,model_static.x_max)
     # And the separationg given by the dynamic norm.
     separation_dyn = separation_norm(thetas,K,tau,model_static.x_max)
-    ## 	Noiseless case
-    # Dynamic case
-    # We generate the target measure
+    # Dynamic case, no noise
     target = generate_target(model_dynamic, thetas, weights)
     # We reconsctruct the location of the particles for the target data.
     (results[1, 1], results[1, 2], results[1,3]) = generate_and_reconstruct_dynamic(model_dynamic, thetas, weights, target)
@@ -235,7 +233,6 @@ function generate_and_reconstruct_all(model_static, model_dynamic, bins, density
     i = 2
     # recomputes, adding differents levels of noise, for both dynamic and static.
     for noise_data in noises_data
-        # We generate target measure with the included noise
         target = generate_target(model_dynamic,thetas,weights, noise_data, 0.0)
         # Dynamic case
         (results[i, 1], results[i, 2], results[i,3]) = generate_and_reconstruct_dynamic(model_dynamic, thetas, weights, target)
@@ -244,7 +241,6 @@ function generate_and_reconstruct_all(model_static, model_dynamic, bins, density
         i = i + 1
     end
     for noise_position in noises_position
-        # We generate target measure with the included noise
         target = generate_target(model_dynamic,thetas, weights, 0.0, noise_position)
         # This result is only analyzed in the Dynamic case for the moment
         (results[i, 1], results[i, 2], results[i,3]) = generate_and_reconstruct_dynamic(model_dynamic, thetas, weights, target)
