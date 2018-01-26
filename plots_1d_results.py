@@ -3,7 +3,8 @@ import os
 from matplotlib import pyplot as plt
 
 # Folder with data files
-example = "2018-01-09T08-12-44-596"
+#example = "2018-01-09T08-12-44-596"
+example = "2018-01-25T16-56-54-564"
 folder = "data/1Dsimulations/"+example
 os.chdir(folder)
 

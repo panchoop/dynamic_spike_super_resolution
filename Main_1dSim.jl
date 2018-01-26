@@ -1,6 +1,7 @@
 push!(LOAD_PATH, "./models")
 push!(LOAD_PATH, ".")
-using SparseInverseProblems
+push!(LOAD_PATH, "./SparseInverseProblems/src")
+using SparseInverseProblemsMod
 using SuperResModels
 using TestCases
 using Utils

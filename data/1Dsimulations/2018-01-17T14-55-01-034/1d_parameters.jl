@@ -15,11 +15,11 @@ minWeights = 1
 maxWeights = 10
 
 # Variability of number of particles
-min_number_part = 10
+min_number_part = 4
 max_number_part = 10
 
 # Number of generated examples
-num_trials = 10
+num_trials = 5
 
 # test case
 test_case = () -> TestCases.cloud_1d_full(x_max, v_max, minWeights, maxWeights, K, tau, rand(min_number_part:max_number_part))
@@ -32,4 +32,4 @@ noises_data = noises_data[2:end]
 noises_position = linspace(0,0.01,5)
 noises_position = noises_position[2:end]
 
-srand(2)
+srand(100000000)

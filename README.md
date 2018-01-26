@@ -13,3 +13,6 @@ Be advised: generation of examples is lengthy and it is recommended to use run t
 The scripts to generate the figures with the results are plots_1d_results.py and plots_2d_results.py respectively. (as for now, due to a recent rework, the script for the 1d results is incomplete).
 
 All generated data is stored in "/data", inside them organized by type of simulation and date of it. 
+
+There has been some hacking on the Sparse solver module, the log on this changes is in SparseModHackingLog.txt
+

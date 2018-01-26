@@ -1,0 +1,17 @@
+25/01/18 : Made the sparse solver locally to be able to hack it and paralelize it. To avoid confics with the installed module, I included the path in the Main file as:
+push!(LOAD_PATH, "./SparseInverseProblems/src")
+
+and changed the module's name to SparseInverseProblemsMod, this included modifications on files:
+
+SparseInverseProblems -> SparseInverseProblemsMod
+BoxConstrainedDifferentiableModel.jl
+SuperResModels.jl
+Main_1dSim.jl
+Utils.jl
+BoxConstrainedDifferentiableModel.jl
+
+%% Code modifications to see what happens
+
+SparseInverseProblems/src/util/ip.jl :
+
+Added LoopingIndex, LoopingIndex2 and a kill switch to active if looping intesifies.

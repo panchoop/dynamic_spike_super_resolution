@@ -1,7 +1,7 @@
 push!(LOAD_PATH, "./models")
 push!(LOAD_PATH, ".")
 module Utils
-using SparseInverseProblems
+using SparseInverseProblemsMod
 using SuperResModels
 threshold_weight = 1e-1
 export run_simulation, generate_and_reconstruct_all
@@ -72,7 +72,7 @@ function to_static(thetas, t, x_max)
     pts = thetas[1:d,:]
     velocities = thetas[d+1:2*d,:]
     pts_t = pts + velocities * t
-    pts_t = mod(pts_t, x_max)
+    pts_t = mod.(pts_t, x_max)
     return pts_t
 end
 
@@ -226,21 +226,26 @@ function generate_and_reconstruct_all(model_static, model_dynamic, bins, density
     separation_dyn = separation_norm(thetas,K,tau,model_static.x_max)
     # Dynamic case, no noise
     target = generate_target(model_dynamic, thetas, weights)
+    println("######### STARTING:  trying noiseless dynamical  ########")
     # We reconsctruct the location of the particles for the target data.
     (results[1, 1], results[1, 2], results[1,3]) = generate_and_reconstruct_dynamic(model_dynamic, thetas, weights, target)
+    println(" trying noiseless static  ###### ")
     # Static case, no noise
     (results[1,4], results[1,5], results[1,6], results[1,7]) = generate_and_reconstuct_static_best(model_dynamic, model_static, thetas, weights, target)
     i = 2
     # recomputes, adding differents levels of noise, for both dynamic and static.
     for noise_data in noises_data
+	println(" trying dynamical noise data ", noise_data, "####" ) 
         target = generate_target(model_dynamic,thetas,weights, noise_data, 0.0)
         # Dynamic case
         (results[i, 1], results[i, 2], results[i,3]) = generate_and_reconstruct_dynamic(model_dynamic, thetas, weights, target)
+	println(" trying static noise data ", noise_data, "####" ) 
         # Static case
         (results[i,4], results[i,5], results[i,6], results[i,7]) = generate_and_reconstuct_static_best(model_dynamic, model_static, thetas, weights, target)
         i = i + 1
     end
     for noise_position in noises_position
+        println(" trying noise position", noise_position, "#####" )
         target = generate_target(model_dynamic,thetas, weights, 0.0, noise_position)
         # This result is only analyzed in the Dynamic case for the moment
         (results[i, 1], results[i, 2], results[i,3]) = generate_and_reconstruct_dynamic(model_dynamic, thetas, weights, target)
@@ -250,6 +255,7 @@ function generate_and_reconstruct_all(model_static, model_dynamic, bins, density
         results[i, 7] = 0.0
         i = i + 1
     end
+    println(" ################# FINISHED #######################") 
     return separation, separation_dyn, results
 end
 end
