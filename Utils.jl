@@ -37,6 +37,7 @@ function run_simulation_target(model, thetas, weights, target)
     (thetas_est,weights_est) = ADCG(model, LSLoss(), target,sum(weights), callback=callback, max_iters=200)
     return (thetas_est, weights_est)
 end
+
 function generate_target(model, thetas, weights, noise_level = 0.0, noise_position = 0.0)
     # Noise is added to the simulations. Noise_level is a percentage of the total
     # signal in L2 norm, in other words, it is the 1/signal-to-noise.

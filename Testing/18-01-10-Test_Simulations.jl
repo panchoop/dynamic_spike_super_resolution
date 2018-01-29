@@ -1,4 +1,5 @@
-# Testing a particulat example that does not stops running.
+# The infite loop was patched with a killswitch after certain number of iterations.
+# Now the obtained reconstructions are too good to be real and I need to check what
 push!(LOAD_PATH, "../models")
 push!(LOAD_PATH, "../")
 using SparseInverseProblems

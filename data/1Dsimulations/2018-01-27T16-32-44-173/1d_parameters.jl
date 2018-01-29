@@ -7,7 +7,7 @@ filter_x = ones(2*f_c+1)
 # Dynamic Parameters
 K  = 2
 tau = 1.0/(K*1.0)
-v_max = 0.5
+v_max = 0.05
 num_v = 10
 
 # Variability of weights
@@ -19,7 +19,7 @@ min_number_part = 4
 max_number_part = 10
 
 # Number of generated examples
-num_trials = 10
+num_trials = 3000
 
 # test case
 test_case = () -> TestCases.cloud_1d_full(x_max, v_max, minWeights, maxWeights, K, tau, rand(min_number_part:max_number_part))
@@ -31,3 +31,5 @@ noises_data = linspace(0,0.1,5)
 noises_data = noises_data[2:end]
 noises_position = linspace(0,0.01,5)
 noises_position = noises_position[2:end]
+
+#srand(2)

@@ -3,8 +3,7 @@ import os
 from matplotlib import pyplot as plt
 
 # Folder with data files
-#example = "2018-01-09T08-12-44-596"
-example = "2018-01-25T16-56-54-564"
+example = "2018-01-29T15-41-08-74"
 folder = "data/1Dsimulations/"+example
 os.chdir(folder)
 
@@ -13,16 +12,18 @@ delta = 1.0
 v_max = 0.05
 f_c = 20
 
-dx = np.load("dx.npy")
-dv = np.load("dv.npy")
-norm = np.load("norm.npy")
+separations = np.load("separations.npy")
+separationsDyn = np.load("separationDynamic.npy")
 datanoise = np.load("datanoise.npy")
 positionnoise = np.load("positionnoise.npy")
 results = np.load("results.npy")
 results[results==0] = x_max
 
-norm = norm
-N = len(norm)
+aux = np.sort(separations)
+print(aux[0])
+print(aux[len(aux)-1])
+
+N = len(separations)
 
 # Plot position noise
 times = [k*delta for k in range(-2,3)]
@@ -34,8 +35,8 @@ plt.savefig("curvature.pdf")
 plt.figure()
 
 
-# Plot bins
-def plot_success(norm, success, n_bins = 20, **kwargs):
+# Function to plot the success rate as bins
+def plot_success(norm, success, n_bins = 30, **kwargs):
     bins = np.linspace(np.percentile(norm, 2), np.percentile(norm, 85), n_bins)
     vals = np.zeros(len(bins) - 1)
     norm_success = norm[success]
@@ -49,78 +50,143 @@ def plot_success(norm, success, n_bins = 20, **kwargs):
     plt.xlabel("$\Delta$", usetex=True)
     plt.ylabel("Correct recontruction rate")
 
+# Function to plot each specific cases
+def plot_case(separations, case, noiseType, srf_threshold, weights_threshold,**kwargs):
+	# case = 'static', 'dynamic' or 'static3'
+	# noiseType depends on how the codes where generated, typically
+	# 0 = no noise. 1 .. .N = measurement noise, N+1... = position noise.
+	if case == "dynamic":
+		# Obtain from the results the reconstruction missmatch: space, velocity, weight.
+		dx_dyn = results[noiseType::(1+len(datanoise)+len(positionnoise)),0]
+		dv_dyn = results[noiseType::(1+len(datanoise)+len(positionnoise)),1]
+		dw_dyn = results[noiseType::(1+len(datanoise)+len(positionnoise)),2]
+		# Compute the obtained super resolution factors
+		srf_dyn_x = x_max/dx_dyn/f_c
+		srf_dyn_v = x_max/dv_dyn/f_c/delta
+		srf_dyn = np.minimum(srf_dyn_x, srf_dyn_v)
+		success = np.nonzero(np.logical_and(srf_dyn > srf_threshold, dw_dyn < weights_threshold))
+		plot_success(separations, success, **kwargs)
+	elif case == "static":
+		# Obtain from the results the reconstruction missmatch: space, weight.
+		dx_static = results[noiseType::(1+len(datanoise)+len(positionnoise)), 3]
+		dw_static = results[noiseType::(1+len(datanoise)+len(positionnoise)), 4]
+		# Compute super resolution factor
+		srf_static = x_max/dx_static/f_c
+		success = np.nonzero(np.logical_and(srf_static > srf_threshold, dw_static < weights_threshold))
+		plot_success(separations, success, **kwargs)
+	elif case == "static3":
+		# Obtain from the results the reconstruction missmatch: space, weight.
+		dx_static3 = results[noiseType::(1+len(datanoise)+len(positionnoise)), 5]
+		dw_static3 = results[noiseType::(1+len(datanoise)+len(positionnoise)), 6]
+		# Compute super resolution factor
+		srf_static3 = x_max/dx_static3/f_c
+		success = np.nonzero(np.logical_and(srf_static3 > srf_threshold, dw_static3 < weights_threshold))
+		plot_success(separations, success, **kwargs)
+	else:
+		error(" No adequate case assigned ")
 
-# Noiseless case
-dx_dyn = results[0::(1+len(datanoise)+len(positionnoise)), 0]
-dv_dyn = results[0::(1+len(datanoise)+len(positionnoise)), 1]
-dx_static = results[0::(1+len(datanoise)+len(positionnoise)), 2]
-srf_static = x_max/dx_static/f_c
-srf_dyn_x = x_max/dx_dyn/f_c
-srf_dyn_v = x_max/dv_dyn/f_c/delta
-srf_dyn = np.minimum(srf_dyn_x, srf_dyn_v)
-srf_threshold = 40
-success = np.nonzero(srf_static > srf_threshold)
-plot_success(norm, success, linestyle="dotted")
-success = np.nonzero(srf_dyn > srf_threshold)
-plot_success(norm, success, linestyle="solid")
-plt.legend(["static", "dynamic"])
+		
+### Noiseless case
+# super resolution factor threshold for declaring accurate reconstruction.
+srf_th = 40
+# weight threshold to declare accurate reconstruction.
+w_th = 0.1
 
-styles = ["solid", "dashed", "dotted", "dashdot", "solid", "solid"]
+plot_case(separations, "dynamic", 0, srf_th, w_th, linestyle = "-")
+plot_case(separations, "static", 0, srf_th, w_th, linestyle = "-.")
+plot_case(separations, "static3", 0, srf_th, w_th, linestyle = ":")
+plt.legend(["dynamic", "static", "static3"])
+axes = plt.gca()
+axes.set_ylim([0,1.05])
 plt.savefig("noiseless.pdf")
-
-# Noise comparison
 plt.figure()
-for i in range(len(datanoise)):
-    dx_dyn = results[i::(1+len(datanoise)+len(positionnoise)), 0]
-    dv_dyn = results[i::(1+len(datanoise)+len(positionnoise)), 1]
-    srf_dyn_x = x_max/dx_dyn/f_c
-    srf_dyn_v = x_max/dv_dyn/f_c/delta
-    srf_dyn = np.minimum(srf_dyn_x, srf_dyn_v)
-    success = np.nonzero(srf_dyn > srf_threshold)
-    plot_success(norm, success, linestyle=styles[i])
 
-plt.legend([str(int(100*datanoise[i])) + "% noise" for i in range(len(datanoise))])
+plot_case(separationsDyn, "dynamic", 0, srf_th, w_th, linestyle = "-")
+plot_case(separationsDyn, "static", 0, srf_th, w_th, linestyle = "-.")
+plot_case(separationsDyn, "static3", 0, srf_th, w_th, linestyle = ":")
+plt.legend(["dynamic", "static", "static3"])
+axes = plt.gca()
+axes.set_ylim([0,1.05])
+plt.savefig("noiseless_DynNorm.pdf")
+plt.figure()
+
+
+### Noise in measurements case
+## Dynamic reconstructions
+
+# super resolution factor threshold for declaring accurate reconstruction.
+srf_th = 40
+# weight threshold to declare accurate reconstruction.
+w_th = 0.1
+
+styles = ["-", "--", "-.", ":", "-"]
+
+for i in range(len(datanoise)+1):
+	plot_case(separations, "dynamic", i, srf_th, w_th, linestyle = styles[i])
+axes = plt.gca()
+axes.set_ylim([0,1.05])
+plt.legend(np.append(["0% L2 noise"],[str(int(100*datanoise[i])) + "% L2 noise" for i in range(len(datanoise))]))
 plt.savefig("noisecomp-dyn.pdf")
 plt.figure()
-for i in range(len(datanoise)):
-    dx_static = results[i::(1+len(datanoise)+len(positionnoise)), 2]
-    srf_static = x_max/dx_static/f_c
-    success = np.nonzero(srf_static > srf_threshold)
-    plot_success(norm, success, linestyle=styles[i])
 
-plt.legend([str(int(100*datanoise[i])) + "% noise" for i in range(len(datanoise))])
+## Static reconstructions
+
+# super resolution factor threshold for declaring accurate reconstruction.
+srf_th = 40
+# weight threshold to declare accurate reconstruction.
+w_th = 0.1
+
+styles = ["-", "--", "-.", ":", "-"]
+for i in range(len(datanoise)+1):
+	plot_case(separations, "static", i, srf_th, w_th, linestyle = styles[i])
+axes = plt.gca()
+axes.set_ylim([0,1.05])
+plt.legend(np.append(["0% L2 noise"],[str(int(100*datanoise[i])) + "% L2 noise" for i in range(len(datanoise))]))
 plt.savefig("noisecomp-static.pdf")
-
-# Nonlinearity comparison
 plt.figure()
-srf_threshold = 5
-srf_thresholds = [1, 5, 10, 15, 20]
-i = len(positionnoise) - 1
-for j in range(len(srf_thresholds)):
-    srf_threshold= srf_thresholds[j]
-    dx_dyn = results[1+len(datanoise)+i::(1+len(datanoise)+len(positionnoise)), 0]
-    dv_dyn = results[1+len(datanoise)+i::(1+len(datanoise)+len(positionnoise)), 1]
-    srf_dyn_x = x_max/dx_dyn/f_c
-    srf_dyn_v = x_max/dv_dyn/f_c/delta
-    srf_dyn = np.minimum(srf_dyn_x, srf_dyn_v)
-    success = np.nonzero(srf_dyn > srf_threshold)
-    plot_success(norm, success, linestyle=styles[i])
 
-plt.legend(["SRF = " + str(srf_thresholds[j]) for j in range(len(srf_thresholds))])
-plt.savefig("curvcomp_srf.pdf")
+## Static3 reconstructions
 
+# super resolution factor threshold for declaring accurate reconstruction.
+srf_th = 40
+# weight threshold to declare accurate reconstruction.
+w_th = 0.1
+
+styles = ["-", "--", "-.", ":", "-"]
+for i in range(len(datanoise)+1):
+	plot_case(separations, "static3", i, srf_th, w_th, linestyle = styles[i])
+axes = plt.gca()
+axes.set_ylim([0,1.05])
+plt.legend(np.append(["0% L2 noise"],[str(int(100*datanoise[i])) + "% L2 noise" for i in range(len(datanoise))]))
+plt.savefig("noisecomp-static3.pdf")
 plt.figure()
-srf_threshold = 5
+
+### Super resolution factor comparison
+styles = ["-", "--", "-.", ":", "-"]
+# weight threshold to declare accurate reconstruction.
+w_th = 0.1
+# Considered super resolution factors for comparison.
+srf_thresholds = [1, 10, 100, 1000, 10000]
+for i in range(len(srf_thresholds)):
+	plot_case(separations, "dynamic", 0, srf_thresholds[i], w_th, linestyle = styles[i])
+axes = plt.gca()
+axes.set_ylim([0,1.05])
+plt.legend(["SRF = "+str(int(srf_thresholds[i])) for i in range(len(srf_thresholds))])
+plt.savefig("noiseless_SRF.pdf")
+plt.figure()
+
+###  Nonlinearity comparison
+styles = ["-", "--", "-.", ":", "-"]
+# weight threshold to declare accurate reconstruction.
+w_th = 0.1
+# super resolution factor threshold for declaring accurate reconstruction.
+srf_th = 40
+
+plot_case(separations,"dynamic", 0, srf_th, w_th, linestyle = styles[0])
 for i in range(len(positionnoise)):
-    dx_dyn = results[1+len(datanoise)+i::(1+len(datanoise)+len(positionnoise)), 0]
-    dv_dyn = results[1+len(datanoise)+i::(1+len(datanoise)+len(positionnoise)), 1]
-    srf_dyn_x = x_max/dx_dyn/f_c
-    srf_dyn_v = x_max/dv_dyn/f_c/delta
-    srf_dyn = np.minimum(srf_dyn_x, srf_dyn_v)
-    success = np.nonzero(srf_dyn > srf_threshold)
-    plot_success(norm, success, linestyle=styles[i])
-
-plt.legend(["second derivative = " + str(positionnoise[i]) for i in range(len(positionnoise))])
+	plot_case(separations, "dynamic", 1+len(datanoise)+i, srf_th, w_th, linestyle = styles[i+1])
+axes = plt.gca()
+axes.set_ylim([0,1.05])
+plt.legend(np.append(["second derivative = 0"],["second derivative = " + str(positionnoise[i]) for i in range(len(positionnoise))]))
 plt.savefig("curvcomp.pdf")
-# SRF comparison
 plt.show()
