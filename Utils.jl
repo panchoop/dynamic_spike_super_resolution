@@ -145,7 +145,6 @@ function Rejection_sampling(test_case, bins, density, K, tau, x_max)
         end
         reject_var = rand()
 	safetyInd = safetyInd + 1
-	println(safetyInd, " ### ", reject_var, " ### ", minDensity, " ### ", densityFunc(y), " ### ", minDensity/densityFunc(y))
     end
     if safetyInd == 1e6
         error(" Something is going wrong with the rejection algorithm ! We are

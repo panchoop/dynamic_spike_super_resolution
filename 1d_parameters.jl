@@ -48,4 +48,6 @@ noise_dynamic = false
 noise_static = false
 curvature_static = true
 
+srand(1)
+
 cases = (noiseless_dynamic, noiseless_static, noise_dynamic, noise_static, curvature_static)
