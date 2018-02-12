@@ -46,9 +46,14 @@ function generate_target(model, thetas, weights, noise_level = 0.0, noise_positi
     else
         target = phi(model, thetas, weights)
     end
-    noise = randn(size(target))
-    noise = (noise/norm(noise[:],2))*norm(target[:],2)*noise_level
-    target = target + noise
+    # Noise is bounded by 1 in modulus
+    noise = randn(size(target))*noise_level
+    # Each particle's signal is bounded by it's weights, we set them to 1 ideally
+    if (maximum(weights)>2 || minimum(weights)<0.1) && noise_level > 0 
+	warn(" The proportionality of noise is not accurate as the weights are too high or low ")
+    end
+    # So a porcentage is obtained by just ponderating the noise.
+    return target + noise
 end
 
 function match_points(theta_1, theta_2)
@@ -120,11 +125,12 @@ function Rejection_sampling(test_case, bins, density, K, tau, x_max)
     dx = bins[2]-bins[1]
     minDensity = minimum(density)
     densityFunc = y -> density[floor(Int,y/dx)+1]
+    densityLength = length(density)
     safetyInd = 1
     (thetas, weights) = test_case()
     y = separation_val(thetas,K,tau,x_max)
     # Reject all the particules outside the desired interval.
-    while y > bins[end-1]
+    while floor(Int,y/dx)+1 >= densityLength
         (thetas, weights) = test_case()
         y = separation_val(thetas,K,tau,x_max)
     end
@@ -133,11 +139,13 @@ function Rejection_sampling(test_case, bins, density, K, tau, x_max)
     while safetyInd<1e6 && reject_var >= minDensity/densityFunc(y)
         (thetas, weights) = test_case()
         y = separation_val(thetas,K,tau,x_max)
-        while y > bins[end-1]
+        while floor(Int,y/dx)+1 >= densityLength
             (thetas, weights) = test_case()
             y = separation_val(thetas,K,tau,x_max)
         end
         reject_var = rand()
+	safetyInd = safetyInd + 1
+	println(safetyInd, " ### ", reject_var, " ### ", minDensity, " ### ", densityFunc(y), " ### ", minDensity/densityFunc(y))
     end
     if safetyInd == 1e6
         error(" Something is going wrong with the rejection algorithm ! We are
@@ -209,13 +217,14 @@ function generate_and_reconstuct_static_best(model_dynamic, model_static, thetas
     return dist_x[1], dist_w[1], dist_x[3], maximum(dist_w[1:3])
 end
 
-function generate_and_reconstruct_all(model_static, model_dynamic, bins, density, test_case, noises_data, noises_position)
+function generate_and_reconstruct_all(model_static, model_dynamic, bins, density, test_case, noises_data, noises_position, cases)
     ### This function generates a test case and returns the distances between the generated particles
     ### given by dx, dv and norm. Furthermore it returns a result matrix that contains
     ### the first 3 colums correspond to the dynamic results, (space x velocity x weights)
     ### whereas the last 4 columns correspond to the static results-: best measurement location
     ### and weight, third best location, worse weight difference among the best 3.
     ### The rows are respectively no noise, noises in data, noises in position.
+    (noiseless_dynamic, noiseless_static, noise_dynamic, noise_static, curvature_dynamic) = cases
     K = div(length(model_dynamic.times)-1,2)
     tau = maximum(model_dynamic.times)/K
     (thetas, weights) =  Rejection_sampling(test_case, bins, density, K, tau, model_static.x_max)
@@ -227,29 +236,50 @@ function generate_and_reconstruct_all(model_static, model_dynamic, bins, density
     separation_dyn = separation_norm(thetas,K,tau,model_static.x_max)
     # Dynamic case, no noise
     target = generate_target(model_dynamic, thetas, weights)
-    println("######### STARTING:  trying noiseless dynamical  ########")
+    println("######### STARTING ########")
     # We reconsctruct the location of the particles for the target data.
-    (results[1, 1], results[1, 2], results[1,3]) = generate_and_reconstruct_dynamic(model_dynamic, thetas, weights, target)
-    println(" trying noiseless static  ###### ")
+    if noiseless_dynamic == true
+	println(" trying noiseless dynamical ###### ")
+       (results[1, 1], results[1, 2], results[1,3]) = generate_and_reconstruct_dynamic(model_dynamic, thetas, weights, target)
+    else
+        (results[1,1]. results[1,2], results[1,3]) = (0,0,0)
+    end
     # Static case, no noise
-    (results[1,4], results[1,5], results[1,6], results[1,7]) = generate_and_reconstuct_static_best(model_dynamic, model_static, thetas, weights, target)
+    if noiseless_static == true
+	println(" trying noiseless static  ###### ")
+        (results[1,4], results[1,5], results[1,6], results[1,7]) = generate_and_reconstuct_static_best(model_dynamic, model_static, thetas, weights, target)
+    else
+        (results[1,4], results[1,5], results[1,6], results[1,7]) = (0,0,0,0)
+    end
     i = 2
     # recomputes, adding differents levels of noise, for both dynamic and static.
-    for noise_data in noises_data
-	println(" trying dynamical noise data ", noise_data, "####" ) 
+    for noise_data in noises_data 
         target = generate_target(model_dynamic,thetas,weights, noise_data, 0.0)
         # Dynamic case
-        (results[i, 1], results[i, 2], results[i,3]) = generate_and_reconstruct_dynamic(model_dynamic, thetas, weights, target)
-	println(" trying static noise data ", noise_data, "####" ) 
+        if noise_dynamic == true
+	   println(" trying dynamical noise data ", noise_data, "####" )
+           (results[i, 1], results[i, 2], results[i,3]) = generate_and_reconstruct_dynamic(model_dynamic, thetas, weights, target)
+	else
+	   (results[i, 1], results[i, 2], results[i,3]) = (0,0,0)
+	end 
         # Static case
-        (results[i,4], results[i,5], results[i,6], results[i,7]) = generate_and_reconstuct_static_best(model_dynamic, model_static, thetas, weights, target)
+	if noise_static == true
+	   println(" trying static noise data ", noise_data, "####" )
+           (results[i,4], results[i,5], results[i,6], results[i,7]) = generate_and_reconstuct_static_best(model_dynamic, model_static, thetas, weights, target)
+	else
+	   (results[i,4], results[i,5], results[i,6], results[i,7]) = (0,0,0,0)
+	end
         i = i + 1
     end
     for noise_position in noises_position
-        println(" trying noise position", noise_position, "#####" )
         target = generate_target(model_dynamic,thetas, weights, 0.0, noise_position)
         # This result is only analyzed in the Dynamic case for the moment
-        (results[i, 1], results[i, 2], results[i,3]) = generate_and_reconstruct_dynamic(model_dynamic, thetas, weights, target)
+	if curvature_dynamic == true
+	    println(" trying noise position", noise_position, "#####" )
+            (results[i, 1], results[i, 2], results[i,3]) = generate_and_reconstruct_dynamic(model_dynamic, thetas, weights, target)
+	else 
+	    (results[i, 1], results[i, 2], results[i,3]) = (0,0,0)
+	end
         results[i, 4] = 0.0
         results[i, 5] = 0.0
         results[i, 6] = 0.0

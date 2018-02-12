@@ -11,15 +11,15 @@ v_max = 0.5
 num_v = 10
 
 # Variability of weights
-minWeights = 1
-maxWeights = 10
+minWeights = 0.9
+maxWeights = 1.1
 
 # Variability of number of particles
-min_number_part = 4
-max_number_part = 10
+min_number_part = 20
+max_number_part = 30
 
 # Number of generated examples
-num_trials = 10
+num_trials = 1000
 
 # test case
 test_case = () -> TestCases.cloud_1d_full(x_max, v_max, minWeights, maxWeights, K, tau, rand(min_number_part:max_number_part))
@@ -31,3 +31,21 @@ noises_data = linspace(0,0.1,5)
 noises_data = noises_data[2:end]
 noises_position = linspace(0,0.01,5)
 noises_position = noises_position[2:end]
+
+### Location of data folder
+dataFolder = "data/1Dsimulations"
+# loaded data for rejection sampling of simulations
+bins = np.load(dataFolder*"/separationDistribBins_20particles.npy")
+density = np.load(dataFolder*"/separationDistribVal_20particles.npy")
+
+println(" WARNING: The rejection sampling algorithm is being used, with interval of interest: [",bins[1]," ",bins[end],"]. To change it check the separationDistribution.jl file.")
+
+### Cases to be tested
+
+noiseless_dynamic = true
+noiseless_static = true
+noise_dynamic = false
+noise_static = false
+curvature_static = false
+
+cases = (noiseless_dynamic, noiseless_static, noise_dynamic, noise_static, curvature_static)

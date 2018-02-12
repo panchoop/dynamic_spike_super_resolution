@@ -12,12 +12,6 @@ include("1d_parameters.jl")
 model_static = SuperResModels.Fourier1d(f_c, x_max, filter_x, num_x)
 model_dynamic = SuperResModels.DynamicFourier1d(model_static, v_max, tau, K, num_v*K)
 
-### Location of data folder
-dataFolder = "data/1Dsimulations"
-# loaded data for rejection sampling of simulations
-bins = np.load(dataFolder*"/separationDistribBins.npy")
-density = np.load(dataFolder*"/separationDistribVal.npy")
-
 @everywhere begin
     model_static = $model_static
     model_dynamic = $model_dynamic
@@ -33,9 +27,10 @@ density = np.load(dataFolder*"/separationDistribVal.npy")
     noises_position = $noises_position
     bins = $bins
     density = $density
+    cases = $cases
 end
 
-results = pmap(x -> Utils.generate_and_reconstruct_all(model_static, model_dynamic, bins, density, test_case, noises_data, noises_position), 1:num_trials)
+results = pmap(x -> Utils.generate_and_reconstruct_all(model_static, model_dynamic, bins, density, test_case, noises_data, noises_position, cases), 1:num_trials)
 results_array = vcat([result[3] for result in results]...)
 separations_array = vcat([result[1] for result in results]...)
 separation_dyn_array = vcat([result[2] for result in results]...)
