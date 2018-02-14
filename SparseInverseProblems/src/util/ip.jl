@@ -76,18 +76,14 @@ function primalDualSolve(p :: OptimizationProblem, x :: Vector{Float64}, lambda 
     loopingIndex2 = 1
     while(!all(p.C*(x + s*sd_x) .<= p.h ))
       s = beta*s
-      if mod(loopingIndex2,100) == 0 && loopingIndex2 <=1000
-          println("~~~ WOush ! Loopin' ! ",loopingIndex2," ! ~~~~~ s = ", s, ". beta = ", beta)
-          if loopingIndex2 == 1000
-              println("s = ", s)
-              println("beta = ", beta)
-              println("p.C = ", p.C)
-              println("x = ", x)
-              println("sd_x = ", sd_x)
-              println("p.h = ", p.h)
-              println("p.C*x = " ,p.C*x)
-              println("p.C*x - p.h = ",p.C*x - p.h)
-          end
+      if loopingIndex2 ==1000
+	  println("########################################################")
+	  println("########################################################")
+	  println("### WARINING ENTERING INFINITE LOOP, EXIT WITH ERROR ###")
+          println("########################################################")
+	  println("########################################################")
+	  println("########################################################")          
+	  error()
       end
       loopingIndex2 = loopingIndex2 + 1
     end
@@ -96,7 +92,7 @@ function primalDualSolve(p :: OptimizationProblem, x :: Vector{Float64}, lambda 
     loopingIndex = 1
     while(true)
       if mod(loopingIndex,100) == 0
-        println("### yey ! loopin' ",loopingIndex," !########")
+        println("### loopin' ",loopingIndex," !########")
       end
       loopingIndex = loopingIndex + 1
       x_plus = x + s*sd_x
