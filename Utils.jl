@@ -69,6 +69,19 @@ function match_points(theta_1, theta_2)
             end
         end
     end
+    warningMatchingNum = 0
+    for i = 1:n_points
+	for j = i+1:n_points
+	    if corres[i]==corres[j]
+		warningMatchingNum += 1
+	    end
+	end
+    end
+    if warningMatchingNum != 0
+	println(" ******************************************************** ")
+	println(" ********* MATCHING WARNING ISSUE *********************** ")
+	println(" ******************************************************** ")
+    end
     return corres
 end
 
@@ -156,7 +169,10 @@ end
 function generate_and_reconstruct_dynamic(model_dynamic, thetas, weights, target)
     d = dim(model_dynamic)
     # run the algorithm on the points thetas with the respective noises.
-    (thetas_est, weights_est) = try run_simulation_target(model_dynamic, thetas, weights, target) catch  ([0], [0]) end
+    (thetas_est, weights_est) = try run_simulation_target(model_dynamic, thetas, weights, target) catch  
+	warn("fail") 
+	([0], [0]) 
+	end
     # Discard any reconstruction with smaller weight than some threshold.
     thetas_est = thetas_est[:, weights_est .> threshold_weight]
     weights_est = weights_est[weights_est .> threshold_weight]
