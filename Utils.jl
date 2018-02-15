@@ -71,8 +71,7 @@ function match_points(theta_1, theta_2)
     # distances matrix.
     for i = 1:n_points
         for j = 1:n_points
-                distances[i,j] = norm(theta_1[:,i] - theta_2[:,j])
-            end
+            distances[i,j] = norm(theta_1[:,i] - theta_2[:,j])
         end
     end
     # We take the closest ones and match them
