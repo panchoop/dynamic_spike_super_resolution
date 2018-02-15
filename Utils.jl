@@ -62,11 +62,11 @@ function match_points(theta_1, theta_2)
     corres = zeros(Int, n_points)
     distances = zeros(n_points,n_points)
     # to get from one dimensional array to the indexes in two dimensions.
-    function iindex(x)
-	return mod(x-1,n_points)+1
+    function iindex(x,N)
+	return mod(x-1,N)+1
     end
-    function jindex(x)
-	return div(x-iind(x),n_points)+1
+    function jindex(x,N)
+	return div(x-iind(x),N)+1
     end
     # distances matrix.
     for i = 1:n_points
@@ -78,7 +78,7 @@ function match_points(theta_1, theta_2)
     # We take the closest ones and match them
     for k = 1:n_points
 	x = indmin(distances)
-	(i,j) = (iindex(x), jindex(x))
+	(i,j) = (iindex(x,n_points), jindex(x,n_points))
 	corres[j]=i
 	distances[i,:] = Inf
 	distances[:,j] = Inf
