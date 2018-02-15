@@ -60,27 +60,28 @@ function match_points(theta_1, theta_2)
     # Method to match the reconstruction's particles with the given ones.
     n_points = size(theta_1, 2)
     corres = zeros(Int, n_points)
+    distances = zeros(n_points,n_points)
+    # to get from one dimensional array to the indexes in two dimensions.
+    function iindex(x)
+	return mod(x-1,n_points)+1
+    end
+    function jindex(x)
+	return div(x-iind(x),n_points)+1
+    end
+    # distances matrix.
     for i = 1:n_points
-        dist = Inf
         for j = 1:n_points
-            if norm(theta_1[:,i] - theta_2[:,j]) < dist
-                dist = norm(theta_1[:,i] - theta_2[:,j])
-                corres[i] = j
+                distances[i,j] = norm(theta_1[:,i] - theta_2[:,j])
             end
         end
     end
-    warningMatchingNum = 0
-    for i = 1:n_points
-	for j = i+1:n_points
-	    if corres[i]==corres[j]
-		warningMatchingNum += 1
-	    end
-	end
-    end
-    if warningMatchingNum != 0
-	println(" ******************************************************** ")
-	println(" ********* MATCHING WARNING ISSUE ",warningMatchingNum," ******************* ")
-	println(" ******************************************************** ")
+    # We take the closest ones and match them
+    for k = 1:n_points
+	x = indmin(distances)
+	(i,j) = (iindex(x), jindex(x))
+	corres[j]=i
+	distances[i,:] = Inf
+	distances[:,j] = Inf
     end
     return corres
 end
