@@ -9,6 +9,10 @@ using PyCall
 @pyimport numpy as np
 include("1d_parameters.jl")
 
+# To see the progress in pmap
+@everywhere using ProgressMeter
+@everywhere using PmapProgressMeter
+
 model_static = SuperResModels.Fourier1d(f_c, x_max, filter_x, num_x)
 model_dynamic = SuperResModels.DynamicFourier1d(model_static, v_max, tau, K, num_v*K)
 
@@ -30,7 +34,7 @@ model_dynamic = SuperResModels.DynamicFourier1d(model_static, v_max, tau, K, num
     cases = $cases
 end
 
-results = pmap(x -> Utils.generate_and_reconstruct_all(model_static, model_dynamic, bins, density, test_case, noises_data, noises_position, cases), 1:num_trials)
+results = pmap(x -> begin sleep(1) ; Utils.generate_and_reconstruct_all(model_static, model_dynamic, bins, density, test_case, noises_data, noises_position, cases) end, Progress(num_trials), 1:num_trials)
 results_array = vcat([result[3] for result in results]...)
 separations_array = vcat([result[1] for result in results]...)
 separation_dyn_array = vcat([result[2] for result in results]...)
