@@ -79,7 +79,7 @@ function match_points(theta_1, theta_2)
     end
     if warningMatchingNum != 0
 	println(" ******************************************************** ")
-	println(" ********* MATCHING WARNING ISSUE *********************** ")
+	println(" ********* MATCHING WARNING ISSUE ",warningMatchingNum," ******************* ")
 	println(" ******************************************************** ")
     end
     return corres
