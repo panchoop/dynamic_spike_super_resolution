@@ -10,6 +10,9 @@ using PyCall
 include("1d_parameters.jl")
 
 # To see the progress in pmap
+# To use PmapProgressMeter you need to clone it manually
+# do in Julia: Pkg.clone("https://github.com/slundberg/PmapProgressMeter.jl")
+# if this is no longer existent, uncoment the alternative pmap in this code.
 @everywhere using ProgressMeter
 @everywhere using PmapProgressMeter
 
@@ -35,6 +38,7 @@ model_dynamic = SuperResModels.DynamicFourier1d(model_static, v_max, tau, K, num
 end
 
 results = pmap(x -> begin sleep(1) ; Utils.generate_and_reconstruct_all(model_static, model_dynamic, bins, density, test_case, noises_data, noises_position, cases) end, Progress(num_trials), 1:num_trials)
+# results = pmap(x -> Utils.generate_and_reconstruct_all(model_static, model_dynamic, bins, density, test_case, noises_data, noises_position, cases), 1:num_trials)
 results_array = vcat([result[3] for result in results]...)
 separations_array = vcat([result[1] for result in results]...)
 separation_dyn_array = vcat([result[2] for result in results]...)

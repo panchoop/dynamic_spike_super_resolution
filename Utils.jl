@@ -66,7 +66,7 @@ function match_points(theta_1, theta_2)
 	return mod(x-1,N)+1
     end
     function jindex(x,N)
-	return div(x-iindex(x),N)+1
+	return div(x-iindex(x,N),N)+1
     end
     # distances matrix.
     for i = 1:n_points
