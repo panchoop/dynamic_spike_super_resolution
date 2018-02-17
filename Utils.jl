@@ -78,7 +78,7 @@ function match_points(theta_1, theta_2)
     for k = 1:n_points
 	x = indmin(distances)
 	(i,j) = (iindex(x,n_points), jindex(x,n_points))
-	corres[j]=i
+	corres[i]=j
 	distances[i,:] = Inf
 	distances[:,j] = Inf
     end

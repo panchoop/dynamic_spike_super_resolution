@@ -18,6 +18,10 @@ include("1d_parameters.jl")
 
 model_static = SuperResModels.Fourier1d(f_c, x_max, filter_x, num_x)
 model_dynamic = SuperResModels.DynamicFourier1d(model_static, v_max, tau, K, num_v*K)
+if K*tau != 1.0
+    warning(" The function match_points < Utils considers K*tau = 1 to set distance in Omega, change this if it's not the case")
+end
+
 
 @everywhere begin
     model_static = $model_static
