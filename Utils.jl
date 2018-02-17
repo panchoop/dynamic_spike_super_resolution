@@ -243,6 +243,7 @@ function generate_and_reconstruct_all(model_static, model_dynamic, bins, density
     K = div(length(model_dynamic.times)-1,2)
     tau = maximum(model_dynamic.times)/K
     (thetas, weights) =  Rejection_sampling(test_case, bins, density, K, tau, model_static.x_max)
+    #(thetas,weights) = test_case()
     d = dim(model_dynamic)
     results = zeros(1 + length(noises_data) + length(noises_position), 7)
     # Obtain the separation of the configuration of particles

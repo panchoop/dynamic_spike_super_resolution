@@ -15,8 +15,8 @@ minWeights = 0.9
 maxWeights = 1.1
 
 # Variability of number of particles
-min_number_part = 4
-max_number_part = 10
+min_number_part = 10
+max_number_part = 20
 
 # Number of generated examples
 num_trials = 1000
