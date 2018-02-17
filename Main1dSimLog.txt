@@ -1,2 +1,3300 @@
-Generic job.
-Job <57729838> is submitted to queue <normal.24h>.
+ WARNING: The rejection sampling algorithm is being used, with interval of interest: [0.0 0.1]. To change it check the separationDistribution.jl file.
+	From worker 20:	######### STARTING ########
+	From worker 20:	 trying noiseless dynamical ###### 
+	From worker 25:	######### STARTING ########
+	From worker 25:	 trying noiseless dynamical ###### 
+	From worker 12:	######### STARTING ########
+	From worker 12:	 trying noiseless dynamical ###### 
+	From worker 9:	######### STARTING ########
+	From worker 9:	 trying noiseless dynamical ###### 
+	From worker 21:	######### STARTING ########
+	From worker 21:	 trying noiseless dynamical ###### 
+	From worker 5:	######### STARTING ########
+	From worker 5:	 trying noiseless dynamical ###### 
+	From worker 3:	######### STARTING ########
+	From worker 3:	 trying noiseless dynamical ###### 
+	From worker 15:	######### STARTING ########
+	From worker 15:	 trying noiseless dynamical ###### 
+	From worker 14:	######### STARTING ########
+	From worker 14:	 trying noiseless dynamical ###### 
+	From worker 8:	######### STARTING ########
+	From worker 8:	 trying noiseless dynamical ###### 
+	From worker 10:	######### STARTING ########
+	From worker 10:	 trying noiseless dynamical ###### 
+	From worker 6:	######### STARTING ########
+	From worker 6:	 trying noiseless dynamical ###### 
+	From worker 18:	######### STARTING ########
+	From worker 18:	 trying noiseless dynamical ###### 
+	From worker 4:	######### STARTING ########
+	From worker 4:	 trying noiseless dynamical ###### 
+	From worker 13:	######### STARTING ########
+	From worker 13:	 trying noiseless dynamical ###### 
+	From worker 19:	######### STARTING ########
+	From worker 19:	 trying noiseless dynamical ###### 
+	From worker 17:	######### STARTING ########
+	From worker 17:	 trying noiseless dynamical ###### 
+	From worker 2:	######### STARTING ########
+	From worker 2:	 trying noiseless dynamical ###### 
+	From worker 16:	######### STARTING ########
+	From worker 16:	 trying noiseless dynamical ###### 
+	From worker 7:	######### STARTING ########
+	From worker 7:	 trying noiseless dynamical ###### 
+	From worker 11:	######### STARTING ########
+	From worker 11:	 trying noiseless dynamical ###### 
+	From worker 24:	######### STARTING ########
+	From worker 24:	 trying noiseless dynamical ###### 
+	From worker 22:	######### STARTING ########
+	From worker 22:	 trying noiseless dynamical ###### 
+	From worker 23:	######### STARTING ########
+	From worker 23:	 trying noiseless dynamical ###### 
+	From worker 3:	 trying noiseless static  ###### 
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 17:	 trying noiseless static  ###### 
+	From worker 18:	 trying noiseless static  ###### 
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 24:	 trying noiseless static  ###### 
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 4:	 trying noiseless static  ###### 
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 16:	3.306792150077107e-13
+	From worker 16:	1.1529864871444465e-12
+	From worker 16:	
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 23:	Removing 1 zero-weight points.
+WARNING: Hit max iters in interior point method!
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 25:	 trying noiseless static  ###### 
+	From worker 5:	Removing 2 zero-weight points.
+	From worker 10:	 trying noiseless static  ###### 
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 16:	3.0774581205471145e-13
+	From worker 16:	1.0171501934994574e-12
+	From worker 16:	
+WARNING: Hit max iters in interior point method!
+	From worker 9:	1.9761977395002297e-13
+	From worker 9:	1.7282005268123161e-12
+	From worker 9:	
+WARNING: Hit max iters in interior point method!
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 16:	 trying noiseless static  ###### 
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 7:	1.7040254019739974e-13
+	From worker 7:	1.037020097380978e-12
+	From worker 7:	
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+WARNING: Hit max iters in interior point method!
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 2:	2.2581251858741651e-13
+	From worker 2:	1.1382839368779987e-12
+	From worker 2:	
+WARNING: Hit max iters in interior point method!
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 7:	2.4411178097009087e-13
+	From worker 7:	1.0874821601416012e-12
+	From worker 7:	
+WARNING: Hit max iters in interior point method!
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 15:	 trying noiseless static  ###### 
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 2:	2.564873469835915e-13
+	From worker 2:	1.1418687260063312e-12
+	From worker 2:	
+WARNING: Hit max iters in interior point method!
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 2:	 trying noiseless static  ###### 
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 5:	 trying noiseless static  ###### 
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 23:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 9:	2.2651789935285302e-13
+	From worker 9:	1.5669255310070849e-12
+	From worker 9:	
+WARNING: Hit max iters in interior point method!
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 8:	1.9088614375825588e-13
+	From worker 8:	1.0226921437098963e-12
+	From worker 8:	
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+WARNING: Hit max iters in interior point method!
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 12:	2.0625637177250725e-13
+	From worker 12:	1.3511077539043597e-12
+	From worker 12:	
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 19:	2.090422729686223e-13
+	From worker 19:	1.3001723168893108e-12
+	From worker 19:	
+	From worker 10:	Removing 1 zero-weight points.
+WARNING: Hit max iters in interior point method!
+	From worker 4:	Removing 1 zero-weight points.
+WARNING: Hit max iters in interior point method!
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 8:	 trying noiseless static  ###### 
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 14:	2.778677366755446e-13
+	From worker 14:	1.4672498733525753e-12
+	From worker 14:	
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 7:	2.2124288061461457e-13
+	From worker 7:	1.3311165483007448e-12
+	From worker 7:	
+WARNING: Hit max iters in interior point method!
+WARNING: Hit max iters in interior point method!
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 14:	Removing 1 zero-weight points.
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 12:	1.8520596610482082e-13
+	From worker 12:	1.144610382963333e-12
+	From worker 12:	
+WARNING: Hit max iters in interior point method!
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 9:	3.0542591751473597e-13
+	From worker 9:	1.1190094955118287e-12
+	From worker 9:	
+WARNING: Hit max iters in interior point method!
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 23:	2.0365599408869105e-13
+	From worker 23:	1.1459508743596565e-12
+	From worker 23:	
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+WARNING: Hit max iters in interior point method!
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 19:	2.295647201940539e-13
+	From worker 19:	1.0656585064084352e-12
+	From worker 19:	
+WARNING: Hit max iters in interior point method!
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 12:	3.00863147345251e-13
+	From worker 12:	1.2890512061028714e-12
+	From worker 12:	
+WARNING: Hit max iters in interior point method!
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 22:	1.9283427308358286e-13
+	From worker 22:	1.1330934966806058e-12
+	From worker 22:	
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 9:	2.5446337729674153e-13
+	From worker 9:	1.2456219611987454e-12
+	From worker 9:	
+WARNING: Hit max iters in interior point method!
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+WARNING: Hit max iters in interior point method!
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 14:	2.3116235942091397e-13
+	From worker 14:	1.0931530677574558e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 13:	1.6567616114737392e-13
+	From worker 13:	1.0863447715677178e-12
+	From worker 13:	
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 9:	2.283999391607793e-13
+	From worker 9:	1.2352777098666017e-12
+	From worker 9:	
+WARNING: Hit max iters in interior point method!
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 7:	2.5831171736636374e-13
+	From worker 7:	1.2337428073262898e-12
+	From worker 7:	
+WARNING: Hit max iters in interior point method!
+WARNING: Hit max iters in interior point method!
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 23:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 23:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 23:	 trying noiseless static  ###### 
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 14:	2.487815386995582e-13
+	From worker 14:	1.0301957378746348e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 7:	 trying noiseless static  ###### 
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 9:	 trying noiseless static  ###### 
+	From worker 14:	2.668276296236922e-13
+	From worker 14:	1.0642645534375788e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 11:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 14:	3.148858603938623e-13
+	From worker 14:	1.5744161990920264e-12
+	From worker 14:	
+	From worker 24:	Removing 1 zero-weight points.
+WARNING: Hit max iters in interior point method!
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 21:	2.1824081853431778e-13
+	From worker 21:	1.0768347147618792e-12
+	From worker 21:	
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 19:	2.5820587872078397e-13
+	From worker 19:	1.0369933443581808e-12
+	From worker 19:	
+WARNING: Hit max iters in interior point method!
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 12:	3.063275736819162e-13
+	From worker 12:	1.4439610480991963e-12
+	From worker 12:	
+WARNING: Hit max iters in interior point method!
+WARNING: Hit max iters in interior point method!
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 23:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 12:	2.488928869316992e-13
+	From worker 12:	1.2115172600598565e-12
+	From worker 12:	
+	From worker 4:	Removing 1 zero-weight points.
+WARNING: Hit max iters in interior point method!
+	From worker 21:	2.0966843268659049e-13
+	From worker 21:	1.1239117021366826e-12
+	From worker 21:	
+WARNING: Hit max iters in interior point method!
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 14:	2.717068842116631e-13
+	From worker 14:	1.8766276513753543e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 14:	Removing 1 zero-weight points.
+	From worker 12:	2.8916448694437976e-13
+	From worker 12:	1.0423808544841206e-12
+	From worker 12:	
+WARNING: Hit max iters in interior point method!
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 14:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 12:	2.6315873754740157e-13
+	From worker 12:	1.0242974759822004e-12
+	From worker 12:	
+WARNING: Hit max iters in interior point method!
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 19:	2.735521290230782e-13
+	From worker 19:	1.4614824592614715e-12
+	From worker 19:	
+WARNING: Hit max iters in interior point method!
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 19:	 trying noiseless static  ###### 
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 22:	1.444138531109743e-13
+	From worker 22:	1.2122613213391982e-12
+	From worker 22:	
+WARNING: Hit max iters in interior point method!
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 12:	3.958606334309381e-13
+	From worker 12:	1.3378281148260697e-12
+	From worker 12:	
+WARNING: Hit max iters in interior point method!
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 6:	2.6430061757150406e-13
+	From worker 6:	1.0263590496577287e-12
+	From worker 6:	
+	From worker 5:	Removing 1 zero-weight points.
+WARNING: Hit max iters in interior point method!
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 12:	2.1497587602209638e-13
+	From worker 12:	1.012549987542554e-12
+	From worker 12:	
+WARNING: Hit max iters in interior point method!
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 12:	Removing 1 zero-weight points.
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 9:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 22:	2.512442424924239e-13
+	From worker 22:	1.4653191655013895e-12
+	From worker 22:	
+WARNING: Hit max iters in interior point method!
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+WARNING: Hit max iters in interior point method!
+	From worker 14:	1.936342310435983e-13
+	From worker 14:	1.0343393082829983e-12
+	From worker 14:	
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+WARNING: Hit max iters in interior point method!
+	From worker 14:	2.350437227326282e-13
+	From worker 14:	1.1380771229158816e-12
+	From worker 14:	
+	From worker 12:	2.1717733197358395e-13
+	From worker 12:	1.0039187995031665e-12
+	From worker 12:	
+WARNING: Hit max iters in interior point method!
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 12:	Removing 1 zero-weight points.
+	From worker 13:	1.6675664587438618e-13
+	From worker 13:	1.122416293002535e-12
+	From worker 13:	
+WARNING: Hit max iters in interior point method!
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 9:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 6:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 9:	Removing 1 zero-weight points.
+	From worker 23:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 14:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 20:	3.3923881434494976e-13
+	From worker 20:	1.091009435247839e-12
+	From worker 20:	
+	From worker 10:	Removing 1 zero-weight points.
+WARNING: Hit max iters in interior point method!
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 23:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 9:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 12:	1.8750033360524884e-13
+	From worker 12:	1.0844152751454342e-12
+	From worker 12:	
+WARNING: Hit max iters in interior point method!
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 23:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 14:	3.029024132783449e-13
+	From worker 14:	1.2235396032114754e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 23:	Removing 1 zero-weight points.
+	From worker 12:	Removing 1 zero-weight points.
+	From worker 23:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 23:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 14:	2.71587818094779e-13
+	From worker 14:	1.0662654823954865e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 21:	2.5557335835444604e-13
+	From worker 21:	1.3488597441507935e-12
+	From worker 21:	
+WARNING: Hit max iters in interior point method!
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 23:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 22:	2.3971534127027267e-13
+	From worker 22:	1.1441993151139466e-12
+	From worker 22:	
+WARNING: Hit max iters in interior point method!
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 13:	1.9143160738900089e-13
+	From worker 13:	1.0161394680591447e-12
+	From worker 13:	
+WARNING: Hit max iters in interior point method!
+	From worker 23:	Removing 1 zero-weight points.
+	From worker 23:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 9:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 20:	4.2908946467592105e-13
+	From worker 20:	1.320746616723631e-12
+	From worker 20:	
+WARNING: Hit max iters in interior point method!
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 21:	1.8869259776879484e-13
+	From worker 21:	1.6195346791820737e-12
+	From worker 21:	
+WARNING: Hit max iters in interior point method!
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 9:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 9:	Removing 1 zero-weight points.
+	From worker 14:	2.2675063653337065e-13
+	From worker 14:	1.3889350705061403e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 9:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 12:	2.3151917060473566e-13
+	From worker 12:	1.0409981936896391e-12
+	From worker 12:	
+WARNING: Hit max iters in interior point method!
+	From worker 9:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 25:	 ################# FINISHED #######################
+WARNING: Hit max iters in interior point method!
+Progress:   0%|                                         |  ETA: 1 days, 12:41:22	From worker 3:	Removing 1 zero-weight points.[K
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 9:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 14:	3.2718164851109496e-13
+	From worker 14:	1.0938301447195056e-12
+	From worker 14:	
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 9:	Removing 1 zero-weight points.
+	From worker 11:	2.7204089079807576e-13
+	From worker 11:	1.1296591800070607e-12
+	From worker 11:	
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 25:	######### STARTING ########
+	From worker 25:	 trying noiseless dynamical ###### 
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 14:	2.472722789394402e-13
+	From worker 14:	1.2366512496116196e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+WARNING: Hit max iters in interior point method!
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 21:	2.3208933054640175e-13
+	From worker 21:	1.006521317161681e-12
+	From worker 21:	
+WARNING: Hit max iters in interior point method!
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 9:	Removing 1 zero-weight points.
+	From worker 12:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 14:	2.6435322770035986e-13
+	From worker 14:	1.1397160302880247e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 20:	2.2848810627147876e-13
+	From worker 20:	1.6675665038637545e-12
+	From worker 20:	
+WARNING: Hit max iters in interior point method!
+	From worker 23:	Removing 1 zero-weight points.
+	From worker 9:	Removing 1 zero-weight points.
+	From worker 12:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 14:	2.2190481745512135e-13
+	From worker 14:	1.0894213287808366e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 9:	Removing 1 zero-weight points.
+	From worker 22:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 9:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 9:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 14:	2.2850353548609693e-13
+	From worker 14:	1.5134820110461508e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 9:	Removing 1 zero-weight points.
+	From worker 12:	2.4518088940093615e-13
+	From worker 12:	1.1939789391313305e-12
+	From worker 12:	
+WARNING: Hit max iters in interior point method!
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 21:	2.5891363010983657e-13
+	From worker 21:	1.1559453511994318e-12
+	From worker 21:	
+WARNING: Hit max iters in interior point method!
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 9:	Removing 1 zero-weight points.
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 21:	2.432462060545955e-13
+	From worker 21:	1.1891747293225241e-12
+	From worker 21:	
+WARNING: Hit max iters in interior point method!
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 12:	2.940894530794361e-13
+	From worker 12:	1.4626053071642845e-12
+	From worker 12:	
+WARNING: Hit max iters in interior point method!
+	From worker 9:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 14:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 9:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 20:	2.5976751496791385e-13
+	From worker 20:	1.2780864385976239e-12
+	From worker 20:	
+WARNING: Hit max iters in interior point method!
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 14:	2.868880025367802e-13
+	From worker 14:	1.0026631369328559e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 12:	Removing 1 zero-weight points.
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 20:	2.952548744968719e-13
+	From worker 20:	1.0667509864178889e-12
+	From worker 20:	
+WARNING: Hit max iters in interior point method!
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 12:	 trying noiseless static  ###### 
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 14:	2.840907765858358e-13
+	From worker 14:	1.0158333432585732e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 14:	3.2256828463638107e-13
+	From worker 14:	1.157138444735457e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 21:	2.2480078823934726e-13
+	From worker 21:	1.668017275463457e-12
+	From worker 21:	
+WARNING: Hit max iters in interior point method!
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 14:	2.0947105943492381e-13
+	From worker 14:	1.0864494182139855e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 20:	2.451243713482485e-13
+	From worker 20:	1.2602067634278871e-12
+	From worker 20:	
+WARNING: Hit max iters in interior point method!
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 6:	Removing 1 zero-weight points.
+	From worker 21:	2.56320433920533e-13
+	From worker 21:	1.2524130319775914e-12
+	From worker 21:	
+WARNING: Hit max iters in interior point method!
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 14:	3.226233768848864e-13
+	From worker 14:	1.3364924695761247e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 20:	1.6751525339658425e-13
+	From worker 20:	1.1860984357753806e-12
+	From worker 20:	
+WARNING: Hit max iters in interior point method!
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 22:	Removing 1 zero-weight points.
+	From worker 21:	 trying noiseless static  ###### 
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 6:	2.4974528839408907e-13
+	From worker 6:	1.498182418094932e-12
+	From worker 6:	
+WARNING: Hit max iters in interior point method!
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 6:	 trying noiseless static  ###### 
+	From worker 13:	1.38548611525534e-13
+	From worker 13:	1.0448828039360587e-12
+	From worker 13:	
+WARNING: Hit max iters in interior point method!
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 20:	2.630507995851111e-13
+	From worker 20:	1.0466445115344824e-12
+	From worker 20:	
+WARNING: Hit max iters in interior point method!
+	From worker 23:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 6:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 14:	3.339017617270709e-13
+	From worker 14:	1.309608990131715e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 11:	Removing 1 zero-weight points.
+	From worker 23:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 11:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 23:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 14:	2.9516624794716163e-13
+	From worker 14:	1.455348055154687e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 12:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 23:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 11:	2.6515232729848134e-13
+	From worker 11:	1.2159797875082917e-12
+	From worker 11:	
+WARNING: Hit max iters in interior point method!
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 25:	1.5506928815420087e-13
+	From worker 25:	1.1461265541811178e-12
+	From worker 25:	
+WARNING: Hit max iters in interior point method!
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 11:	 trying noiseless static  ###### 
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+WARNING: Hit max iters in interior point method!
+	From worker 14:	2.761879706038562e-13
+	From worker 14:	1.7735071451168248e-12
+	From worker 14:	
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 20:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 14:	2.567439417511969e-13
+	From worker 14:	1.0407073743801386e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 14:	3.664660698217421e-13
+	From worker 14:	1.2740042247648424e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 9:	Removing 1 zero-weight points.
+	From worker 23:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 13:	1.6053784960761095e-13
+	From worker 13:	1.0538623989719636e-12
+	From worker 13:	
+WARNING: Hit max iters in interior point method!
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 23:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 25:	1.7445203365912664e-13
+	From worker 25:	1.3922104174144632e-12
+	From worker 25:	
+WARNING: Hit max iters in interior point method!
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 23:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 23:	 ################# FINISHED #######################
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+Progress:   0%|                                         |  ETA: 1 days, 0:37:04[K	From worker 10:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 11:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 23:	######### STARTING ########
+	From worker 23:	 trying noiseless dynamical ###### 
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 14:	3.1414709047595897e-13
+	From worker 14:	1.0957247972523872e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 6:	Removing 1 zero-weight points.
+	From worker 11:	Removing 1 zero-weight points.
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 11:	Removing 1 zero-weight points.
+	From worker 6:	Removing 1 zero-weight points.
+	From worker 14:	3.349445507052085e-13
+	From worker 14:	1.0033998920635117e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 6:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 14:	3.2104283345394937e-13
+	From worker 14:	1.3615224874387445e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 20:	2.6163307066073907e-13
+	From worker 20:	1.9791028237594334e-12
+	From worker 20:	
+WARNING: Hit max iters in interior point method!
+	From worker 20:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 20:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 11:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 22:	2.0482696240459012e-13
+	From worker 22:	1.064388105656826e-12
+	From worker 22:	
+WARNING: Hit max iters in interior point method!
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 6:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 14:	3.183442736238109e-13
+	From worker 14:	1.0681869969377107e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 20:	2.796456063386241e-13
+	From worker 20:	1.2023637974050453e-12
+	From worker 20:	
+WARNING: Hit max iters in interior point method!
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 14:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 16:	 ################# FINISHED #######################
+Progress:   0%|                                         |  ETA: 17:34:00[K	From worker 5:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 20:	2.38956333439759e-13
+	From worker 20:	1.0552409909259598e-12
+	From worker 20:	
+WARNING: Hit max iters in interior point method!
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 6:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 12:	Removing 1 zero-weight points.
+	From worker 14:	2.602576749314846e-13
+	From worker 14:	1.1147220533480445e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 16:	######### STARTING ########
+	From worker 16:	 trying noiseless dynamical ###### 
+	From worker 6:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 6:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 20:	2.841594609377558e-13
+	From worker 20:	1.5044285321663897e-12
+	From worker 20:	
+WARNING: Hit max iters in interior point method!
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 14:	3.012318415691685e-13
+	From worker 14:	1.35115529933618e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 6:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 20:	3.425566958112155e-13
+	From worker 20:	1.070113242857038e-12
+	From worker 20:	
+WARNING: Hit max iters in interior point method!
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 12:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 9:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 6:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 14:	2.3368152261557337e-13
+	From worker 14:	1.1352703392825706e-12
+	From worker 14:	
+	From worker 19:	Removing 1 zero-weight points.
+WARNING: Hit max iters in interior point method!
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 19:	 ################# FINISHED #######################
+	From worker 18:	Removing 1 zero-weight points.
+Progress:   0%|                                         |  ETA: 13:39:00[K	From worker 9:	Removing 1 zero-weight points.
+	From worker 6:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 20:	3.004451663930775e-13
+	From worker 20:	1.0330493390452618e-12
+	From worker 20:	
+WARNING: Hit max iters in interior point method!
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 19:	######### STARTING ########
+	From worker 19:	 trying noiseless dynamical ###### 
+	From worker 13:	 trying noiseless static  ###### 
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 6:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 9:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 14:	2.992043820391366e-13
+	From worker 14:	1.2959458100483715e-12
+	From worker 14:	
+	From worker 24:	Removing 1 zero-weight points.
+WARNING: Hit max iters in interior point method!
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 6:	Removing 1 zero-weight points.
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 6:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 11:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 20:	2.1706919328468487e-13
+	From worker 20:	1.5884505277810812e-12
+	From worker 20:	
+WARNING: Hit max iters in interior point method!
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 14:	3.4093691635662277e-13
+	From worker 14:	1.2654373932365575e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 9:	Removing 1 zero-weight points.
+	From worker 20:	Removing 2 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 20:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 20:	Removing 3 zero-weight points.
+	From worker 12:	Removing 1 zero-weight points.
+	From worker 20:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 14:	2.9317736767872433e-13
+	From worker 14:	1.1283119546852227e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 11:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 20:	 trying noiseless static  ###### 
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 9:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 9:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 14:	3.101015256689483e-13
+	From worker 14:	1.0714289457286374e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 22:	2.5564417348621146e-13
+	From worker 22:	1.3095062065007714e-12
+	From worker 22:	
+WARNING: Hit max iters in interior point method!
+	From worker 11:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 11:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 14:	2.529183766488241e-13
+	From worker 14:	1.0017751818187107e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 11:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 6:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 22:	2.1385995001501977e-13
+	From worker 22:	1.0991699588913093e-12
+	From worker 22:	
+WARNING: Hit max iters in interior point method!
+	From worker 6:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 12:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 7:	 ################# FINISHED #######################
+	From worker 8:	Removing 1 zero-weight points.
+Progress:   0%|                                         |  ETA: 11:41:08[K	From worker 9:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 14:	2.5911792444051185e-13
+	From worker 14:	1.603012228099884e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 7:	######### STARTING ########
+	From worker 7:	 trying noiseless dynamical ###### 
+	From worker 11:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 22:	Removing 1 zero-weight points.
+	From worker 11:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 14:	3.9077997546006763e-13
+	From worker 14:	1.4030977759853772e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 11:	Removing 1 zero-weight points.
+	From worker 14:	3.483605895298446e-13
+	From worker 14:	1.2797612790595285e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 20:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 11:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 14:	2.35363134212973e-13
+	From worker 14:	1.1622809175680788e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 12:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 11:	Removing 1 zero-weight points.
+	From worker 20:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 11:	Removing 1 zero-weight points.
+	From worker 20:	Removing 1 zero-weight points.
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 20:	Removing 1 zero-weight points.
+	From worker 6:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 22:	2.1411044273749507e-13
+	From worker 22:	1.1224404496073092e-12
+	From worker 22:	
+WARNING: Hit max iters in interior point method!
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+WARNING: Hit max iters in interior point method!
+	From worker 14:	2.7261710040980195e-13
+	From worker 14:	1.1680982927686642e-12
+	From worker 14:	
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 11:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 9:	Removing 1 zero-weight points.
+	From worker 6:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 2:	 ################# FINISHED #######################
+	From worker 14:	2.9997592658918104e-13
+	From worker 14:	1.0014382885222184e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+Progress:   1%|                                         |  ETA: 10:16:59[K	From worker 8:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 12:	Removing 1 zero-weight points.
+	From worker 11:	Removing 1 zero-weight points.
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 9:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 19:	 trying noiseless static  ###### 
+	From worker 14:	3.179221016510766e-13
+	From worker 14:	1.1145277371667347e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 2:	######### STARTING ########
+	From worker 2:	 trying noiseless dynamical ###### 
+	From worker 9:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 12:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 9:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 6:	Removing 1 zero-weight points.
+	From worker 14:	4.816532411697383e-13
+	From worker 14:	1.4939882854505053e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 12:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 9:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 6:	Removing 1 zero-weight points.
+	From worker 22:	Removing 1 zero-weight points.
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 12:	Removing 1 zero-weight points.
+	From worker 22:	Removing 1 zero-weight points.
+	From worker 9:	Removing 1 zero-weight points.
+	From worker 22:	 trying noiseless static  ###### 
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 6:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 9:	Removing 1 zero-weight points.
+	From worker 12:	Removing 1 zero-weight points.
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 14:	3.9068486079969414e-13
+	From worker 14:	1.3405078426407266e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 6:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 11:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 9:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 12:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 6:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 9:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 12:	Removing 1 zero-weight points.
+	From worker 6:	Removing 1 zero-weight points.
+	From worker 9:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 14:	2.1488621560657904e-13
+	From worker 14:	1.1108103292029642e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 6:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 12:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 11:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 2:	 trying noiseless static  ###### 
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 6:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 12:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 6:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 12:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 25:	1.9610056348111624e-13
+	From worker 25:	1.1381569651760144e-12
+	From worker 25:	
+WARNING: Hit max iters in interior point method!
+	From worker 6:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 12:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 12:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 12:	Removing 1 zero-weight points.
+	From worker 14:	2.2233018227898974e-13
+	From worker 14:	1.0717488159873275e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 12:	Removing 1 zero-weight points.
+	From worker 11:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 6:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 17:	Removing 2 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 22:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 14:	2.6949023514045653e-13
+	From worker 14:	1.0057427471691281e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 6:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 6:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 9:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 9:	Removing 1 zero-weight points.
+	From worker 25:	2.548584039013245e-13
+	From worker 25:	1.0834725970861904e-12
+	From worker 25:	
+WARNING: Hit max iters in interior point method!
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 6:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 14:	3.1433628523242246e-13
+	From worker 14:	1.2053839585357708e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 25:	 trying noiseless static  ###### 
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 9:	Removing 1 zero-weight points.
+	From worker 6:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 11:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 12:	Removing 1 zero-weight points.
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 9:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 6:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 20:	Removing 1 zero-weight points.
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 14:	3.353470160103194e-13
+	From worker 14:	1.8231770640973038e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 6:	Removing 1 zero-weight points.
+	From worker 17:	Removing 2 zero-weight points.
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 20:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 11:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 9:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 6:	Removing 1 zero-weight points.
+	From worker 14:	Removing 1 zero-weight points.
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 7:	2.378918785634371e-13
+	From worker 7:	1.2519590885811238e-12
+	From worker 7:	
+WARNING: Hit max iters in interior point method!
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 20:	Removing 1 zero-weight points.
+	From worker 9:	Removing 1 zero-weight points.
+	From worker 11:	Removing 1 zero-weight points.
+	From worker 22:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 17:	Removing 1 zero-weight points.
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 6:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 20:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 14:	3.1550391742011497e-13
+	From worker 14:	1.025339262772354e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 22:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 11:	Removing 1 zero-weight points.
+	From worker 6:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 9:	Removing 1 zero-weight points.
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 20:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 22:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 6:	Removing 1 zero-weight points.
+	From worker 11:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 4:	 ################# FINISHED #######################
+Progress:   1%|                                         |  ETA: 10:20:24[K	From worker 5:	Removing 1 zero-weight points.
+	From worker 9:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 17:	 ################# FINISHED #######################
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 20:	Removing 1 zero-weight points.
+Progress:   1%|                                         |  ETA: 9:04:09[K	From worker 15:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 12:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 7:	 trying noiseless static  ###### 
+	From worker 4:	######### STARTING ########
+	From worker 4:	 trying noiseless dynamical ###### 
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 6:	Removing 1 zero-weight points.
+	From worker 9:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 11:	Removing 1 zero-weight points.
+	From worker 9:	 ################# FINISHED #######################
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 19:	Removing 1 zero-weight points.
+Progress:   1%|                                         |  ETA: 8:05:27[K	From worker 15:	Removing 1 zero-weight points.
+	From worker 20:	Removing 1 zero-weight points.
+	From worker 14:	2.96797271477609e-13
+	From worker 14:	1.2015443035167852e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 17:	######### STARTING ########
+	From worker 17:	 trying noiseless dynamical ###### 
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 11:	Removing 1 zero-weight points.
+	From worker 9:	######### STARTING ########
+	From worker 9:	 trying noiseless dynamical ###### 
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 20:	Removing 1 zero-weight points.
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 11:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 20:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 16:	1.3290078180377929e-13
+	From worker 16:	1.04911172402224e-12
+	From worker 16:	
+WARNING: Hit max iters in interior point method!
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 14:	2.650770470224356e-13
+	From worker 14:	1.5532587499084359e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 22:	Removing 1 zero-weight points.
+	From worker 11:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 20:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 11:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 20:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 14:	4.238588448366934e-13
+	From worker 14:	1.6462400493164835e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 11:	Removing 1 zero-weight points.
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 22:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 20:	Removing 1 zero-weight points.
+	From worker 11:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 14:	2.5485218707800977e-13
+	From worker 14:	1.6050007855427216e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 6:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 20:	Removing 1 zero-weight points.
+	From worker 22:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 11:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 22:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 6:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 22:	Removing 1 zero-weight points.
+	From worker 11:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 5:	 ################# FINISHED #######################
+	From worker 21:	Removing 1 zero-weight points.
+Progress:   1%|                                         |  ETA: 7:43:30[K	From worker 6:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 22:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 23:	3.574981580045785e-13
+	From worker 23:	1.3742259839320416e-12
+	From worker 23:	
+WARNING: Hit max iters in interior point method!
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 5:	######### STARTING ########
+	From worker 5:	 trying noiseless dynamical ###### 
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 22:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 20:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 22:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 20:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 22:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 20:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 6:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 14:	3.3395733011262044e-13
+	From worker 14:	1.0850424392261852e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 22:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 22:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 11:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 9:	2.2431528019308562e-13
+	From worker 9:	1.4501619739568474e-12
+	From worker 9:	
+WARNING: Hit max iters in interior point method!
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 12:	Removing 1 zero-weight points.
+	From worker 3:	 ################# FINISHED #######################
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+Progress:   1%|                                         |  ETA: 7:16:35[K	From worker 8:	Removing 1 zero-weight points.
+	From worker 6:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 14:	3.208101563353937e-13
+	From worker 14:	1.3673882284139207e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 3:	######### STARTING ########
+	From worker 3:	 trying noiseless dynamical ###### 
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 12:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 20:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 15:	 ################# FINISHED #######################
+Progress:   1%|                                         |  ETA: 6:45:20[K	From worker 7:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 6:	Removing 1 zero-weight points.
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 12:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 14:	3.0736899951802023e-13
+	From worker 14:	1.383513292666775e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 15:	######### STARTING ########
+	From worker 15:	 trying noiseless dynamical ###### 
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 12:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 20:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 4:	 trying noiseless static  ###### 
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 10:	 ################# FINISHED #######################
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+Progress:   1%|█                                        |  ETA: 6:19:51[K	From worker 6:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 12:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 20:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 10:	######### STARTING ########
+	From worker 10:	 trying noiseless dynamical ###### 
+	From worker 12:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 6:	Removing 1 zero-weight points.
+	From worker 23:	1.7661746674643526e-13
+	From worker 23:	1.108111677376802e-12
+	From worker 23:	
+WARNING: Hit max iters in interior point method!
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 14:	2.808199619446802e-13
+	From worker 14:	1.5336842033679052e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 22:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 20:	Removing 1 zero-weight points.
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 12:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 6:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 9:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 22:	Removing 1 zero-weight points.
+	From worker 20:	Removing 1 zero-weight points.
+	From worker 6:	Removing 1 zero-weight points.
+	From worker 16:	2.582252407674898e-13
+	From worker 16:	1.4062305356084187e-12
+	From worker 16:	
+WARNING: Hit max iters in interior point method!
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 12:	Removing 1 zero-weight points.
+	From worker 6:	Removing 1 zero-weight points.
+	From worker 22:	Removing 1 zero-weight points.
+	From worker 14:	3.441090545085801e-13
+	From worker 14:	1.0439639444951966e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 20:	Removing 1 zero-weight points.
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 22:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 12:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 20:	Removing 1 zero-weight points.
+	From worker 9:	 trying noiseless static  ###### 
+	From worker 22:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 17:	2.4882575006512995e-13
+	From worker 17:	1.004938218897714e-12
+	From worker 17:	
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 11:	Removing 1 zero-weight points.
+WARNING: Hit max iters in interior point method!
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 22:	Removing 1 zero-weight points.
+	From worker 12:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 5:	 trying noiseless static  ###### 
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 22:	Removing 1 zero-weight points.
+	From worker 11:	Removing 1 zero-weight points.
+	From worker 23:	3.385681498037488e-13
+	From worker 23:	1.3484949506705097e-12
+	From worker 23:	
+WARNING: Hit max iters in interior point method!
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 20:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 12:	Removing 1 zero-weight points.
+	From worker 22:	Removing 1 zero-weight points.
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 14:	3.858083949536315e-13
+	From worker 14:	1.511468444365318e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 20:	Removing 1 zero-weight points.
+	From worker 11:	Removing 1 zero-weight points.
+	From worker 16:	2.751807275957081e-13
+	From worker 16:	1.0681344921156262e-12
+	From worker 16:	
+WARNING: Hit max iters in interior point method!
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 20:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 22:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 20:	Removing 1 zero-weight points.
+	From worker 23:	2.280371066542984e-13
+	From worker 23:	1.1879529191294738e-12
+	From worker 23:	
+WARNING: Hit max iters in interior point method!
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 11:	Removing 1 zero-weight points.
+	From worker 20:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 22:	Removing 1 zero-weight points.
+	From worker 16:	3.191428442112814e-13
+	From worker 16:	1.0695387256412824e-12
+	From worker 16:	
+WARNING: Hit max iters in interior point method!
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 14:	3.4284638128866446e-13
+	From worker 14:	2.0924874070654608e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 12:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 12:	Removing 1 zero-weight points.
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 11:	Removing 1 zero-weight points.
+	From worker 22:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 16:	 trying noiseless static  ###### 
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 14:	2.9446569769192375e-13
+	From worker 14:	1.582323614153285e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 22:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 22:	Removing 1 zero-weight points.
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 8:	 ################# FINISHED #######################
+	From worker 23:	2.5397981783126204e-13
+	From worker 23:	1.0038782276940226e-12
+	From worker 23:	
+WARNING: Hit max iters in interior point method!
+Progress:   1%|█                                        |  ETA: 6:18:38[K	From worker 12:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 14:	2.394461541010629e-13
+	From worker 14:	1.0723559980686886e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 22:	Removing 1 zero-weight points.
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 12:	Removing 1 zero-weight points.
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 8:	######### STARTING ########
+	From worker 8:	 trying noiseless dynamical ###### 
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 11:	Removing 1 zero-weight points.
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 22:	Removing 1 zero-weight points.
+	From worker 14:	3.8684148204920767e-13
+	From worker 14:	1.0427088171554672e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 22:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 12:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 12:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 9:	Removing 1 zero-weight points.
+	From worker 14:	2.8115473345664683e-13
+	From worker 14:	1.197601874100284e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 22:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 11:	Removing 1 zero-weight points.
+	From worker 12:	Removing 1 zero-weight points.
+	From worker 6:	Removing 1 zero-weight points.
+	From worker 18:	Removing 1 zero-weight points.
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 22:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 18:	 ################# FINISHED #######################
+	From worker 12:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+Progress:   2%|█                                        |  ETA: 6:02:00[K	From worker 22:	Removing 1 zero-weight points.
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 6:	Removing 1 zero-weight points.
+	From worker 6:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 11:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 12:	Removing 1 zero-weight points.
+	From worker 14:	2.9843617754853807e-13
+	From worker 14:	1.1123347589942525e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 9:	Removing 1 zero-weight points.
+	From worker 18:	######### STARTING ########
+	From worker 18:	 trying noiseless dynamical ###### 
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 22:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 3:	 trying noiseless static  ###### 
+	From worker 6:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 20:	Removing 1 zero-weight points.
+	From worker 9:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 15:	 trying noiseless static  ###### 
+	From worker 22:	Removing 1 zero-weight points.
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 12:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 11:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 14:	3.6753696647075465e-13
+	From worker 14:	1.5687331383171338e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 22:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 20:	Removing 1 zero-weight points.
+	From worker 12:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 6:	Removing 1 zero-weight points.
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 9:	Removing 1 zero-weight points.
+	From worker 12:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 6:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 23:	2.7276189193727935e-13
+	From worker 23:	1.969031996113333e-12
+	From worker 23:	
+WARNING: Hit max iters in interior point method!
+	From worker 6:	Removing 1 zero-weight points.
+	From worker 20:	Removing 1 zero-weight points.
+	From worker 6:	 ################# FINISHED #######################
+	From worker 16:	Removing 1 zero-weight points.
+Progress:   2%|█                                        |  ETA: 5:46:00[K	From worker 24:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 22:	Removing 1 zero-weight points.
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 9:	Removing 1 zero-weight points.
+	From worker 22:	Removing 1 zero-weight points.
+	From worker 6:	######### STARTING ########
+	From worker 6:	 trying noiseless dynamical ###### 
+	From worker 20:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 14:	3.8495335331284806e-13
+	From worker 14:	1.4228564512872964e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 23:	2.3600155794448544e-13
+	From worker 23:	1.1321773647233979e-12
+	From worker 23:	
+WARNING: Hit max iters in interior point method!
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 9:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 22:	Removing 1 zero-weight points.
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 20:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 11:	Removing 1 zero-weight points.
+	From worker 22:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 22:	Removing 1 zero-weight points.
+	From worker 23:	1.5207380942386329e-13
+	From worker 23:	1.1677255714004842e-12
+	From worker 23:	
+WARNING: Hit max iters in interior point method!
+	From worker 20:	Removing 1 zero-weight points.
+	From worker 14:	4.0198750502948517e-13
+	From worker 14:	1.7324339404830316e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 8:	Removing 2 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 11:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 9:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 20:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 8:	 trying noiseless static  ###### 
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 17:	1.7032911600665306e-13
+	From worker 17:	1.015563592400042e-12
+	From worker 17:	
+	From worker 16:	Removing 1 zero-weight points.
+WARNING: Hit max iters in interior point method!
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 11:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 20:	Removing 1 zero-weight points.
+	From worker 14:	3.5651078472876114e-13
+	From worker 14:	1.163359193418966e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 22:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 11:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 20:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 9:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 9:	Removing 1 zero-weight points.
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 11:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 17:	2.5500030881843983e-13
+	From worker 17:	1.0948799213381329e-12
+	From worker 17:	
+WARNING: Hit max iters in interior point method!
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 20:	Removing 1 zero-weight points.
+	From worker 14:	4.056153934434079e-13
+	From worker 14:	1.8076009718773949e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 11:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 20:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 9:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 10:	 trying noiseless static  ###### 
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 19:	 ################# FINISHED #######################
+Progress:   2%|█                                        |  ETA: 5:41:24[K	From worker 2:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 11:	Removing 1 zero-weight points.
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 20:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 12:	Removing 1 zero-weight points.
+	From worker 19:	######### STARTING ########
+	From worker 19:	 trying noiseless dynamical ###### 
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 9:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 11:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 14:	3.606398030029785e-13
+	From worker 14:	1.0881411565076412e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 9:	Removing 1 zero-weight points.
+	From worker 22:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 23:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 20:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 12:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 14:	4.352312827020239e-13
+	From worker 14:	1.8564387869276894e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 20:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 22:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 20:	Removing 1 zero-weight points.
+	From worker 12:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 22:	Removing 1 zero-weight points.
+	From worker 14:	3.40067587731385e-13
+	From worker 14:	1.3531734740342943e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 20:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 12:	Removing 1 zero-weight points.
+	From worker 23:	2.1398675435181414e-13
+	From worker 23:	1.00666411600199e-12
+	From worker 23:	
+WARNING: Hit max iters in interior point method!
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 14:	3.184839325928831e-13
+	From worker 14:	1.1158792049290233e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 9:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 20:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 12:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 17:	1.574221005936313e-13
+	From worker 17:	1.2398986838147131e-12
+	From worker 17:	
+WARNING: Hit max iters in interior point method!
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 14:	3.0484154470302967e-13
+	From worker 14:	2.421797343722929e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 9:	Removing 1 zero-weight points.
+	From worker 20:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 12:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 22:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 14:	3.863740113401884e-13
+	From worker 14:	1.134938487270475e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 6:	2.0283941769958593e-13
+	From worker 6:	1.446106162182338e-12
+	From worker 6:	
+WARNING: Hit max iters in interior point method!
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 20:	Removing 1 zero-weight points.
+	From worker 12:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 22:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 11:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 17:	2.8287163067312267e-13
+	From worker 17:	1.0076891152542992e-12
+	From worker 17:	
+WARNING: Hit max iters in interior point method!
+	From worker 14:	4.166282239681343e-13
+	From worker 14:	1.274273935314504e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 20:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 12:	Removing 1 zero-weight points.
+	From worker 12:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 11:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 22:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 11:	 ################# FINISHED #######################
+Progress:   2%|█                                        |  ETA: 5:37:32[K	From worker 10:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 20:	Removing 1 zero-weight points.
+	From worker 12:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 14:	3.924903896360224e-13
+	From worker 14:	2.7009547327514498e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 22:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 11:	######### STARTING ########
+	From worker 11:	 trying noiseless dynamical ###### 
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 12:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 20:	Removing 1 zero-weight points.
+	From worker 23:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 19:	 trying noiseless static  ###### 
+	From worker 14:	3.75862229170967e-13
+	From worker 14:	1.2726984274005257e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 22:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 12:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 20:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 22:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 20:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 14:	3.352492985093923e-13
+	From worker 14:	1.092247071767995e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 17:	2.2064200783513673e-13
+	From worker 17:	1.013993111833945e-12
+	From worker 17:	
+WARNING: Hit max iters in interior point method!
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 12:	Removing 1 zero-weight points.
+	From worker 22:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 20:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 12:	Removing 1 zero-weight points.
+	From worker 22:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 23:	Removing 1 zero-weight points.
+	From worker 24:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 20:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 14:	3.6424870237688026e-13
+	From worker 14:	1.070108909578856e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 24:	 ################# FINISHED #######################
+	From worker 25:	Removing 1 zero-weight points.
+Progress:   2%|█                                        |  ETA: 5:27:48[K	From worker 15:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 22:	Removing 1 zero-weight points.
+	From worker 12:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 20:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 23:	2.56238097124237e-13
+	From worker 23:	1.3948205871067714e-12
+	From worker 23:	
+WARNING: Hit max iters in interior point method!
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 24:	######### STARTING ########
+	From worker 24:	 trying noiseless dynamical ###### 
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 22:	Removing 1 zero-weight points.
+	From worker 12:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 20:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 14:	3.516193752520326e-13
+	From worker 14:	1.6348477552958809e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 17:	2.2315579002867454e-13
+	From worker 17:	1.002222730859753e-12
+	From worker 17:	
+WARNING: Hit max iters in interior point method!
+	From worker 22:	Removing 1 zero-weight points.
+	From worker 12:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 20:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 12:	Removing 1 zero-weight points.
+	From worker 22:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 22:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 20:	Removing 1 zero-weight points.
+	From worker 15:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 14:	4.401276888336331e-13
+	From worker 14:	1.059742042060838e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 6:	Removing 1 zero-weight points.
+	From worker 12:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 20:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 14:	3.8038870033817663e-13
+	From worker 14:	1.0744637846607896e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 12:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 20:	Removing 1 zero-weight points.
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 17:	2.5564542916943176e-13
+	From worker 17:	1.015831774769333e-12
+	From worker 17:	
+WARNING: Hit max iters in interior point method!
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 12:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 20:	Removing 1 zero-weight points.
+	From worker 14:	3.524551214652061e-13
+	From worker 14:	1.002988169909717e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 23:	2.9288693562563425e-13
+	From worker 23:	1.0085571699208395e-12
+	From worker 23:	
+WARNING: Hit max iters in interior point method!
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 22:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 12:	Removing 1 zero-weight points.
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 20:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 14:	3.3830385698545746e-13
+	From worker 14:	1.0625995605670278e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 22:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 12:	Removing 1 zero-weight points.
+	From worker 20:	Removing 1 zero-weight points.
+	From worker 5:	Removing 1 zero-weight points.
+	From worker 22:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 14:	2.4055731626398925e-13
+	From worker 14:	1.2221699604692928e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 9:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 22:	Removing 1 zero-weight points.
+	From worker 12:	Removing 1 zero-weight points.
+	From worker 21:	Removing 1 zero-weight points.
+	From worker 20:	Removing 1 zero-weight points.
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 2:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 9:	Removing 1 zero-weight points.
+	From worker 14:	3.124568372091212e-13
+	From worker 14:	1.2513168289183068e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 12:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 20:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 22:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 6:	2.1997796627859643e-13
+	From worker 6:	1.5038442420065218e-12
+	From worker 6:	
+WARNING: Hit max iters in interior point method!
+	From worker 12:	Removing 1 zero-weight points.
+	From worker 20:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 14:	3.2820182227314176e-13
+	From worker 14:	1.136686338141506e-12
+	From worker 14:	
+WARNING: Hit max iters in interior point method!
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 25:	Removing 1 zero-weight points.
+	From worker 13:	Removing 1 zero-weight points.
+	From worker 19:	Removing 1 zero-weight points.
+	From worker 4:	Removing 1 zero-weight points.
+	From worker 6:	Removing 1 zero-weight points.
+	From worker 12:	Removing 1 zero-weight points.
+	From worker 20:	Removing 1 zero-weight points.
+	From worker 16:	Removing 1 zero-weight points.
+	From worker 7:	Removing 1 zero-weight points.
+	From worker 8:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
+	From worker 3:	Removing 1 zero-weight points.
+	From worker 10:	Removing 1 zero-weight points.
