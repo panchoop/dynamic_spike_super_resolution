@@ -4,7 +4,7 @@ from matplotlib import pyplot as plt
 from matplotlib2tikz import save as tikz_save
 
 # Folder with data files
-example = "2018-02-18T17-12-15-849"
+example = "2018-02-18T19-29-40-194"
 folder = "data/1Dsimulations/"+example
 os.chdir(folder)
 
@@ -119,7 +119,7 @@ if visualize_plots==True:
 # super resolution factor threshold for declaring accurate reconstruction.
 srf_th = 40
 # weight threshold to declare accurate reconstruction.
-w_th = 0.01
+w_th = 0.1
 
 styles = ["-", "--", "-.", ":", "-"]
 plt.figure()
@@ -136,9 +136,9 @@ if visualize_plots==True:
 ## Static reconstructions
 
 # super resolution factor threshold for declaring accurate reconstruction.
-srf_th = 40
+srf_th = 100000
 # weight threshold to declare accurate reconstruction.
-w_th = 0.01
+w_th = 0.1
 
 styles = ["-", "--", "-.", ":", "-"]
 plt.figure()
@@ -156,7 +156,7 @@ if visualize_plots == True:
 # super resolution factor threshold for declaring accurate reconstruction.
 srf_th = 40
 # weight threshold to declare accurate reconstruction.
-w_th = 0.01
+w_th = 0.1
 
 styles = ["-", "--", "-.", ":", "-"]
 plt.figure()

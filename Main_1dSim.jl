@@ -41,7 +41,7 @@ end
     cases = $cases
 end
 
-results = pmap(x -> begin sleep(1) ; Utils.generate_and_reconstruct_all(model_static, model_dynamic, bins, density, test_case, noises_data, noises_position, cases) end, Progress(num_trials), 1:num_trials)
+results = pmap(x -> begin sleep(1) ; Utils.generate_and_reconstruct_all(model_static, model_dynamic, bins, density, algIter, test_case, noises_data, noises_position, cases) end, Progress(num_trials), 1:num_trials)
 # results = pmap(x -> Utils.generate_and_reconstruct_all(model_static, model_dynamic, bins, density, test_case, noises_data, noises_position, cases), 1:num_trials)
 results_array = vcat([result[3] for result in results]...)
 separations_array = vcat([result[1] for result in results]...)

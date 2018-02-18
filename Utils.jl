@@ -21,7 +21,7 @@ function psi_noise(model :: DynamicSuperRes, theta :: Vector{Float64}, dsec :: F
     return vcat([psi(model.static, theta[1:d] + t * theta[d+1:end] + t^2*dsec*theta[d+1:end]/tauK/2) for t in model.times]...)
 end
 
-function run_simulation_target(model, thetas, weights, target)
+function run_simulation_target(model, thetas, weights, target, algIter)
 # We simulate the reconstruction algorithm on the data given by target, and we return
 # the error values from the background truth.
     function callback(old_thetas, thetas, weights, output, old_obj_val)
@@ -34,7 +34,7 @@ function run_simulation_target(model, thetas, weights, target)
     return false
     end
     # Inverse problem
-    (thetas_est,weights_est) = ADCG(model, LSLoss(), target,sum(weights), callback=callback, max_iters=200)
+    (thetas_est,weights_est) = ADCG(model, LSLoss(), target,sum(weights), callback=callback, max_iters=algIter)
     return (thetas_est, weights_est)
 end
 
@@ -166,10 +166,10 @@ function Rejection_sampling(test_case, bins, density, K, tau, x_max)
     return (thetas, weights)
 end
 
-function generate_and_reconstruct_dynamic(model_dynamic, thetas, weights, target)
+function generate_and_reconstruct_dynamic(model_dynamic, thetas, weights, target, algIter)
     d = dim(model_dynamic)
     # run the algorithm on the points thetas with the respective noises.
-    (thetas_est, weights_est) = try run_simulation_target(model_dynamic, thetas, weights, target) catch  
+    (thetas_est, weights_est) = try run_simulation_target(model_dynamic, thetas, weights, target, algIter) catch  
 	warn("fail") 
 	([0], [0]) 
 	end
@@ -193,11 +193,11 @@ function generate_and_reconstruct_dynamic(model_dynamic, thetas, weights, target
     return model_dynamic.static.x_max, model_dynamic.v_max, maximum(weights)
 end
 
-function generate_and_reconstruct_static(model_static, thetas, weights, target_static)
+function generate_and_reconstruct_static(model_static, thetas, weights, target_static, algIter)
     # Description is similar to the one in generate_and_reconstruct_dynamic.
     d = dim(model_static)
     (thetas_est, weights_est) = try
-        run_simulation_target(model_static, thetas, weights, target_static)
+        run_simulation_target(model_static, thetas, weights, target_static, algIter)
     catch
         warn("fail")
         ([0], [0])
@@ -213,7 +213,7 @@ function generate_and_reconstruct_static(model_static, thetas, weights, target_s
     return model_static.x_max, maximum(weights)
 end
 
-function generate_and_reconstuct_static_best(model_dynamic, model_static, thetas, weights, target_dynamic)
+function generate_and_reconstuct_static_best(model_dynamic, model_static, thetas, weights, target_dynamic, algIter)
     # Given a dynamic set of particles, we obtain the respective static reconstructions
     # at each time sample, and afterwards we return the error in space and weight
     # for the case of the best one, and the third best one.
@@ -222,7 +222,7 @@ function generate_and_reconstuct_static_best(model_dynamic, model_static, thetas
     static_target = target_to_static(target_dynamic, model_dynamic.times)
     for k = 1:length(model_dynamic.times)
         thetas_t = to_static(thetas, model_dynamic.times[k], model_static.x_max)
-        (dist_x[k], dist_w[k]) = generate_and_reconstruct_static(model_static, thetas_t, weights, static_target[k])
+        (dist_x[k], dist_w[k]) = generate_and_reconstruct_static(model_static, thetas_t, weights, static_target[k], algIter)
     end
     sortOrder = sortperm(dist_x)
     dist_x = dist_x[sortOrder]
@@ -232,7 +232,7 @@ function generate_and_reconstuct_static_best(model_dynamic, model_static, thetas
     return dist_x[1], dist_w[1], dist_x[3], maximum(dist_w[1:3])
 end
 
-function generate_and_reconstruct_all(model_static, model_dynamic, bins, density, test_case, noises_data, noises_position, cases)
+function generate_and_reconstruct_all(model_static, model_dynamic, bins, density, algIter, test_case, noises_data, noises_position, cases)
     ### This function generates a test case and returns the distances between the generated particles
     ### given by dx, dv and norm. Furthermore it returns a result matrix that contains
     ### the first 3 colums correspond to the dynamic results, (space x velocity x weights)
@@ -255,14 +255,14 @@ function generate_and_reconstruct_all(model_static, model_dynamic, bins, density
     # We reconsctruct the location of the particles for the target data.
     if noiseless_dynamic == true
 	println(" trying noiseless dynamical ###### ")
-       (results[1, 1], results[1, 2], results[1,3]) = generate_and_reconstruct_dynamic(model_dynamic, thetas, weights, target)
+       (results[1, 1], results[1, 2], results[1,3]) = generate_and_reconstruct_dynamic(model_dynamic, thetas, weights, target, algIter)
     else
         (results[1,1]. results[1,2], results[1,3]) = (0,0,0)
     end
     # Static case, no noise
     if noiseless_static == true
 	println(" trying noiseless static  ###### ")
-        (results[1,4], results[1,5], results[1,6], results[1,7]) = generate_and_reconstuct_static_best(model_dynamic, model_static, thetas, weights, target)
+        (results[1,4], results[1,5], results[1,6], results[1,7]) = generate_and_reconstuct_static_best(model_dynamic, model_static, thetas, weights, target, algIter)
     else
         (results[1,4], results[1,5], results[1,6], results[1,7]) = (0,0,0,0)
     end
@@ -273,14 +273,14 @@ function generate_and_reconstruct_all(model_static, model_dynamic, bins, density
         # Dynamic case
         if noise_dynamic == true
 	   println(" trying dynamical noise data ", noise_data, "####" )
-           (results[i, 1], results[i, 2], results[i,3]) = generate_and_reconstruct_dynamic(model_dynamic, thetas, weights, target)
+           (results[i, 1], results[i, 2], results[i,3]) = generate_and_reconstruct_dynamic(model_dynamic, thetas, weights, target, algIter)
 	else
 	   (results[i, 1], results[i, 2], results[i,3]) = (0,0,0)
 	end 
         # Static case
 	if noise_static == true
 	   println(" trying static noise data ", noise_data, "####" )
-           (results[i,4], results[i,5], results[i,6], results[i,7]) = generate_and_reconstuct_static_best(model_dynamic, model_static, thetas, weights, target)
+           (results[i,4], results[i,5], results[i,6], results[i,7]) = generate_and_reconstuct_static_best(model_dynamic, model_static, thetas, weights, target, algIter)
 	else
 	   (results[i,4], results[i,5], results[i,6], results[i,7]) = (0,0,0,0)
 	end
@@ -291,7 +291,7 @@ function generate_and_reconstruct_all(model_static, model_dynamic, bins, density
         # This result is only analyzed in the Dynamic case for the moment
 	if curvature_dynamic == true
 	    println(" trying noise position", noise_position, "#####" )
-            (results[i, 1], results[i, 2], results[i,3]) = generate_and_reconstruct_dynamic(model_dynamic, thetas, weights, target)
+            (results[i, 1], results[i, 2], results[i,3]) = generate_and_reconstruct_dynamic(model_dynamic, thetas, weights, target, algIter)
 	else 
 	    (results[i, 1], results[i, 2], results[i,3]) = (0,0,0)
 	end

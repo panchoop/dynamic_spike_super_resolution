@@ -22,6 +22,9 @@ max_number_part = 10
 # Number of generated examples
 num_trials = 1000
 
+# Iterations of minimization algorithm
+algIter = 100;
+
 # test case
 test_case = () -> TestCases.cloud_1d_full(x_max, v_max, minWeights, maxWeights, K, tau, rand(min_number_part:max_number_part))
 # WARNING: changing anything in the test_case will generate troubles if the rejection_sampling algorithm
@@ -46,7 +49,7 @@ println(" WARNING: The rejection sampling algorithm is being used, with interval
 noiseless_dynamic = true
 noiseless_static = true
 noise_dynamic = true
-noise_static = false
-curvature_static = false
+noise_static = true
+curvature_static = true
 
 cases = (noiseless_dynamic, noiseless_static, noise_dynamic, noise_static, curvature_static)
