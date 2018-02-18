@@ -119,7 +119,7 @@ if visualize_plots==True:
 # super resolution factor threshold for declaring accurate reconstruction.
 srf_th = 40
 # weight threshold to declare accurate reconstruction.
-w_th = 0.1
+w_th = 0.01
 
 styles = ["-", "--", "-.", ":", "-"]
 plt.figure()
@@ -138,7 +138,7 @@ if visualize_plots==True:
 # super resolution factor threshold for declaring accurate reconstruction.
 srf_th = 40
 # weight threshold to declare accurate reconstruction.
-w_th = 0.1
+w_th = 0.01
 
 styles = ["-", "--", "-.", ":", "-"]
 plt.figure()
@@ -156,7 +156,7 @@ if visualize_plots == True:
 # super resolution factor threshold for declaring accurate reconstruction.
 srf_th = 40
 # weight threshold to declare accurate reconstruction.
-w_th = 0.1
+w_th = 0.01
 
 styles = ["-", "--", "-.", ":", "-"]
 plt.figure()
@@ -172,7 +172,7 @@ if visualize_plots == True:
 ### Super resolution factor comparison
 styles = ["-", "--", "-.", ":", "-"]
 # weight threshold to declare accurate reconstruction.
-w_th = 0.1
+w_th = 0.01
 # Considered super resolution factors for comparison.
 srf_thresholds = [1, 10, 100, 1000, 10000]
 plt.figure()
@@ -201,7 +201,7 @@ if visualize_plots == True:
 styles = ["-", "--", "-.", ":", "-"]
 plt.figure()
 # weight threshold to declare accurate reconstruction.
-w_th = 0.2
+w_th = 0.01
 # super resolution factor threshold for declaring accurate reconstruction.
 srf_th = 5
 
