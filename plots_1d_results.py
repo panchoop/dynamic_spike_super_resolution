@@ -4,7 +4,7 @@ from matplotlib import pyplot as plt
 from matplotlib2tikz import save as tikz_save
 
 # Folder with data files
-example = "2018-02-17T20-46-22-439"
+example = "2018-02-18T00-57-22-801"
 folder = "data/1Dsimulations/"+example
 os.chdir(folder)
 
