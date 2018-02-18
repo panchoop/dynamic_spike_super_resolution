@@ -4,7 +4,7 @@ from matplotlib import pyplot as plt
 from matplotlib2tikz import save as tikz_save
 
 # Folder with data files
-example = "2018-02-18T00-57-22-801"
+example = "2018-02-18T10-19-01-257"
 folder = "data/1Dsimulations/"+example
 os.chdir(folder)
 
@@ -201,9 +201,9 @@ if visualize_plots == True:
 styles = ["-", "--", "-.", ":", "-"]
 plt.figure()
 # weight threshold to declare accurate reconstruction.
-w_th = 0.01
+w_th = 0.1
 # super resolution factor threshold for declaring accurate reconstruction.
-srf_th = 5
+srf_th = 1
 
 plot_case(separations,"dynamic", 0, srf_th, w_th, linestyle = styles[0])
 for i in range(len(positionnoise)):

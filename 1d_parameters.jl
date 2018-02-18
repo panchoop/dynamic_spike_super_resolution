@@ -20,7 +20,7 @@ min_number_part = 4
 max_number_part = 10
 
 # Number of generated examples
-num_trials = 3000
+num_trials = 1000
 
 # test case
 test_case = () -> TestCases.cloud_1d_full(x_max, v_max, minWeights, maxWeights, K, tau, rand(min_number_part:max_number_part))
@@ -44,9 +44,9 @@ println(" WARNING: The rejection sampling algorithm is being used, with interval
 ### Cases to be tested
 
 noiseless_dynamic = true
-noiseless_static = false
+noiseless_static = true
 noise_dynamic = false
 noise_static = false
-curvature_static = true
+curvature_static = false
 
 cases = (noiseless_dynamic, noiseless_static, noise_dynamic, noise_static, curvature_static)
