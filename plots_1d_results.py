@@ -6,7 +6,7 @@ from matplotlib2tikz import save as tikz_save
 ### Plotting options:
 
 # If you want to get the plots on a specific experiment-folder or in all of them
-PlotSpecificFolder = False
+PlotSpecificFolder = True
 PlotAllFolders = not(PlotSpecificFolder)
 specificFolder = ["data/1Dsimulations/"+"2018-02-19T04-35-58-77"]
 
@@ -132,7 +132,7 @@ for i in range(len(subfolders)):
 	axes = plt.gca()
 	axes.set_ylim([0,1.05])
 	plt.savefig("noiseless.pdf")
-	tikz_save("noiseless.tikz", figureheight="\\figureheight", figurewidth="\\figurewidth")
+	tikz_save("noiseless.tikz", figureheight="\\figureheight", figurewidth="\\figurewidth", grid=False)
 	if visualize_plots==True:
 		plt.show()
 
