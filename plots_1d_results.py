@@ -28,7 +28,7 @@ srf_comparison = [1, 10, 100, 1000, 10000]
 
 ### Plotting parameters
 # number of considered bins for plots
-num_bins = 50
+num_bins = 30
 
 ### Wanna see all the generated plots ? 
 visualize_plots = False
@@ -41,6 +41,23 @@ if PlotAllFolders:
 	
 else:
 	subfolders = specificFolder
+
+def fixTikz(filename, linewidth):
+	## Function to fix the mistakes by tikztolatex
+	# First, we get rid of the legends error
+	f = open(filename,"r+")
+	d = f.readlines()
+	f.seek(0)
+	for i in d:
+		if i[1:8] == 'addplot':
+			# To include an appropiate line width in the plots
+			f.write(i[0:10]+"line width ="+linewidth+" ,"+i[10:len(i)])
+		elif i[1:25] != 'addlegendimage{no marker':
+			# To eliminate the legend messup
+			f.write(i)
+	f.truncate()
+	f.close()
+
 
 for i in range(len(subfolders)):
 	print("Plotting in folder: ")
@@ -132,7 +149,8 @@ for i in range(len(subfolders)):
 	axes = plt.gca()
 	axes.set_ylim([0,1.05])
 	plt.savefig("noiseless.pdf")
-	tikz_save("noiseless.tikz", figureheight="\\figureheight", figurewidth="\\figurewidth", grid=False)
+	tikz_save("noiseless.tikz", figureheight="\\figureheight", figurewidth="\\figurewidth")
+	fixTikz("noiseless.tikz","1pt")
 	if visualize_plots==True:
 		plt.show()
 

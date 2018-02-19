@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.4.14)  19 FEB 2018 18:16
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.4.14)  19 FEB 2018 19:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -906,9 +906,9 @@ s been generated with the most recent feature set (\pgfplotsset{compat=1.13}).
 
 (./noiseless.tikz
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 198.
+(Font)              <6> on input line 195.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 198.
+(Font)              <5> on input line 195.
 ) [1
 
 {/usr/local.hg/app/teTeX/current/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
@@ -920,12 +920,12 @@ Here is how much of TeX's memory you used:
  25298 multiletter control sequences out of 15000+600000
  4551 words of font info for 17 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,19n,100p,797b,2158s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 55i,19n,100p,797b,2173s stack positions out of 5000i,500n,10000p,200000b,80000s
 </scratch/local/app/teTeX/08.15/texmf-dist/fonts/type1/pu
 blic/amsfonts/cm/cmmi5.pfb></scratch/local/app/teTeX/08.15/texmf-dist/fonts/typ
 e1/public/amsfonts/cm/cmr10.pfb></scratch/local/app/teTeX/08.15/texmf-dist/font
 s/type1/public/amsfonts/cm/cmr6.pfb>
-Output written on TestingTikz.pdf (1 page, 29152 bytes).
+Output written on TestingTikz.pdf (1 page, 29157 bytes).
 PDF statistics:
  23 PDF objects out of 1000 (max. 8388607)
  16 compressed objects within 1 object stream
