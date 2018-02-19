@@ -12,4 +12,6 @@ These files contain the distribution of 4 to 10 particles in the interval [0 0.0
 
 These files contain the distribution of 20 to 30 particles in the interval [0 0.005]
 
-4) 
+4) separationDistribBins_06interval.npy // ~
+
+These files are for simulations with 4 to 10 particles in the interval [0, 0.06]

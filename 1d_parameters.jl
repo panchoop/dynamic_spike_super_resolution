@@ -1,4 +1,5 @@
-# Testing the 10-20 particle example.
+# Testing the 4-10 particles example with lower iterations from the algorithm.
+
 # Static Parameters
 f_c = 20
 x_max = 1.0
@@ -23,7 +24,7 @@ max_number_part = 10
 num_trials = 1000
 
 # Iterations of minimization algorithm
-algIter = 100;
+algIter = 50;
 
 # test case
 test_case = () -> TestCases.cloud_1d_full(x_max, v_max, minWeights, maxWeights, K, tau, rand(min_number_part:max_number_part))
