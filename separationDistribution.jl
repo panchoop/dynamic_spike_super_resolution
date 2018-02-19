@@ -33,13 +33,13 @@ num_v = 10
 model_dynamic = SuperResModels.DynamicFourier1d(model_static, v_max, tau, K, num_v*K)
 
 # How particles are generated
-minimumNumPartic = 20
-maximumNumPartic = 30
+minimumNumPartic = 4
+maximumNumPartic = 10
 
 test_case = () -> TestCases.cloud_1d_full(x_max, v_max, 1, 1, K, tau, rand(minimumNumPartic:maximumNumPartic))
 
 ### We generate particles and we evaluate their separation
-N = 10000000
+N = 1000000
 separations = zeros(N)
 for i = 1:N
     if mod(i,100000)== 0
@@ -60,17 +60,19 @@ if x_max != 1.0
     for the specific case of x_max equal to 1, since you modified this value, check if
         upper and lowerLimit is adequate for your use, just plot an histogram of the 		separations.")
 end
-upperLimit = x_max/200
-lowerLimit = x_max/200/M
+upperLimit = 0.06
+lowerLimit = 0.001
 binss = linspace(lowerLimit,upperLimit,M)
 vals = np.histogram(separations, bins = binss )
 vals = vals[1]/(binss[2]-binss[1])/N
 
-println(vals[1])
-println(vals[end])
+if minimum(vals) <= 0.00000001
+error(" There are bin intervals without particles ")
+end
+
 plt.figure()
 plt.plot(binss[1:end-1], vals)
 plt.show()
 
-np.save("data/1Dsimulations/separationDistribVal_20particles.npy", vals)
-np.save("data/1Dsimulations/separationDistribBins_20particles.npy", binss)
+np.save("data/1Dsimulations/separationDistribVal_06interval.npy", vals)
+np.save("data/1Dsimulations/separationDistribBins_06interval.npy", binss)

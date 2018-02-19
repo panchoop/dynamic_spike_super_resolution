@@ -1,0 +1,15 @@
+# Description on the distribution values files in here:
+
+1) separationDistribBins.npy // separationDistribVal.npy
+
+These files contain the distirbution of 4 to 10 particles in the whole interval [0 0.1]
+
+2) separationDistribBins_nearZero.npy // separationDistribVal_nearZero.npy
+
+These files contain the distribution of 4 to 10 particles in the interval [0 0.01]
+
+3) separationDistribBins_20particles.npy // separationDistribVal_20particles.npy 
+
+These files contain the distribution of 20 to 30 particles in the interval [0 0.005]
+
+4) 
