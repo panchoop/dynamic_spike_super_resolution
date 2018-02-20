@@ -21,10 +21,10 @@ min_number_part = 4
 max_number_part = 10
 
 # Number of generated examples
-num_trials = 1000
+num_trials = 15000
 
 # Iterations of minimization algorithm
-algIter = 25;
+algIter = 100;
 
 # test case
 test_case = () -> TestCases.cloud_1d_full(x_max, v_max, minWeights, maxWeights, K, tau, rand(min_number_part:max_number_part))
@@ -40,8 +40,8 @@ noises_position = noises_position[2:end]
 ### Location of data folder
 dataFolder = "data/1Dsimulations"
 # loaded data for rejection sampling of simulations
-bins = np.load(dataFolder*"/separationDistribBins.npy")
-density = np.load(dataFolder*"/separationDistribVal.npy")
+bins = np.load(dataFolder*"/separationDistribBins_06interval.npy")
+density = np.load(dataFolder*"/separationDistribVal_06interval.npy")
 
 println(" WARNING: The rejection sampling algorithm is being used, with interval of interest: [",bins[1]," ",bins[end],"]. To change it check the separationDistribution.jl file.")
 
