@@ -6,7 +6,7 @@ from matplotlib2tikz import save as tikz_save
 ### Plotting options:
 
 # If you want to get the plots on a specific experiment-folder or in all of them
-PlotSpecificFolder = False
+PlotSpecificFolder = True
 PlotAllFolders = not(PlotSpecificFolder)
 specificFolder = ["data/1Dsimulations/"+"2018-02-19T04-35-58-77"]
 
@@ -30,7 +30,7 @@ srf_comparison = [1, 10, 100, 1000, 10000]
 # number of considered bins for plots
 num_bins = 30
 
-### Wanna see all the generated plots ? 
+### Wanna see all the generated plots ?
 visualize_plots = False
 
 # Script to generate folders
@@ -38,7 +38,7 @@ visualize_plots = False
 if PlotAllFolders:
 	subfolders = [x[0] for x in os.walk("data/1Dsimulations/")]
 	subfolders = subfolders[1:len(subfolders)]
-	
+
 else:
 	subfolders = specificFolder
 
@@ -135,7 +135,7 @@ for i in range(len(subfolders)):
 		else:
 			error(" No adequate case assigned ")
 
-			
+
 	### Noiseless case
 	# super resolution factor threshold for declaring accurate reconstruction.
 	srf_th = srf_th_noiseless
