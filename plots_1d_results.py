@@ -101,7 +101,8 @@ def plot_success(norm, success, n_bins = num_bins, **kwargs):
 			vals[i] = n_success / float(n_total)
 		centers = 0.5 * (bins[0:len(bins) - 1] + bins[1:len(bins)])
 		plt.plot(centers, vals, **kwargs)
-		plt.ylim((0, 1))
+		plt.ylim((-0.05, 1.05))
+		plt.grid()
 		plt.xlabel("$\Delta_{dyn}$", usetex=True)
 		plt.ylabel("Correct recontruction rate")
 
@@ -170,8 +171,6 @@ for i in range(len(subfolders)):
 	plot_case(separations, "static3", 0, srf_th, w_th, linestyle = ":", linewidth = 1.0)
 	plt.legend(["dynamic", "static", "static3"])
 	axes = plt.gca()
-	axes.set_ylim([0,1.05])
-	plt.grid()
 	plt.savefig("noiseless.pdf")
 	tikz_save("noiseless.tikz", figureheight="\\figureheight", figurewidth="\\figurewidth")
 	fixTikz("noiseless.tikz",'1.5pt')
@@ -184,7 +183,6 @@ for i in range(len(subfolders)):
 	plot_case(separationsDyn, "static3", 0, srf_th, w_th, linestyle = ":", linewidth = 1.0)
 	plt.legend(["dynamic", "static", "static3"])
 	axes = plt.gca()
-	axes.set_ylim([0,1.05])
 	plt.savefig("noiseless_DynNorm.pdf")
 	tikz_save("noiseless_DynNorm.tikz", figureheight="\\figureheight", figurewidth="\\figurewidth")
 	if visualize_plots==True:
@@ -204,7 +202,6 @@ for i in range(len(subfolders)):
 	for i in range(len(datanoise)+1):
 		plot_case(separations, "dynamic", i, srf_th, w_th, linestyle = styles[i], linewidth =1.0)
 	axes = plt.gca()
-	axes.set_ylim([0,1.05])
 	plt.legend(np.append([r"$\alpha = 0$"],[ r"$\alpha = {0}$".format(str(datanoise[i]))  for i in range(len(datanoise))]))
 	plt.savefig("noisecomp-dyn.pdf")
 	tikz_save("noisecomp-dyn.tikz", figureheight="\\figureheight", figurewidth="\\figurewidth")
@@ -223,7 +220,6 @@ for i in range(len(subfolders)):
 	for i in range(len(datanoise)+1):
 		plot_case(separations, "static", i, srf_th, w_th, linestyle = styles[i] )
 	axes = plt.gca()
-	axes.set_ylim([0,1.05])
 	plt.legend(np.append([r"$\alpha = 0$"],[ r"$\alpha = {0}$".format(str(datanoise[i])) for i in range(len(datanoise))]))
 	plt.savefig("noisecomp-static.pdf")
 	if visualize_plots == True:
@@ -241,7 +237,6 @@ for i in range(len(subfolders)):
 	for i in range(len(datanoise)+1):
 		plot_case(separations, "static3", i, srf_th, w_th, linestyle = styles[i])
 	axes = plt.gca()
-	axes.set_ylim([0,1.05])
 	plt.legend(np.append([r"$\alpha = 0$"],[ r"$\alpha = {0}$".format(str(datanoise[i]))  for i in range(len(datanoise))]))
 	plt.savefig("noisecomp-static3.pdf")
 	if visualize_plots == True:
@@ -257,7 +252,6 @@ for i in range(len(subfolders)):
 	for i in range(len(srf_thresholds)):
 		plot_case(separations, "dynamic", 0, srf_thresholds[i], w_th, linestyle = styles[i])
 	axes = plt.gca()
-	axes.set_ylim([0,1.05])
 	plt.legend(["SRF = "+str(int(srf_thresholds[i])) for i in range(len(srf_thresholds))])
 	plt.savefig("noiseless_SRF.pdf")
 	if visualize_plots == True:
@@ -287,7 +281,6 @@ for i in range(len(subfolders)):
 	for i in range(len(positionnoise)):
 		plot_case(separations, "dynamic", 1+len(datanoise)+i, srf_th, w_th, linestyle = styles[i+1])
 	axes = plt.gca()
-	axes.set_ylim([0,1.05])
 	plt.legend(np.append([r"$\beta = 0$"],[r"$\beta = {0}$".format(str(positionnoise[i]/2)) for i in range(len(positionnoise))]))
 	plt.savefig("curvcomp.pdf")
 	if visualize_plots == True:

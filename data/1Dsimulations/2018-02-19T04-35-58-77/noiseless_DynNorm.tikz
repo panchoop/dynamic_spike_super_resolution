@@ -9,16 +9,18 @@
 xlabel={$\Delta_{dyn}$},
 ylabel={Correct recontruction rate},
 xmin=-0.0254709133101425, xmax=0.849794183372471,
-ymin=0, ymax=1.05,
+ymin=-0.05, ymax=1.05,
 width=\figurewidth,
 height=\figureheight,
 xtick={-0.1,0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9},
 xticklabels={,0.0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,},
-ytick={0,0.2,0.4,0.6,0.8,1,1.2},
-yticklabels={0.0,0.2,0.4,0.6,0.8,1.0,},
+ytick={-0.2,0,0.2,0.4,0.6,0.8,1,1.2},
+yticklabels={,0.0,0.2,0.4,0.6,0.8,1.0,},
 tick align=outside,
 tick pos=left,
+xmajorgrids,
 x grid style={lightgray!92.026143790849673!black},
+ymajorgrids,
 y grid style={lightgray!92.026143790849673!black},
 legend style={at={(0.97,0.03)}, anchor=south east, draw=white!80.0!black},
 legend cell align={left},
@@ -123,10 +125,10 @@ table {%
 0.781591708306294 1
 0.810009406250534 1
 };
-\path [draw=black, fill opacity=0] (axis cs:0,0)
+\path [draw=black, fill opacity=0] (axis cs:0,-0.05)
 --(axis cs:0,1.05);
 
-\path [draw=black, fill opacity=0] (axis cs:1,0)
+\path [draw=black, fill opacity=0] (axis cs:1,-0.05)
 --(axis cs:1,1.05);
 
 \path [draw=black, fill opacity=0] (axis cs:-0.0254709133101425,0)
