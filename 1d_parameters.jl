@@ -40,8 +40,8 @@ noises_position = noises_position[2:end]
 ### Location of data folder
 dataFolder = "data/1Dsimulations"
 # loaded data for rejection sampling of simulations
-bins = np.load(dataFolder*"/separationDistribBins_nearZero.npy")
-density = np.load(dataFolder*"/separationDistribVal_nearZero.npy")
+bins = np.load(dataFolder*"/separationDistribBins_06interval.npy")
+density = np.load(dataFolder*"/separationDistribVal_06interval.npy")
 
 println(" WARNING: The rejection sampling algorithm is being used, with interval of interest: [",bins[1]," ",bins[end],"]. To change it check the separationDistribution.jl file.")
 
@@ -49,8 +49,8 @@ println(" WARNING: The rejection sampling algorithm is being used, with interval
 
 noiseless_dynamic = true
 noiseless_static = true
-noise_dynamic = false
-noise_static = false
-curvature_static = false
+noise_dynamic = true
+noise_static = true
+curvature_static = true
 
 cases = (noiseless_dynamic, noiseless_static, noise_dynamic, noise_static, curvature_static)
