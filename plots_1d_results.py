@@ -6,7 +6,7 @@ from matplotlib2tikz import save as tikz_save
 ### Plotting options:
 
 # If you want to get the plots on a specific experiment-folder or in all of them
-PlotSpecificFolder = False
+PlotSpecificFolder = True
 PlotAllFolders = not(PlotSpecificFolder)
 specificFolder = ["data/1Dsimulations/"+"2018-02-19T04-35-58-77"]
 
@@ -42,50 +42,55 @@ if PlotAllFolders:
 else:
 	subfolders = specificFolder
 
-def fixTikz(filename, linewidth):
-	## Function to fix the mistakes by tikztolatex
-	# First, we get rid of the legends error
+def readEliminate(filename, text, nextLines):
+	# Function to open a text file, and eliminate all lines that
+	# star with the text line. It also eliminates the following 
+	# predefined next lines.
+	f = open(filename,"r+")
+	d = f.readlines()
+	f.seek(0)
+	counterNextLine = 0
+	for i in d:
+		if (i[1:len(text)+1] != text)and(counterNextLine==0):
+			f.write(i)
+		else:
+			counterNextLine +=1
+			if counterNextLine > nextLines:
+				counterNextLine = 0
+	f.truncate()
+	f.close()
+
+def readInsert(filename, text_start, text_insert):
+	# Function to read lines and insert in the middle of a text 
+	# an additional text.
 	f = open(filename,"r+")
 	d = f.readlines()
 	f.seek(0)
 	for i in d:
-		if i[1:8] == 'addplot':
-			# To include an appropiate line width in the plots
-			f.write(i[0:10]+"line width ="+linewidth+" ,"+i[10:len(i)])
-		elif i[1:25] != 'addlegendimage{no marker':
-			# To eliminate the legend messup
+		if i[1:len(text_start)+1] == text_start:
+			f.write(i[0:len(text_start)+1]+text_insert+i[len(text_start)+1:len(i)])
+		else:
 			f.write(i)
 	f.truncate()
 	f.close()
 
+def fixTikz(filename, linewidth):
+	## Function to fix the mistakes by tikztolatex
+	# eliminate the grid legend errors
+	# Include the appropiate line width
+	# Eliminate some strange added lines
+	readEliminate(filename, 'addlegendimage{no marker',0)
+	readEliminate(filename, 'path [draw=black', 1)
+	readInsert(filename, 'addplot [', 'line width = '+linewidth +' ,')
 
-for i in range(len(subfolders)):
-	plt.close("all")
-	print("Plotting in folder: ")
-	print(subfolders[i])
-	os.chdir(subfolders[i])
-	## Un comment if you wanna just check one particular folder.
-	#example = "2018-02-10T10-06-29-426"
-	#folder = "data/1Dsimulations/"+example
-	#os.chdir(folder)
+x_max = 1.00
+tau = 0.5
+v_max = 0.5
+f_c = 20
+K = 2
 
-	x_max = 1.00
-	tau = 0.5
-	v_max = 0.5
-	f_c = 20
-	K = 2
-
-	separations = np.load("separations.npy")
-	separationsDyn = np.load("separationDynamic.npy")
-	datanoise = np.load("datanoise.npy")
-	positionnoise = np.load("positionnoise.npy")
-	results = np.load("results.npy")
-	results[results==0] = x_max
-	N = len(separations)
-
-
-	# Function to plot the success rate as bins
-	def plot_success(norm, success, n_bins = num_bins, **kwargs):
+# Function to plot the success rate as bins
+def plot_success(norm, success, n_bins = num_bins, **kwargs):
 		bins = np.linspace(np.percentile(norm, 2), np.percentile(norm, 85), n_bins)
 		bins = np.linspace(np.min(norm), np.max(norm), n_bins)
 		vals = np.zeros(len(bins) - 1)
@@ -100,41 +105,58 @@ for i in range(len(subfolders)):
 		plt.xlabel("$\Delta_{dyn}$", usetex=True)
 		plt.ylabel("Correct recontruction rate")
 
-	# Function to plot each specific cases
-	def plot_case(separations, case, noiseType, srf_threshold, weights_threshold,**kwargs):
-		# case = 'static', 'dynamic' or 'static3'
-		# noiseType depends on how the codes where generated, typically
-		# 0 = no noise. 1 .. .N = measurement noise, N+1... = position noise.
-		if case == "dynamic":
-			# Obtain from the results the reconstruction missmatch: space, velocity, weight.
-			dx_dyn = results[noiseType::(1+len(datanoise)+len(positionnoise)),0]
-			dv_dyn = results[noiseType::(1+len(datanoise)+len(positionnoise)),1]
-			dw_dyn = results[noiseType::(1+len(datanoise)+len(positionnoise)),2]
-			# Compute the obtained super resolution factors
-			srf_dyn_x = x_max/dx_dyn/f_c
-			srf_dyn_v = x_max/dv_dyn/f_c/tau/K
-			srf_dyn = np.minimum(srf_dyn_x, srf_dyn_v)
-			success = np.nonzero(np.logical_and(srf_dyn > srf_threshold, dw_dyn < weights_threshold))
-			plot_success(separations, success, **kwargs)
-		elif case == "static":
-			# Obtain from the results the reconstruction missmatch: space, weight.
-			dx_static = results[noiseType::(1+len(datanoise)+len(positionnoise)), 3]
-			dw_static = results[noiseType::(1+len(datanoise)+len(positionnoise)), 4]
-			# Compute super resolution factor
-			srf_static = x_max/dx_static/f_c
-			success = np.nonzero(np.logical_and(srf_static > srf_threshold, dw_static < weights_threshold))
-			plot_success(separations, success, **kwargs)
-		elif case == "static3":
-			# Obtain from the results the reconstruction missmatch: space, weight.
-			dx_static3 = results[noiseType::(1+len(datanoise)+len(positionnoise)), 5]
-			dw_static3 = results[noiseType::(1+len(datanoise)+len(positionnoise)), 6]
-			# Compute super resolution factor
-			srf_static3 = x_max/dx_static3/f_c
-			success = np.nonzero(np.logical_and(srf_static3 > srf_threshold, dw_static3 < weights_threshold))
-			plot_success(separations, success, **kwargs)
-		else:
-			error(" No adequate case assigned ")
+# Function to plot each specific cases
+def plot_case(separations, case, noiseType, srf_threshold, weights_threshold,**kwargs):
+	# case = 'static', 'dynamic' or 'static3'
+	# noiseType depends on how the codes where generated, typically
+	# 0 = no noise. 1 .. .N = measurement noise, N+1... = position noise.
+	if case == "dynamic":
+		# Obtain from the results the reconstruction missmatch: space, velocity, weight.
+		dx_dyn = results[noiseType::(1+len(datanoise)+len(positionnoise)),0]
+		dv_dyn = results[noiseType::(1+len(datanoise)+len(positionnoise)),1]
+		dw_dyn = results[noiseType::(1+len(datanoise)+len(positionnoise)),2]
+		# Compute the obtained super resolution factors
+		srf_dyn_x = x_max/dx_dyn/f_c
+		srf_dyn_v = x_max/dv_dyn/f_c/tau/K
+		srf_dyn = np.minimum(srf_dyn_x, srf_dyn_v)
+		success = np.nonzero(np.logical_and(srf_dyn > srf_threshold, dw_dyn < weights_threshold))
+		plot_success(separations, success, **kwargs)
+	elif case == "static":
+		# Obtain from the results the reconstruction missmatch: space, weight.
+		dx_static = results[noiseType::(1+len(datanoise)+len(positionnoise)), 3]
+		dw_static = results[noiseType::(1+len(datanoise)+len(positionnoise)), 4]
+		# Compute super resolution factor
+		srf_static = x_max/dx_static/f_c
+		success = np.nonzero(np.logical_and(srf_static > srf_threshold, dw_static < weights_threshold))
+		plot_success(separations, success, **kwargs)
+	elif case == "static3":
+		# Obtain from the results the reconstruction missmatch: space, weight.
+		dx_static3 = results[noiseType::(1+len(datanoise)+len(positionnoise)), 5]
+		dw_static3 = results[noiseType::(1+len(datanoise)+len(positionnoise)), 6]
+		# Compute super resolution factor
+		srf_static3 = x_max/dx_static3/f_c
+		success = np.nonzero(np.logical_and(srf_static3 > srf_threshold, dw_static3 < weights_threshold))
+		plot_success(separations, success, **kwargs)
+	else:
+		error(" No adequate case assigned ")
 
+for i in range(len(subfolders)):
+	plt.close("all")
+	print("Plotting in folder: ")
+	print(subfolders[i])
+	os.chdir(subfolders[i])
+	## Un comment if you wanna just check one particular folder.
+	#example = "2018-02-10T10-06-29-426"
+	#folder = "data/1Dsimulations/"+example
+	#os.chdir(folder)
+
+	separations = np.load("separations.npy")
+	separationsDyn = np.load("separationDynamic.npy")
+	datanoise = np.load("datanoise.npy")
+	positionnoise = np.load("positionnoise.npy")
+	results = np.load("results.npy")
+	results[results==0] = x_max
+	N = len(separations)
 
 	### Noiseless case
 	# super resolution factor threshold for declaring accurate reconstruction.
@@ -149,9 +171,10 @@ for i in range(len(subfolders)):
 	plt.legend(["dynamic", "static", "static3"])
 	axes = plt.gca()
 	axes.set_ylim([0,1.05])
+	plt.grid()
 	plt.savefig("noiseless.pdf")
 	tikz_save("noiseless.tikz", figureheight="\\figureheight", figurewidth="\\figurewidth")
-	fixTikz("noiseless.tikz","1pt")
+	fixTikz("noiseless.tikz",'1.5pt')
 	if visualize_plots==True:
 		plt.show()
 
