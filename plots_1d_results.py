@@ -33,14 +33,7 @@ num_bins = 30
 ### Wanna see all the generated plots ?
 visualize_plots = False
 
-# Script to generate folders
-
-if PlotAllFolders:
-	subfolders = [x[0] for x in os.walk("data/1Dsimulations/")]
-	subfolders = subfolders[1:len(subfolders)]
-
-else:
-	subfolders = specificFolder
+### Scripts to modify tikz files
 
 def readEliminate(filename, text, nextLines):
 	# Function to open a text file, and eliminate all lines that
@@ -73,6 +66,44 @@ def readInsert(filename, text_start, text_insert):
 			f.write(i)
 	f.truncate()
 	f.close()
+	
+def readNewline(filename, text, newline):
+	# Function to insert a complete new line
+	f = open(filename,"r+")
+	d = f.readlines()
+	f.seek(0)
+	for i in d:
+		f.write(i)
+		if i[1:len(text)+1] == text:
+			f.write(newline)
+	f.truncate()
+	f.close()
+
+def readRetrieve(filename, text):
+	# Function that for a specific line of text, will get the  array that describes.
+	# it assumes that the last element in text is '{'
+	if text[len(text)-1] != '{':
+		print('This is not working')
+	f = open(filename,"r+")
+	d = f.readlines()
+	f.seek(0)
+	values=''
+	for i in d:
+		f.write(i)
+		if i[0:len(text)] == text:
+			values= i[len(text):len(i)]
+			print(values)
+			break
+	while values != '':
+		print(values)
+		if values[-1]!='}':
+			values = values[1:-1]
+		else:
+			values=values[1:-1]
+			break
+	print(values)
+	return map(float, values.split(","))
+
 
 def fixTikz(filename, linewidth):
 	## Function to fix the mistakes by tikztolatex
@@ -82,12 +113,23 @@ def fixTikz(filename, linewidth):
 	readEliminate(filename, 'addlegendimage{no marker',0)
 	readEliminate(filename, 'path [draw=black', 1)
 	readInsert(filename, 'addplot [', 'line width = '+linewidth +' ,')
+	readNewline(filename, 'begin{axis}[', 'name=ax,\n')
+	readNewline(filename, 'end{axis}', '\\node at ($(ax.outer south east)+(3pt,10pt)$) {$\cdot \\nicefrac{1}{f_c}$};')
+
+### Selecting the folders to generate plots from
 
 x_max = 1.00
 tau = 0.5
 v_max = 0.5
 f_c = 20
 K = 2
+
+if PlotAllFolders:
+	subfolders = [x[0] for x in os.walk("data/1Dsimulations/")]
+	subfolders = subfolders[1:len(subfolders)]
+
+else:
+	subfolders = specificFolder
 
 # Function to plot the success rate as bins
 def plot_success(norm, success, n_bins = num_bins, **kwargs):
@@ -141,6 +183,8 @@ def plot_case(separations, case, noiseType, srf_threshold, weights_threshold,**k
 	else:
 		error(" No adequate case assigned ")
 
+# Actualy plotting process
+
 for i in range(len(subfolders)):
 	plt.close("all")
 	print("Plotting in folder: ")
@@ -166,25 +210,27 @@ for i in range(len(subfolders)):
 	w_th = w_th_noiseless
 
 	plt.figure()
-	plot_case(separations, "dynamic", 0, srf_th, w_th, linestyle = "-", linewidth = 1.0)
-	plot_case(separations, "static", 0, srf_th, w_th, linestyle = "-.", linewidth = 1.0)
-	plot_case(separations, "static3", 0, srf_th, w_th, linestyle = ":", linewidth = 1.0)
+	plot_case(separations, "dynamic", 0, srf_th, w_th, linestyle = "-")
+	plot_case(separations, "static", 0, srf_th, w_th, linestyle = "-.")
+	plot_case(separations, "static3", 0, srf_th, w_th, linestyle = ":")
 	plt.legend(["dynamic", "static", "static3"])
 	axes = plt.gca()
 	plt.savefig("noiseless.pdf")
 	tikz_save("noiseless.tikz", figureheight="\\figureheight", figurewidth="\\figurewidth")
+	print(readRetrieve("noiseless.tikz","xtick={"))
 	fixTikz("noiseless.tikz",'1.5pt')
 	if visualize_plots==True:
 		plt.show()
 
 	plt.figure()
-	plot_case(separationsDyn, "dynamic", 0, srf_th, w_th, linestyle = "-", linewidth = 1.0)
-	plot_case(separationsDyn, "static", 0, srf_th, w_th, linestyle = "-.", linewidth = 1.0)
-	plot_case(separationsDyn, "static3", 0, srf_th, w_th, linestyle = ":", linewidth = 1.0)
+	plot_case(separationsDyn, "dynamic", 0, srf_th, w_th, linestyle = "-")
+	plot_case(separationsDyn, "static", 0, srf_th, w_th, linestyle = "-.")
+	plot_case(separationsDyn, "static3", 0, srf_th, w_th, linestyle = ":")
 	plt.legend(["dynamic", "static", "static3"])
 	axes = plt.gca()
 	plt.savefig("noiseless_DynNorm.pdf")
 	tikz_save("noiseless_DynNorm.tikz", figureheight="\\figureheight", figurewidth="\\figurewidth")
+	fixTikz("noiseless_DynNorm.tikz",'1.5pt')
 	if visualize_plots==True:
 		plt.show()
 
@@ -200,11 +246,12 @@ for i in range(len(subfolders)):
 	styles = ["-", "--", "-.", ":", "-"]
 	plt.figure()
 	for i in range(len(datanoise)+1):
-		plot_case(separations, "dynamic", i, srf_th, w_th, linestyle = styles[i], linewidth =1.0)
+		plot_case(separations, "dynamic", i, srf_th, w_th, linestyle = styles[i])
 	axes = plt.gca()
 	plt.legend(np.append([r"$\alpha = 0$"],[ r"$\alpha = {0}$".format(str(datanoise[i]))  for i in range(len(datanoise))]))
 	plt.savefig("noisecomp-dyn.pdf")
 	tikz_save("noisecomp-dyn.tikz", figureheight="\\figureheight", figurewidth="\\figurewidth")
+	fixTikz("noisecomp-dyn.tikz",'1.5pt')
 	if visualize_plots==True:
 		plt.show()
 

@@ -6,6 +6,7 @@
 \definecolor{color2}{rgb}{0.172549019607843,0.627450980392157,0.172549019607843}
 
 \begin{axis}[
+name=ax,
 xlabel={$\Delta_{dyn}$},
 ylabel={Correct recontruction rate},
 xmin=-0.00303100163868051, xmax=0.102606657526409,
@@ -26,7 +27,7 @@ legend style={at={(0.97,0.03)}, anchor=south east, draw=white!80.0!black},
 legend cell align={left},
 legend entries={{dynamic},{static},{static3}}
 ]
-\addplot [line width = 1.5pt ,color0]
+\addplot [line width = 1.5pt ,semithick, color0]
 table {%
 0.00177071014155084 0.724137931034483
 0.00520050427028752 0.794117647058823
@@ -58,7 +59,7 @@ table {%
 0.0943751516174411 1
 0.0978049457461778 1
 };
-\addplot [line width = 1.5pt ,color1, dash pattern=on 1pt off 3pt on 3pt off 3pt]
+\addplot [line width = 1.5pt ,semithick, color1, dash pattern=on 1pt off 3pt on 3pt off 3pt]
 table {%
 0.00177071014155084 0.275862068965517
 0.00520050427028752 0.323529411764706
@@ -90,7 +91,7 @@ table {%
 0.0943751516174411 1
 0.0978049457461778 1
 };
-\addplot [line width = 1.5pt ,color2, dotted]
+\addplot [line width = 1.5pt ,semithick, color2, dotted]
 table {%
 0.00177071014155084 0
 0.00520050427028752 0
@@ -127,5 +128,5 @@ table {%
 
 
 \end{axis}
-
+\node at ($(ax.outer south east)+(3pt,10pt)$) {$\cdot \nicefrac{1}{f_c}$};
 \end{tikzpicture}
