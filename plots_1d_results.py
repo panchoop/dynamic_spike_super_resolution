@@ -6,7 +6,7 @@ from matplotlib2tikz import save as tikz_save
 ### Plotting options:
 
 # If you want to get the plots on a specific experiment-folder or in all of them
-PlotSpecificFolder = True
+PlotSpecificFolder = False
 PlotAllFolders = not(PlotSpecificFolder)
 specificFolder = ["data/1Dsimulations/"+"2018-02-19T04-35-58-77"]
 
@@ -60,6 +60,7 @@ def fixTikz(filename, linewidth):
 
 
 for i in range(len(subfolders)):
+	plt.close("all")
 	print("Plotting in folder: ")
 	print(subfolders[i])
 	os.chdir(subfolders[i])
@@ -268,5 +269,4 @@ for i in range(len(subfolders)):
 	plt.savefig("curvcomp.pdf")
 	if visualize_plots == True:
 		plt.show()
-
 	os.chdir("../../..")
