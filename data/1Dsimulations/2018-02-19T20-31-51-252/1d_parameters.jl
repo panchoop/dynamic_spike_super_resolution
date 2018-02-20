@@ -24,7 +24,7 @@ max_number_part = 10
 num_trials = 1000
 
 # Iterations of minimization algorithm
-algIter = 25;
+algIter = 50;
 
 # test case
 test_case = () -> TestCases.cloud_1d_full(x_max, v_max, minWeights, maxWeights, K, tau, rand(min_number_part:max_number_part))
