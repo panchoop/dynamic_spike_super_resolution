@@ -3,9 +3,16 @@
 push!(LOAD_PATH, "./models")
 push!(LOAD_PATH, ".")
 push!(LOAD_PATH, "./SparseInverseProblems/src")
+
 using SuperResModels
 using SparseInverseProblemsMod
 using Distributions
+# To see the progress in pmap
+# To use PmapProgressMeter you need to clone it manually
+# do in Julia: Pkg.clone("https://github.com/slundberg/PmapProgressMeter.jl")
+# if this is no longer existent, uncoment the alternative pmap in this code.
+@everywhere using ProgressMeter
+@everywhere using PmapProgressMeter
 
 using PyCall
 @pyimport numpy as np
@@ -40,13 +47,10 @@ single_particle_norm = norm(phi(model_static, thetas, weights), lp_norm)
 # The vector particles_m basically are the locations at time 0 of the particles, it also defines quantity.
 # Particles_p are the symmetric equivalent, on the east and moving towards the north. 
 
-x_max = 1/100 # [mm]
-v_max = 15/100 # [mm/s]
-tau = 1/500 # sampling rate.
-sigma_noise = 0.00 # noise amplitude.
+
 Nparticles = 500
 activation_prob = 0.0002
-expected_time = 35
+expected_time = 34
 
 ### Generate sequence ###
 println("Generating sequence... ")
@@ -56,7 +60,7 @@ function activate_particles(Nparticles,activation_prob, expected_time)
     # particles are tuples of position,velocity, weight, survival time.
     B = Binomial(Nparticles,activation_prob)
     P = Binomial(1,0.5)
-    U = Uniform(0,x_max)
+    U = Uniform(x_max/10,9*x_max/10)
     N = Poisson(expected_time)
 
     function flowSpeeds(yposition)
@@ -70,10 +74,10 @@ function activate_particles(Nparticles,activation_prob, expected_time)
         yposition = rand(U)
         weight = 1
         if direction == 0
-            position = (x_max/4, yposition)
+            position = (x_max/2-dx, yposition)
             velocity = flowSpeeds(yposition)
         else
-            position = (x_max*3/4, yposition)
+            position = (x_max/2+dx, yposition)
             velocity = -flowSpeeds(yposition)
         end
         time = rand(N)
@@ -90,7 +94,7 @@ function time_step(particles)
 	# update time
 	new_time = particle[4]-1
 	# discard if time is over
-	if new_time <= 0
+	if (new_time <= 0) | (new_position>x_max*19/20) | (new_position<x_max/20)
 	    deleteat!(particles,j)
 	else
 	    particles[j]=((particle[1][1], new_position),particle[2], particle[3], new_time)
@@ -123,11 +127,99 @@ for i in 1:n_im
     end
 end
 
+
+### Obtaining time frames in which the quantity of particles remained constant ###
+println("Getting short sequences without jump...")
+# get the total mass at each time step
+frame_norms = [norm(video[:, i], lp_norm) for i in 1:n_im]
+@everywhere frame_norms = $frame_norms
+# Find locations in which there was a significative mass difference between two time steps.
+jumps = find(abs.(frame_norms[2:end] - frame_norms[1:end-1]) .> jump_threshold*single_particle_norm)
+jumps = [0; jumps; n_im]
+# Obtain non-overlapping intervals of at least 2K+1 consecutive time samples in which the mass didn't changed.
+short_seqs = []
+for i in 1:length(jumps)-1
+    append!(short_seqs, [(jumps[i] + 5*j + 1):(jumps[i] + 5*j + 5) for j in 0:(div(jumps[i+1] - jumps[i], 5) -1)])
+end
+
+### Function that given the a subquence of the total video, will estimate the locations and weights of the
+### involved particles. 
+@everywhere function posvel_from_seq(video, seq)
+    assert(length(seq) == 5)
+    target = video[:,seq][:]
+    # estimated number of particles in the sequence.
+    est_num_particles = div(frame_norms[seq[1]], single_particle_norm*0.95)
+    if (est_num_particles == 0)
+        return Matrix{Float64}(5,0)
+    end
+    # Function required to use the SparseInverseProblems.ADCG method.
+    function callback(old_thetas, thetas, weights, output, old_obj_val)
+        #evalute current OV
+        new_obj_val,t = SparseInverseProblems.loss(SparseInverseProblems.LSLoss(), output - target)
+        #println("gap = $(old_obj_val - new_obj_val)")
+        if old_obj_val - new_obj_val < 1E-4
+            return true
+        end
+        return false
+    end
+    # It uses the ACDG algorithm to estimate the location and weights of the particles. Using the estimated number of particles we can bound the total variation on the solutions.
+    (thetas_est,weights_est) = SparseInverseProblems.ADCG(model_dynamic, SparseInverseProblems.LSLoss(), target, frame_norms[seq[1]], callback=callback, max_iters=100)
+    if length(thetas_est) > 0
+        println("est_num = ", est_num_particles)
+        println("thetas = ", thetas_est) 
+        println("weights = ", weights_est)
+        return [thetas_est; weights_est']
+    else
+        return Matrix{Float64}(5,0)
+    end
+end
+
+println("Inverting...")
+all_thetas = pmap(seq -> begin sleep(1); posvel_from_seq(video, seq) end, Progress(length(short_seqs)), short_seqs)
+
+println("Reprojecting...")
+errors = zeros(length(short_seqs))
+### Measurements error, we simulate the measurements that would be obtained with our reconstructed values ###
+for i in 1:length(short_seqs)
+    seq=  short_seqs[i]
+    target = video[:, seq][:]
+    if length(all_thetas[i]) > 0
+        reprojection = phi(model_dynamic, all_thetas[i][1:4,:], all_thetas[i][5,:])
+        println("error = ", norm(target-reprojection))
+        errors[i] = norm(target-reprojection)
+    else
+        errors[i] = norm(target)
+    end
+end
+
+### Save the simulated data ###
+data_folder = "data/2Dsimulations/"*now_str
+
+using PyCall
+@pyimport numpy as np
+mkdir(data_folder)
+cp("2d_parameters.jl", string(data_folder, "/2d_parameters.jl"))
+cd(data_folder)
+short_seq_array = hcat(short_seqs...)
+np.save("video", video)
+np.save("frame_norms", frame_norms)
+np.save("jumps", jumps)
+np.save("short_seq_array", short_seq_array)
+for i in 1:length(short_seqs)
+    np.save(string("thetas-", i), all_thetas[i])
+end
+np.save("errors", errors)
+cd("..")
+
+
+
+if false
 for i = 1:500
 plt.figure()
-plt.pcolormesh(np.linspace(0, 0.01, 13), np.linspace(0, 0.01, 13), reshape(video[:,i],13,13))
+plt.pcolormesh(np.linspace(0, 0.01, n_x), np.linspace(0, 0.01, n_x), reshape(video[:,i],n_x,n_y))
 plt.colorbar()
 plt.show()
+end
 end
 
 showFrames = 1:500
