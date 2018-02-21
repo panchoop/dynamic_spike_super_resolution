@@ -44,3 +44,25 @@ plt.pcolormesh(np.linspace(0, 0.01, 13), np.linspace(0, 0.01, 13), reshape(video
 plt.colorbar()
 plt.savefig(folder*"/singleframe.pdf")
 plt.show()
+
+plt.figure()
+# Compute the L2 norm at each time sample
+L2norms = sqrt.(sum(video.^2,1))[:]
+plt.plot(1:length(L2norms), L2norms)
+# Paint the close to constant cases
+minSnapshot = 5
+tolerance = 0.05
+j = 1
+i = 1
+while i <= length(L2norms)-minSnapshot
+    while (j+i <= length(L2norms)-minSnapshot) & (abs.(L2norms[i]-L2norms[i+j])<=tolerance)
+	j = j +1
+    end
+    if j-1 >= minSnapshot
+	plt.plot([i, i+j-1], [mean(L2norms[i:i+j-1]), mean(L2norms[i:i+j-1])],color="r")
+    end
+    i = i+j
+    j = 1
+end
+plt.show()
+

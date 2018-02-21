@@ -3,7 +3,7 @@ x_max = 0.01
 
 ### Models ###
 # The considered PSF for the considered imaging tecnique
-	sigma = 0.0004
+	sigma = 0.0008
 	filter = (x, y) -> exp(-(x^2 + y^2)/2/sigma^2)
 	filter_dx = (x, y) -> -x/sigma^2*filter(x, y)
 	filter_dy = (x, y) -> -y/sigma^2*filter(x, y)
@@ -19,7 +19,7 @@ sigma_noise = 0.01
 
 ### Medium ###
 # total number of the experimets measurements (gives the length of the experience)
-	n_im = 2000
+	n_im = 500
 # Spatial resolution
 	dx = 0.0002
 
