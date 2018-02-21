@@ -21,6 +21,8 @@ srf_th_noise_dynamic = 40
 w_th_noise_dynamic = 0.05
 srf_th_noise_static = 40
 w_th_noise_static = 0.05
+srf_th_noise_comparison = 40
+w_th_noise_comparison = 0.05
 ## Curvature noise
 srf_th_curvature = 1
 w_th_curvature = 0.1
@@ -33,6 +35,10 @@ srf_comparison = [1, 10, 100, 1000, 10000]
 num_bins = 30
 # Parameter for latex thickness
 lineThickness = "1.5pt"
+# Case compared in the noise case across
+# 0 no noise, 1 -> 0.025 noise, 2 -> 0.05 noise, 3-> 0.075 noise.
+noiseComparison = 3;
+
 
 ### Wanna see all the generated plots ?
 visualize_plots = False
@@ -88,11 +94,8 @@ def readReplace(filename, text_start, text_replace, text_insert):
 	boolToken = False
 	for i in d:
 		boolToken = False
-		print(text_replace)
-		print(i)
 		if i[0:len(text_start)] == text_start:
 			i = i.replace(text_replace,text_insert)
-			print(i)
 			f.write(i)
 		else:
 			f.write(i)
@@ -360,6 +363,23 @@ for i in range(len(subfolders)):
 	tikz_save("noisecomp-static3.tikz", figureheight="\\figureheight", figurewidth="\\figurewidth")
 	fixTikz("noisecomp-static3.tikz",lineThickness)
 	if visualize_plots == True:
+		plt.show()
+
+	## Noise levels compared accross the cases
+	srf_th = srf_th_noise_comparison
+	w_th = w_th_noise_comparison
+
+	styles = ["-", "--", ":"]
+	plt.figure()
+	plot_case(separations, "dynamic", noiseComparison, srf_th, w_th, linestyle = styles[0])
+	plot_case(separations, "static", noiseComparison, srf_th, w_th, linestyle = styles[0])
+	plot_case(separations, "static3", noiseComparison, srf_th, w_th, linestyle = styles[0])
+	axes = plt.gca()
+	plt.legend(["dynamic", "static", "static3"])
+	plt.savefig("noise_comp_across.pdf")
+	tikz_save("noise_comp_across.tikz", figureheight="\\figureheight", figurewidth="\\figurewidth")
+	fixTikz("noise_comp_across.tikz",lineThickness)
+	if visualize_plots==True:
 		plt.show()
 
 	### Super resolution factor comparison
