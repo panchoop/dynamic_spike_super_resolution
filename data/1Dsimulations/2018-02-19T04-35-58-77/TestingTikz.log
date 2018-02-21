@@ -1,14 +1,12 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.4.14)  20 FEB 2018 21:07
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6210 64-bit) (preloaded format=pdflatex 2017.4.26)  21 FEB 2018 05:57
 entering extended mode
- restricted \write18 enabled.
- %&-line parsing enabled.
-**TestingTikz.tex
-(./TestingTikz.tex
-LaTeX2e <2016/03/31>
-Babel <3.9q> and hyphenation patterns for 81 language(s) loaded.
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/latex/base/article.cls
+**./TestingTikz.tex
+(TestingTikz.tex
+LaTeX2e <2017/01/01> patch level 1
+Babel <3.9r> and hyphenation patterns for 75 language(s) loaded.
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\article.cls"
 Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/latex/base/size10.clo
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\size10.clo"
 File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count79
@@ -23,19 +21,19 @@ File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
 )
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/latex/base/inputenc.sty
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\inputenc.sty"
 Package: inputenc 2015/03/17 v1.2c Input encoding file
 \inpenc@prehook=\toks14
 \inpenc@posthook=\toks15
 
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/latex/base/utf8.def
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\utf8.def"
 File: utf8.def 2016/02/28 v1.1s UTF-8 support for inputenc
 Now handling font encoding OML ...
 ... no UTF-8 mapping file for font encoding OML
 Now handling font encoding T1 ...
 ... processing UTF-8 mapping file for font encoding T1
 
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/latex/base/t1enc.dfu
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\t1enc.dfu"
 File: t1enc.dfu 2016/02/28 v1.1s UTF-8 support for inputenc
    defining Unicode char U+00A0 (decimal 160)
    defining Unicode char U+00A1 (decimal 161)
@@ -272,7 +270,7 @@ File: t1enc.dfu 2016/02/28 v1.1s UTF-8 support for inputenc
 Now handling font encoding OT1 ...
 ... processing UTF-8 mapping file for font encoding OT1
 
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/latex/base/ot1enc.dfu
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\ot1enc.dfu"
 File: ot1enc.dfu 2016/02/28 v1.1s UTF-8 support for inputenc
    defining Unicode char U+00A0 (decimal 160)
    defining Unicode char U+00A1 (decimal 161)
@@ -313,7 +311,7 @@ File: ot1enc.dfu 2016/02/28 v1.1s UTF-8 support for inputenc
 Now handling font encoding OMS ...
 ... processing UTF-8 mapping file for font encoding OMS
 
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/latex/base/omsenc.dfu
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\omsenc.dfu"
 File: omsenc.dfu 2016/02/28 v1.1s UTF-8 support for inputenc
    defining Unicode char U+00A7 (decimal 167)
    defining Unicode char U+00B6 (decimal 182)
@@ -337,14 +335,21 @@ Now handling font encoding U ...
    defining Unicode char U+2122 (decimal 8482)
    defining Unicode char U+2423 (decimal 9251)
 ))
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/babel/babel.sty
-Package: babel 2016/02/24 3.9q The Babel package
+("C:\Program Files\MiKTeX 2.9\tex\generic\babel\babel.sty"
+Package: babel 2016/04/23 3.9r The Babel package
 
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/babel-english/english.ld
-f
-Language: english 2012/08/20 v3.3p English support from the babel system
- (/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/babel/babel.def
-File: babel.def 2016/02/24 3.9q Babel common definitions
+*************************************
+* Local config file bblopts.cfg used
+*
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\latex\arabi\bblopts.cfg
+File: bblopts.cfg 2005/09/08 v0.1 add Arabic and Farsi to "declared" options of
+ babel
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\babel-english\english.ldf"
+Language: english 2017/01/24 v3.3q English support from the babel system
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\babel\babel.def"
+File: babel.def 2016/04/23 3.9r Babel common definitions
 \babel@savecnt=\count87
 \U@D=\dimen103
 )
@@ -352,74 +357,74 @@ File: babel.def 2016/02/24 3.9q Babel common definitions
 \l@australian = a dialect from \language\l@british 
 \l@newzealand = a dialect from \language\l@british 
 ))
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgf/utilities/pgfutil-co
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\latex\pgf\frontendlayer\tikz.sty
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\latex\pgf\basiclayer\pgf.sty
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\latex\pgf\utilities\pgfrcs.sty
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\utilities\pgfutil-co
 mmon.tex
 \pgfutil@everybye=\toks16
 \pgfutil@tempdima=\dimen104
 \pgfutil@tempdimb=\dimen105
 
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgf/utilities/pgfutil-co
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\utilities\pgfutil-co
 mmon-lists.tex))
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgf/utilities/pgfutil-la
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\utilities\pgfutil-la
 tex.def
 \pgfutil@abb=\box26
- (/scratch/local/app/teTeX/08.15/texmf-dist/tex/latex/ms/everyshi.sty
+ (C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\latex\ms\everyshi.sty
 Package: everyshi 2001/05/15 v3.00 EveryShipout Package (MS)
 ))
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgf/utilities/pgfrcs.cod
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\utilities\pgfrcs.cod
 e.tex
 Package: pgfrcs 2015/08/07 v3.0.1a (rcs-revision 1.31)
 ))
 Package: pgf 2015/08/07 v3.0.1a (rcs-revision 1.15)
 
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/latex/graphics/graphicx.sty
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\latex\pgf\basiclayer\pgfcore.sty
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
 Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
 
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/latex/graphics/keyval.sty
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks17
 )
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/latex/graphics/graphics.sty
-Package: graphics 2016/01/03 v1.0q Standard LaTeX Graphics (DPC,SPQR)
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
+Package: graphics 2016/10/09 v1.0u Standard LaTeX Graphics (DPC,SPQR)
 
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/latex/graphics/trig.sty
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\trig.sty"
 Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
 )
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/latex/latexconfig/graphics.cfg
-File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics-cfg\graphics.cfg"
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
-Package graphics Info: Driver file: pdftex.def on input line 95.
+Package graphics Info: Driver file: pdftex.def on input line 99.
 
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/latex/pdftex-def/pdftex.def
-File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics-def\pdftex.def"
+File: pdftex.def 2017/01/12 v0.06k Graphics/color for pdfTeX
 
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/oberdiek/infwarerr.sty
-Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
+Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
 )
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
-Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
+Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
 )
 \Gread@gobject=\count88
 ))
 \Gin@req@height=\dimen106
 \Gin@req@width=\dimen107
 )
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\latex\pgf\systemlayer\pgfsys.sty
 
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.c
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\systemlayer\pgfsys.c
 ode.tex
 Package: pgfsys 2014/07/09 v3.0.1a (rcs-revision 1.48)
 
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgf/utilities/pgfkeys.co
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\utilities\pgfkeys.co
 de.tex
 \pgfkeys@pathtoks=\toks18
 \pgfkeys@temptoks=\toks19
 
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgf/utilities/pgfkeysfil
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\utilities\pgfkeysfil
 tered.code.tex
 \pgfkeys@tmptoks=\toks20
 ))
@@ -441,57 +446,57 @@ tered.code.tex
 \t@pgf@tokb=\toks22
 \t@pgf@tokc=\toks23
 
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\systemlayer\pgf.cfg
 File: pgf.cfg 2008/05/14  (rcs-revision 1.7)
 )
 Driver file for pgf: pgfsys-pdftex.def
 
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-p
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\systemlayer\pgfsys-p
 dftex.def
 File: pgfsys-pdftex.def 2014/10/11  (rcs-revision 1.35)
 
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-c
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\systemlayer\pgfsys-c
 ommon-pdf.def
 File: pgfsys-common-pdf.def 2013/10/10  (rcs-revision 1.13)
 )))
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgf/systemlayer/pgfsysso
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\systemlayer\pgfsysso
 ftpath.code.tex
 File: pgfsyssoftpath.code.tex 2013/09/09  (rcs-revision 1.9)
 \pgfsyssoftpath@smallbuffer@items=\count93
 \pgfsyssoftpath@bigbuffer@items=\count94
 )
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgf/systemlayer/pgfsyspr
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\systemlayer\pgfsyspr
 otocol.code.tex
 File: pgfsysprotocol.code.tex 2006/10/16  (rcs-revision 1.4)
 ))
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/latex/xcolor/xcolor.sty
-Package: xcolor 2007/01/21 v2.11 LaTeX color extensions (UK)
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\latex\xcolor\xcolor.sty
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
 
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/latex/latexconfig/color.cfg
-File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics-cfg\color.cfg"
+File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package xcolor Info: Driver file: pdftex.def on input line 225.
-Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1337.
-Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1341.
-Package xcolor Info: Model `RGB' extended on input line 1353.
-Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1355.
-Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1356.
-Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1357.
-Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1358.
-Package xcolor Info: Model `Gray' substituted by `gray' on input line 1359.
-Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
 )
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.c
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgfcore.c
 ode.tex
 Package: pgfcore 2010/04/11 v3.0.1a (rcs-revision 1.7)
 
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgf/math/pgfmath.code.te
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmath.code.te
 x
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgf/math/pgfmathcalc.cod
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmathcalc.cod
 e.tex
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgf/math/pgfmathutil.cod
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmathutil.cod
 e.tex)
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgf/math/pgfmathparser.c
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmathparser.c
 ode.tex
 \pgfmath@dimen=\dimen116
 \pgfmath@count=\count95
@@ -500,29 +505,29 @@ ode.tex
 \pgfmath@stack@operand=\toks25
 \pgfmath@stack@operation=\toks26
 )
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgf/math/pgfmathfunction
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmathfunction
 s.code.tex
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgf/math/pgfmathfunction
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmathfunction
 s.basic.code.tex)
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgf/math/pgfmathfunction
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmathfunction
 s.trigonometric.code.tex)
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgf/math/pgfmathfunction
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmathfunction
 s.random.code.tex)
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgf/math/pgfmathfunction
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmathfunction
 s.comparison.code.tex)
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgf/math/pgfmathfunction
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmathfunction
 s.base.code.tex)
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgf/math/pgfmathfunction
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmathfunction
 s.round.code.tex)
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgf/math/pgfmathfunction
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmathfunction
 s.misc.code.tex)
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgf/math/pgfmathfunction
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmathfunction
 s.integerarithmetics.code.tex)))
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgf/math/pgfmathfloat.co
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmathfloat.co
 de.tex
 \c@pgfmathroundto@lastzeros=\count96
 ))
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepo
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgfcorepo
 ints.code.tex
 File: pgfcorepoints.code.tex 2013/10/07  (rcs-revision 1.27)
 \pgf@picminx=\dimen117
@@ -540,19 +545,19 @@ File: pgfcorepoints.code.tex 2013/10/07  (rcs-revision 1.27)
 \pgf@zx=\dimen129
 \pgf@zy=\dimen130
 )
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepa
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgfcorepa
 thconstruct.code.tex
 File: pgfcorepathconstruct.code.tex 2013/10/07  (rcs-revision 1.29)
 \pgf@path@lastx=\dimen131
 \pgf@path@lasty=\dimen132
 )
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepa
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgfcorepa
 thusage.code.tex
 File: pgfcorepathusage.code.tex 2014/11/02  (rcs-revision 1.24)
 \pgf@shorten@end@additional=\dimen133
 \pgf@shorten@start@additional=\dimen134
 )
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgf/basiclayer/pgfcoresc
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgfcoresc
 opes.code.tex
 File: pgfcorescopes.code.tex 2015/05/08  (rcs-revision 1.46)
 \pgfpic=\box28
@@ -560,104 +565,104 @@ File: pgfcorescopes.code.tex 2015/05/08  (rcs-revision 1.46)
 \pgf@layerbox@main=\box30
 \pgf@picture@serial@count=\count97
 )
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregr
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgfcoregr
 aphicstate.code.tex
 File: pgfcoregraphicstate.code.tex 2014/11/02  (rcs-revision 1.12)
 \pgflinewidth=\dimen135
 )
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretr
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgfcoretr
 ansformations.code.tex
 File: pgfcoretransformations.code.tex 2015/08/07  (rcs-revision 1.20)
 \pgf@pt@x=\dimen136
 \pgf@pt@y=\dimen137
 \pgf@pt@temp=\dimen138
 )
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequ
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgfcorequ
 ick.code.tex
 File: pgfcorequick.code.tex 2008/10/09  (rcs-revision 1.3)
 )
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreob
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgfcoreob
 jects.code.tex
 File: pgfcoreobjects.code.tex 2006/10/11  (rcs-revision 1.2)
 )
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepa
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgfcorepa
 thprocessing.code.tex
 File: pgfcorepathprocessing.code.tex 2013/09/09  (rcs-revision 1.9)
 )
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgf/basiclayer/pgfcorear
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgfcorear
 rows.code.tex
 File: pgfcorearrows.code.tex 2015/05/14  (rcs-revision 1.43)
 \pgfarrowsep=\dimen139
 )
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgf/basiclayer/pgfcoresh
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgfcoresh
 ade.code.tex
 File: pgfcoreshade.code.tex 2013/07/15  (rcs-revision 1.15)
 \pgf@max=\dimen140
 \pgf@sys@shading@range@num=\count98
 )
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreim
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgfcoreim
 age.code.tex
 File: pgfcoreimage.code.tex 2013/07/15  (rcs-revision 1.18)
 
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreex
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgfcoreex
 ternal.code.tex
 File: pgfcoreexternal.code.tex 2014/07/09  (rcs-revision 1.21)
 \pgfexternal@startupbox=\box31
 ))
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgf/basiclayer/pgfcorela
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgfcorela
 yers.code.tex
 File: pgfcorelayers.code.tex 2013/07/18  (rcs-revision 1.7)
 )
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretr
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgfcoretr
 ansparency.code.tex
 File: pgfcoretransparency.code.tex 2013/09/30  (rcs-revision 1.5)
 )
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepa
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgfcorepa
 tterns.code.tex
 File: pgfcorepatterns.code.tex 2013/11/07  (rcs-revision 1.5)
 )))
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgf/modules/pgfmodulesha
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\modules\pgfmodulesha
 pes.code.tex
 File: pgfmoduleshapes.code.tex 2014/03/21  (rcs-revision 1.35)
 \pgfnodeparttextbox=\box32
 )
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgf/modules/pgfmoduleplo
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\modules\pgfmoduleplo
 t.code.tex
 File: pgfmoduleplot.code.tex 2015/08/03  (rcs-revision 1.13)
 )
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\latex\pgf\compatibility\pgfcomp-
 version-0-65.sty
 Package: pgfcomp-version-0-65 2007/07/03 v3.0.1a (rcs-revision 1.7)
 \pgf@nodesepstart=\dimen141
 \pgf@nodesepend=\dimen142
 )
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\latex\pgf\compatibility\pgfcomp-
 version-1-18.sty
 Package: pgfcomp-version-1-18 2007/07/23 v3.0.1a (rcs-revision 1.1)
 ))
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgf/utilities/pgfkeys.co
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\latex\pgf\utilities\pgffor.sty
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\latex\pgf\utilities\pgfkeys.sty
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\utilities\pgfkeys.co
 de.tex))
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/latex/pgf/math/pgfmath.sty
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgf/math/pgfmath.code.te
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\latex\pgf\math\pgfmath.sty
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmath.code.te
 x))
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgf/utilities/pgffor.cod
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\utilities\pgffor.cod
 e.tex
 Package: pgffor 2013/12/13 v3.0.1a (rcs-revision 1.25)
 
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgf/math/pgfmath.code.te
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmath.code.te
 x)
 \pgffor@iter=\dimen143
 \pgffor@skip=\dimen144
 \pgffor@stack=\toks27
 \pgffor@toks=\toks28
 ))
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgf/frontendlayer/tikz/t
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\frontendlayer\tikz\t
 ikz.code.tex
 Package: tikz 2015/08/07 v3.0.1a (rcs-revision 1.151)
 
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgf/libraries/pgflibrary
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\libraries\pgflibrary
 plothandlers.code.tex
 File: pgflibraryplothandlers.code.tex 2013/08/31 v3.0.1a (rcs-revision 1.20)
 \pgf@plot@mark@count=\count99
@@ -678,7 +683,7 @@ File: pgflibraryplothandlers.code.tex 2013/08/31 v3.0.1a (rcs-revision 1.20)
 \tikznumberofcurrentchild=\count102
 \tikz@fig@count=\count103
 
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgf/modules/pgfmodulemat
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\modules\pgfmodulemat
 rix.code.tex
 File: pgfmodulematrix.code.tex 2013/09/17  (rcs-revision 1.8)
 \pgfmatrixcurrentrow=\count104
@@ -687,22 +692,22 @@ File: pgfmodulematrix.code.tex 2013/09/17  (rcs-revision 1.8)
 )
 \tikz@expandcount=\count107
 
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgf/frontendlayer/tikz/l
-ibraries/tikzlibrarytopaths.code.tex
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\frontendlayer\tikz\l
+ibraries\tikzlibrarytopaths.code.tex
 File: tikzlibrarytopaths.code.tex 2008/06/17 v3.0.1a (rcs-revision 1.2)
 )))
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/latex/etoolbox/etoolbox.sty
-Package: etoolbox 2015/08/02 v2.2a e-TeX tools for LaTeX (JAW)
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\latex\etoolbox\etoolbox.sty
+Package: etoolbox 2017/01/02 v2.4 e-TeX tools for LaTeX (JAW)
 \etb@tempcnta=\count108
 )
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/latex/pgfplots/pgfplots.sty
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgfplots/pgfplots.revisi
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\latex\pgfplots\pgfplots.sty
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgfplots\pgfplots.revisi
 on.tex)
-Package: pgfplots 2016/01/06 v1.13 Data Visualization (1.13)
+Package: pgfplots 2016/08/10 v1.14 Data Visualization (1.14)
 
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgfplots/pgfplots.code.t
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgfplots\pgfplots.code.t
 ex
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgfplots/pgfplotscore.co
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgfplots\pgfplotscore.co
 de.tex
 \t@pgfplots@toka=\toks29
 \t@pgfplots@tokb=\toks30
@@ -711,80 +716,80 @@ de.tex
 \c@pgfplots@coordindex=\count109
 \c@pgfplots@scanlineindex=\count110
 
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgfplots/sys/pgfplotssys
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgfplots\sys\pgfplotssys
 generic.code.tex))
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgfplots/libs/pgfplotsli
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgfplots\libs\pgfplotsli
 brary.code.tex)
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgfplots\oldpgfcompatib\
 pgfplotsoldpgfsupp_loader.code.tex
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgf/libraries/pgflibrary
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\libraries\pgflibrary
 fpu.code.tex)
 Package pgfplots: loading complementary arithmetics for your pgf version...
 
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgfplots\oldpgfcompatib\
 pgfplotsoldpgfsupp_pgflibraryfpu.code.tex)
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgfplots\oldpgfcompatib\
 pgfplotsoldpgfsupp_pgfmathfloat.code.tex
 \c@pgfmathroundto@lastzeros=\count111
 ))
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgfplots/util/pgfplotsut
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgfplots\util\pgfplotsut
 il.code.tex
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgfplots/liststructure/p
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgfplots\liststructure\p
 gfplotsliststructure.code.tex)
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgfplots/liststructure/p
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgfplots\liststructure\p
 gfplotsliststructureext.code.tex)
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgfplots/liststructure/p
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgfplots\liststructure\p
 gfplotsarray.code.tex
 \c@pgfplotsarray@tmp=\count112
 )
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgfplots/liststructure/p
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgfplots\liststructure\p
 gfplotsmatrix.code.tex)
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgfplots/numtable/pgfplo
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgfplots\numtable\pgfplo
 tstableshared.code.tex
 \c@pgfplotstable@counta=\count113
 \t@pgfplotstable@a=\toks32
 )
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgfplots/liststructure/p
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgfplots\liststructure\p
 gfplotsdeque.code.tex)
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgfplots/util/pgfplotsbi
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgfplots\util\pgfplotsbi
 nary.code.tex
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgfplots/util/pgfplotsbi
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgfplots\util\pgfplotsbi
 nary.data.code.tex))
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgfplots/util/pgfplotsut
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgfplots\util\pgfplotsut
 il.verb.code.tex)
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgfplots/libs/pgflibrary
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgfplots\libs\pgflibrary
 pgfplots.surfshading.code.tex
 \c@pgfplotslibrarysurf@no=\count114
 
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgfplots/sys/pgflibraryp
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgfplots\sys\pgflibraryp
 gfplots.surfshading.pgfsys-pdftex.def)))
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgfplots/util/pgfplotsco
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgfplots\util\pgfplotsco
 lormap.code.tex
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgfplots/util/pgfplotsco
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgfplots\util\pgfplotsco
 lor.code.tex))
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgfplots/pgfplotsstacked
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgfplots\pgfplotsstacked
 plots.code.tex)
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgfplots/pgfplotsplothan
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgfplots\pgfplotsplothan
 dlers.code.tex
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgfplots/pgfplotsmeshplo
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgfplots\pgfplotsmeshplo
 thandler.code.tex
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgfplots/pgfplotsmeshplo
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgfplots\pgfplotsmeshplo
 timage.code.tex)))
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgfplots/pgfplots.scalin
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgfplots\pgfplots.scalin
 g.code.tex)
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgfplots/pgfplotscoordpr
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgfplots\pgfplotscoordpr
 ocessing.code.tex)
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgfplots/pgfplots.errorb
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgfplots\pgfplots.errorb
 ars.code.tex)
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgfplots/pgfplots.marker
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgfplots\pgfplots.marker
 s.code.tex)
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgfplots/pgfplotsticks.c
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgfplots\pgfplotsticks.c
 ode.tex)
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgfplots/pgfplots.paths.
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgfplots\pgfplots.paths.
 code.tex)
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgf/frontendlayer/tikz/l
-ibraries/tikzlibrarydecorations.code.tex
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgf/modules/pgfmoduledec
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\frontendlayer\tikz\l
+ibraries\tikzlibrarydecorations.code.tex
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\modules\pgfmoduledec
 orations.code.tex
 \pgfdecoratedcompleteddistance=\dimen153
 \pgfdecoratedremainingdistance=\dimen154
@@ -797,14 +802,14 @@ orations.code.tex
 )
 \tikz@lib@dec@box=\box37
 )
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgf/frontendlayer/tikz/l
-ibraries/tikzlibrarydecorations.pathmorphing.code.tex
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgf/libraries/decoration
-s/pgflibrarydecorations.pathmorphing.code.tex))
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgf/frontendlayer/tikz/l
-ibraries/tikzlibrarydecorations.pathreplacing.code.tex
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgf/libraries/decoration
-s/pgflibrarydecorations.pathreplacing.code.tex))
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\frontendlayer\tikz\l
+ibraries\tikzlibrarydecorations.pathmorphing.code.tex
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\libraries\decoration
+s\pgflibrarydecorations.pathmorphing.code.tex))
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\frontendlayer\tikz\l
+ibraries\tikzlibrarydecorations.pathreplacing.code.tex
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\libraries\decoration
+s\pgflibrarydecorations.pathreplacing.code.tex))
 \pgfplots@numplots=\count116
 \pgfplots@xmin@reg=\dimen160
 \pgfplots@xmax@reg=\dimen161
@@ -813,37 +818,37 @@ s/pgflibrarydecorations.pathreplacing.code.tex))
 \pgfplots@zmin@reg=\dimen164
 \pgfplots@zmax@reg=\dimen165
 )
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgf/frontendlayer/tikz/l
-ibraries/tikzlibraryplotmarks.code.tex
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\frontendlayer\tikz\l
+ibraries\tikzlibraryplotmarks.code.tex
 File: tikzlibraryplotmarks.code.tex 2008/01/09 v3.0.1a (rcs-revision 1.1)
 
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgf/libraries/pgflibrary
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\libraries\pgflibrary
 plotmarks.code.tex
 File: pgflibraryplotmarks.code.tex 2015/08/03 v3.0.1a (rcs-revision 1.14)
 )))
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/latex/units/units.sty
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\latex\units\units.sty
 Package: units 1998/08/04 v0.9b Typesetting units
 
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/latex/base/ifthen.sty
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\ifthen.sty"
 Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 )
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/latex/units/nicefrac.sty
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\latex\units\nicefrac.sty
 Package: nicefrac 1998/08/04 v0.9b Nice fractions
 \L@UnitsRaiseDisplaystyle=\skip43
 \L@UnitsRaiseTextstyle=\skip44
 \L@UnitsRaiseScriptstyle=\skip45
 ))
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgf/frontendlayer/tikz/l
-ibraries/tikzlibrarypositioning.code.tex
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\frontendlayer\tikz\l
+ibraries\tikzlibrarypositioning.code.tex
 File: tikzlibrarypositioning.code.tex 2008/10/06 v3.0.1a (rcs-revision 1.7)
 )
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/pgf/frontendlayer/tikz/l
-ibraries/tikzlibrarycalc.code.tex
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\frontendlayer\tikz\l
+ibraries\tikzlibrarycalc.code.tex
 File: tikzlibrarycalc.code.tex 2013/07/15 v3.0.1a (rcs-revision 1.9)
 )
 \figureheight=\skip46
 \figurewidth=\skip47
- (./TestingTikz.aux)
+ (TestingTikz.aux)
 \openout1 = `TestingTikz.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 37.
@@ -860,7 +865,7 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 37.
 LaTeX Font Info:    ... okay on input line 37.
 
 ABD: EveryShipout initializing macros
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/context/base/supp-pdf.mkii
+(C:\Users\panch\AppData\Roaming\MiKTeX\2.9\tex\context\base\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count117
 \scratchdimen=\dimen166
@@ -873,58 +878,55 @@ ABD: EveryShipout initializing macros
 \MPnumerator=\count121
 \makeMPintoPDFobject=\count122
 \everyMPtoPDFconversion=\toks34
-)
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
-Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
+) ("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\pdftexcmds.sty"
+Package: pdftexcmds 2016/05/21 v0.22 Utility functions of pdfTeX for LuaTeX (HO
 )
 
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/oberdiek/ifluatex.sty
-Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifluatex.sty"
+Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
 Package ifluatex Info: LuaTeX not detected.
 )
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/oberdiek/ifpdf.sty
-Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
-Package ifpdf Info: pdfTeX in PDF mode is detected.
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.sty"
+Package: ifpdf 2016/05/14 v3.1 Provides the ifpdf switch
 )
 Package pdftexcmds Info: LuaTeX not detected.
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 Package pdftexcmds Info: \pdfdraftmode found.
 )
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
-Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/latex/oberdiek/grfext.sty
-Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
+("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\epstopdf-base.sty"
+Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/oberdiek/kvdefinekeys.st
-y
-Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
-)) (/scratch/local/app/teTeX/08.15/texmf-dist/tex/latex/oberdiek/kvoptions.sty
-Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
-Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
+("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\grfext.sty"
+Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
 
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/generic/oberdiek/etexcmds.sty
-Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\kvdefinekeys.sty"
+Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
+))
+("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\kvoptions.sty"
+Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\kvsetkeys.sty"
+Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\etexcmds.sty"
+Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
 Package etexcmds Info: Could not find \expanded.
 (etexcmds)             That can mean that you are not using pdfTeX 1.50 or
 (etexcmds)             that some package has redefined \expanded.
 (etexcmds)             In the latter case, load this package earlier.
 )))
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+38.
 Package grfext Info: Graphics extension search list:
 (grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
 G,.JBIG2,.JB2,.eps]
-(grfext)             \AppendGraphicsExtensions on input line 452.
-
-(/scratch/local/app/teTeX/08.15/texmf-dist/tex/latex/latexconfig/epstopdf-sys.c
-fg
-File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
-e
-))
+(grfext)             \AppendGraphicsExtensions on input line 456.
+)
 Package pgfplots notification 'compat/show suggested version=true': document ha
-s been generated with the most recent feature set (\pgfplotsset{compat=1.13}).
+s been generated with the most recent feature set (\pgfplotsset{compat=1.14}).
 
-(./noiseless.tikz
+(noiseless.tikz
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 130.
 LaTeX Font Info:    External font `cmex10' loaded for size
@@ -933,28 +935,26 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <7> on input line 131.
 ) [1
 
-{/usr/local.hg/app/teTeX/current/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
- (./TestingTikz.aux) ) 
+{C:/Users/panch/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] (TestingTik
+z.aux) ) 
 Here is how much of TeX's memory you used:
- 22294 strings out of 493027
- 577150 string characters out of 6130911
- 744603 words of memory out of 5000000
- 25461 multiletter control sequences out of 15000+600000
- 4551 words of font info for 17 fonts, out of 8000000 for 9000
+ 22606 strings out of 493333
+ 587719 string characters out of 3139194
+ 769887 words of memory out of 3000000
+ 25758 multiletter control sequences out of 15000+200000
+ 4551 words of font info for 17 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 57i,19n,100p,797b,2180s stack positions out of 5000i,500n,10000p,200000b,80000s
-</scratch/local/app/teTeX/08.15/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmmi10.pfb></scratch/local/app/teTeX/08.15/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmmi5.pfb></scratch/local/app/teTeX/08.15/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmmi7.pfb></scratch/local/app/teTeX/08.15/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmr10.pfb></scratch/local/app/teTeX/08.15/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></scratch/local/app/teTeX/08.15/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></scratch/local/app/teTeX/08
-.15/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on TestingTikz.pdf (1 page, 57653 bytes).
+ 69i,19n,120p,799b,2189s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb>
+<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Progr
+am Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Program Files/
+MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.
+9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files/MiKTeX 2.9/fonts/ty
+pe1/public/amsfonts/cm/cmr7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public
+/amsfonts/cm/cmsy10.pfb>
+Output written on TestingTikz.pdf (1 page, 60970 bytes).
 PDF statistics:
- 39 PDF objects out of 1000 (max. 8388607)
- 28 compressed objects within 1 object stream
+ 37 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

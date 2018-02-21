@@ -1,0 +1,45 @@
+\documentclass[english]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{babel}
+\usepackage{tikz}
+\usepackage{etoolbox}
+\usepackage{pgfplots}
+\usepackage{etoolbox}
+\usepackage{units}
+\usetikzlibrary{positioning,calc}
+\pgfplotsset{compat=newest}
+\pgfplotsset{every tick label/.append style={font=\tiny}}
+\pgfplotsset{
+	tick label style = {font = {\fontsize{6 pt}{12 pt}\selectfont}},
+	label style = {font = {\fontsize{6 pt}{12 pt}\selectfont}},
+	legend style = {font = {\fontsize{6 pt}{12 pt}\selectfont}},
+}
+
+\newlength\figureheight
+\newlength\figurewidth
+
+\newtoggle{usetikz}
+\toggletrue{usetikz}
+% \toggletrue{usetikz}
+\newcommand{\InputImage}[3]{}
+\iftoggle{usetikz}{%
+	\renewcommand{\InputImage}[3]{%
+		\setlength\figureheight{#2}%
+		\setlength\figurewidth{#1}%
+		\input{#3.tikz}%
+	}%
+}{ %
+	\renewcommand{\InputImage}[3]{%
+		\includegraphics[width=#1]{figures/#3}%
+	}%
+}
+
+\begin{document} 
+	
+\begin{figure}[h!]
+	\centering
+	\InputImage{0.9\textwidth}{0.5\textwidth}{curvature}
+ \label{fig:noiseless}
+\end{figure}
+
+\end{document}

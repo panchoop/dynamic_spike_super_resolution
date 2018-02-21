@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import numpy as np
 import os
 from matplotlib import pyplot as plt
@@ -8,7 +10,7 @@ from matplotlib2tikz import save as tikz_save
 # If you want to get the plots on a specific experiment-folder or in all of them
 PlotSpecificFolder = True
 PlotAllFolders = not(PlotSpecificFolder)
-specificFolder = ["data/1Dsimulations/"+"2018-02-19T04-35-58-77"]
+specificFolder = ["data/1Dsimulations/"+"2018-02-21T02-58-59-371"]
 
 ### Success criteria parameters:
 ## Noiseless case:
@@ -29,9 +31,19 @@ srf_comparison = [1, 10, 100, 1000, 10000]
 ### Plotting parameters
 # number of considered bins for plots
 num_bins = 30
+# Parameter for latex thickness
+lineThickness = "1.5pt"
 
 ### Wanna see all the generated plots ?
 visualize_plots = False
+
+### Simulations parameters
+x_max = 1.00
+tau = 0.5
+v_max = 0.5
+f_c = 20
+K = 2
+
 
 ### Scripts to modify tikz files
 
@@ -44,7 +56,7 @@ def readEliminate(filename, text, nextLines):
 	f.seek(0)
 	counterNextLine = 0
 	for i in d:
-		if (i[1:len(text)+1] != text)and(counterNextLine==0):
+		if (i[0:len(text)] != text)and(counterNextLine==0):
 			f.write(i)
 		else:
 			counterNextLine +=1
@@ -60,13 +72,33 @@ def readInsert(filename, text_start, text_insert):
 	d = f.readlines()
 	f.seek(0)
 	for i in d:
-		if i[1:len(text_start)+1] == text_start:
-			f.write(i[0:len(text_start)+1]+text_insert+i[len(text_start)+1:len(i)])
+		if i[0:len(text_start)] == text_start:
+			f.write(i[0:len(text_start)]+text_insert+i[len(text_start):len(i)])
 		else:
 			f.write(i)
 	f.truncate()
 	f.close()
-	
+
+def readReplace(filename, text_start, text_replace, text_insert):
+	# Function that dead lines, takes the one that starts as text_start
+	# finds the substring text_replace, and replaces it for text_insert.
+	f = open(filename,"r+")
+	d = f.readlines()
+	f.seek(0)
+	boolToken = False
+	for i in d:
+		boolToken = False
+		print(text_replace)
+		print(i)
+		if i[0:len(text_start)] == text_start:
+			i = i.replace(text_replace,text_insert)
+			print(i)
+			f.write(i)
+		else:
+			f.write(i)
+	f.truncate()
+	f.close()
+
 def readNewline(filename, text, newline):
 	# Function to insert a complete new line
 	f = open(filename,"r+")
@@ -79,10 +111,43 @@ def readNewline(filename, text, newline):
 	f.truncate()
 	f.close()
 
+def scaleTikzLabels(filename, scaling):
+	# Function that will divide the LABELS of the ticks figure with
+	# an predefined value.
+	## retrieve the Ticks labels
+	f = open(filename,"r+")
+	d = f.readlines()
+	f.seek(0)
+	text = "xticklabels={"
+	xtickslabels=''
+	for i in d:
+		f.write(i)
+		if i[0:len(text)] == text:
+			xtickslabels= i[len(text):len(i)]
+	f.truncate()
+	f.close()	
+	while xtickslabels != '':
+		if xtickslabels[-1]!='}':
+			xtickslabels = xtickslabels[0:-1]
+		else:
+			xtickslabels=xtickslabels[0:-1]
+			break
+	xtickslabels=xtickslabels[1:-1]
+	## Convert the retrieved string of labels to float and divide it
+	newlabels = np.array(map(float,xtickslabels.split(",")))/scaling
+	## Convert to string in a appropiate format and replace the new labels
+	newlabelsString = ''
+	for value in newlabels:
+		aux = str(np.round(value,1))
+		newlabelsString += aux+","
+	## convert to string and replace the new labels
+	readReplace(filename, "xticklabels={", xtickslabels, newlabelsString[0:-1])
+
 def readRetrieve(filename, text):
-	# Function that for a specific line of text, will get the  array that describes.
+	# Function that for a specific line of text, will get the array 
+	# of floats that describes.
 	# it assumes that the last element in text is '{'
-	if text[len(text)-1] != '{':
+	if text[-1] != '{':
 		print('This is not working')
 	f = open(filename,"r+")
 	d = f.readlines()
@@ -101,28 +166,31 @@ def readRetrieve(filename, text):
 		else:
 			values=values[1:-1]
 			break
-	print(values)
 	return map(float, values.split(","))
 
 
-def fixTikz(filename, linewidth):
+def fixTikz(filename, linewidth, scaling=True):
 	## Function to fix the mistakes by tikztolatex
-	# eliminate the grid legend errors
-	# Include the appropiate line width
-	# Eliminate some strange added lines
-	readEliminate(filename, 'addlegendimage{no marker',0)
-	readEliminate(filename, 'path [draw=black', 1)
-	readInsert(filename, 'addplot [', 'line width = '+linewidth +' ,')
-	readNewline(filename, 'begin{axis}[', 'name=ax,\n')
-	readNewline(filename, 'end{axis}', '\\node at ($(ax.outer south east)+(3pt,10pt)$) {$\cdot \\nicefrac{1}{f_c}$};')
+	# Legend line that gives bad legend.
+	readEliminate(filename, '\\addlegendimage{no marker',0)
+	# Weird automatically included lines
+	readEliminate(filename, '\\path [draw=black', 1)
+	# Handmade linewidth insertion
+	readInsert(filename, '\\addplot [', 'line width = '+linewidth +', ')
+	# Removing the defined linewidth
+	readReplace(filename, "\\addplot", " semithick,", "")
+	# Somehow it includes in the tikz file a weird "minus sign" that Latex doesn't likes
+	readReplace(filename, "yticklabels={", "−", "-")
+	# Personalized scaling, with the symbol for the considered frequency f_c
+	if scaling==True:
+		scaleTikzLabels(filename, 1.0/float(f_c))
+		# Include lines that overrides the symbol of scientific notation
+		readNewline(filename, 'begin{axis}[', 'xtick scale label code/.code={},')
+		# Includes a node that contains the mutiplier to the whole xlabels.
+		readNewline(filename, 'begin{axis}[', 'name=ax,\n')
+		readNewline(filename, 'end{axis}', '\\node at ($(ax.outer south east)+(-15pt,6pt)$) {$\cdot \\nicefrac{1}{f_c}$};\n')
 
 ### Selecting the folders to generate plots from
-
-x_max = 1.00
-tau = 0.5
-v_max = 0.5
-f_c = 20
-K = 2
 
 if PlotAllFolders:
 	subfolders = [x[0] for x in os.walk("data/1Dsimulations/")]
@@ -133,7 +201,7 @@ else:
 
 # Function to plot the success rate as bins
 def plot_success(norm, success, n_bins = num_bins, **kwargs):
-		bins = np.linspace(np.percentile(norm, 2), np.percentile(norm, 85), n_bins)
+		#bins = np.linspace(np.percentile(norm, 2), np.percentile(norm, 85), n_bins)
 		bins = np.linspace(np.min(norm), np.max(norm), n_bins)
 		vals = np.zeros(len(bins) - 1)
 		norm_success = norm[success]
@@ -217,8 +285,8 @@ for i in range(len(subfolders)):
 	axes = plt.gca()
 	plt.savefig("noiseless.pdf")
 	tikz_save("noiseless.tikz", figureheight="\\figureheight", figurewidth="\\figurewidth")
-	print(readRetrieve("noiseless.tikz","xtick={"))
-	fixTikz("noiseless.tikz",'1.5pt')
+	#readRetrieve("noiseless.tikz","xtick={")
+	fixTikz("noiseless.tikz",lineThickness)
 	if visualize_plots==True:
 		plt.show()
 
@@ -228,9 +296,10 @@ for i in range(len(subfolders)):
 	plot_case(separationsDyn, "static3", 0, srf_th, w_th, linestyle = ":")
 	plt.legend(["dynamic", "static", "static3"])
 	axes = plt.gca()
+	plt.xlabel("$|| \cdot ||_{dyn}$", usetex=True)
 	plt.savefig("noiseless_DynNorm.pdf")
 	tikz_save("noiseless_DynNorm.tikz", figureheight="\\figureheight", figurewidth="\\figurewidth")
-	fixTikz("noiseless_DynNorm.tikz",'1.5pt')
+	fixTikz("noiseless_DynNorm.tikz",lineThickness, False)
 	if visualize_plots==True:
 		plt.show()
 
@@ -251,7 +320,7 @@ for i in range(len(subfolders)):
 	plt.legend(np.append([r"$\alpha = 0$"],[ r"$\alpha = {0}$".format(str(datanoise[i]))  for i in range(len(datanoise))]))
 	plt.savefig("noisecomp-dyn.pdf")
 	tikz_save("noisecomp-dyn.tikz", figureheight="\\figureheight", figurewidth="\\figurewidth")
-	fixTikz("noisecomp-dyn.tikz",'1.5pt')
+	fixTikz("noisecomp-dyn.tikz",lineThickness)
 	if visualize_plots==True:
 		plt.show()
 
@@ -269,6 +338,8 @@ for i in range(len(subfolders)):
 	axes = plt.gca()
 	plt.legend(np.append([r"$\alpha = 0$"],[ r"$\alpha = {0}$".format(str(datanoise[i])) for i in range(len(datanoise))]))
 	plt.savefig("noisecomp-static.pdf")
+	tikz_save("noisecomp-static.tikz", figureheight="\\figureheight", figurewidth="\\figurewidth")
+	fixTikz("noisecomp-static.tikz",lineThickness)
 	if visualize_plots == True:
 		plt.show()
 
@@ -286,6 +357,8 @@ for i in range(len(subfolders)):
 	axes = plt.gca()
 	plt.legend(np.append([r"$\alpha = 0$"],[ r"$\alpha = {0}$".format(str(datanoise[i]))  for i in range(len(datanoise))]))
 	plt.savefig("noisecomp-static3.pdf")
+	tikz_save("noisecomp-static3.tikz", figureheight="\\figureheight", figurewidth="\\figurewidth")
+	fixTikz("noisecomp-static3.tikz",lineThickness)
 	if visualize_plots == True:
 		plt.show()
 
@@ -301,6 +374,8 @@ for i in range(len(subfolders)):
 	axes = plt.gca()
 	plt.legend(["SRF = "+str(int(srf_thresholds[i])) for i in range(len(srf_thresholds))])
 	plt.savefig("noiseless_SRF.pdf")
+	tikz_save("noiseless_SRF.tikz", figureheight="\\figureheight", figurewidth="\\figurewidth")
+	fixTikz("noiseless_SRF.tikz",lineThickness)
 	if visualize_plots == True:
 		plt.show()
 
@@ -310,9 +385,12 @@ for i in range(len(subfolders)):
 	times = [k*tau for k in range(-2,3)]
 	plt.plot(times, [v_max/2*t for t in times])
 	plt.plot(times, [v_max/2*t + positionnoise[-1]/2 * t**2*v_max/2 for t in times])
-
+	plt.xlabel("Time")
+	plt.ylabel("Space")
 	plt.legend([r"$\beta = 0$", r"$\beta = {0}$".format(str(positionnoise[-1]/2))])
 	plt.savefig("curvature.pdf")
+	tikz_save("curvature.tikz", figureheight="\\figureheight", figurewidth="\\figurewidth")
+	fixTikz("curvature.tikz",lineThickness,False)
 	if visualize_plots == True:
 		plt.show()
 
@@ -330,6 +408,8 @@ for i in range(len(subfolders)):
 	axes = plt.gca()
 	plt.legend(np.append([r"$\beta = 0$"],[r"$\beta = {0}$".format(str(positionnoise[i]/2)) for i in range(len(positionnoise))]))
 	plt.savefig("curvcomp.pdf")
+	tikz_save("curvcomp.tikz", figureheight="\\figureheight", figurewidth="\\figurewidth")
+	fixTikz("curvcomp.tikz",lineThickness)
 	if visualize_plots == True:
 		plt.show()
 	os.chdir("../../..")

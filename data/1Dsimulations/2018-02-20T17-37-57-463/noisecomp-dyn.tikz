@@ -8,28 +8,26 @@
 \definecolor{color4}{rgb}{0.580392156862745,0.403921568627451,0.741176470588235}
 
 \begin{axis}[
+name=ax,
 xlabel={$\Delta_{dyn}$},
 ylabel={Correct recontruction rate},
 xmin=-0.00030291112960711, xmax=0.010263846429482,
-ymin=0, ymax=1.05,
+ymin=-0.05, ymax=1.05,
 width=\figurewidth,
 height=\figureheight,
-ytick={0,0.2,0.4,0.6,0.8,1,1.2},
-yticklabels={0.0,0.2,0.4,0.6,0.8,1.0,},
+ytick={-0.2,0,0.2,0.4,0.6,0.8,1,1.2},
+yticklabels={,0.0,0.2,0.4,0.6,0.8,1.0,},
 tick align=outside,
 tick pos=left,
-x grid style={lightgray!92.026143790849673!black},
-y grid style={lightgray!92.026143790849673!black},
+xmajorgrids,
+x grid style={lightgray!92.02614379084967!black},
+ymajorgrids,
+y grid style={lightgray!92.02614379084967!black},
 legend entries={{$\alpha = 0$},{$\alpha = 0.025$},{$\alpha = 0.05$},{$\alpha = 0.075$},{$\alpha = 0.1$}},
-legend style={at={(0.03,0.03)}, anchor=south west, draw=white!80.0!black},
+legend style={at={(0.91,0.5)}, anchor=east, draw=white!80.0!black},
 legend cell align={left}
 ]
-\addlegendimage{no markers, color0}
-\addlegendimage{no markers, color1}
-\addlegendimage{no markers, color2}
-\addlegendimage{no markers, color3}
-\addlegendimage{no markers, color4}
-\addplot [color0]
+\addplot [line width = 1.5pt ,semithick, color0]
 table {%
 0.000177396032169666 0.517241379310345
 0.000520472576295934 0.714285714285714
@@ -61,7 +59,7 @@ table {%
 0.00944046272357892 1
 0.00978353926770519 0.96969696969697
 };
-\addplot [color1, dashed]
+\addplot [line width = 1.5pt ,semithick, color1, dashed]
 table {%
 0.000177396032169666 0
 0.000520472576295934 0
@@ -93,7 +91,7 @@ table {%
 0.00944046272357892 0
 0.00978353926770519 0
 };
-\addplot [color2, dash pattern=on 1pt off 3pt on 3pt off 3pt]
+\addplot [line width = 1.5pt ,semithick, color2, dash pattern=on 1pt off 3pt on 3pt off 3pt]
 table {%
 0.000177396032169666 0
 0.000520472576295934 0
@@ -125,7 +123,7 @@ table {%
 0.00944046272357892 0
 0.00978353926770519 0
 };
-\addplot [color3, dotted]
+\addplot [line width = 1.5pt ,semithick, color3, dotted]
 table {%
 0.000177396032169666 0
 0.000520472576295934 0
@@ -157,7 +155,7 @@ table {%
 0.00944046272357892 0
 0.00978353926770519 0
 };
-\addplot [color4]
+\addplot [line width = 1.5pt ,semithick, color4]
 table {%
 0.000177396032169666 0
 0.000520472576295934 0
@@ -189,18 +187,10 @@ table {%
 0.00944046272357892 0
 0.00978353926770519 0
 };
-\path [draw=black, fill opacity=0] (axis cs:0,0)
---(axis cs:0,1.05);
 
-\path [draw=black, fill opacity=0] (axis cs:1,0)
---(axis cs:1,1.05);
 
-\path [draw=black, fill opacity=0] (axis cs:-0.00030291112960711,0)
---(axis cs:0.010263846429482,0);
 
-\path [draw=black, fill opacity=0] (axis cs:-0.00030291112960711,1)
---(axis cs:0.010263846429482,1);
 
 \end{axis}
-
+\node at ($(ax.outer south east)+(3pt,10pt)$) {$\cdot \nicefrac{1}{f_c}$};
 \end{tikzpicture}

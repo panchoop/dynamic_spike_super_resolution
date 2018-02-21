@@ -6,28 +6,28 @@
 \definecolor{color2}{rgb}{0.172549019607843,0.627450980392157,0.172549019607843}
 
 \begin{axis}[
+name=ax,
 xlabel={$\Delta_{dyn}$},
 ylabel={Correct recontruction rate},
 xmin=-0.00570142053268535, xmax=0.371970811251681,
-ymin=0, ymax=1.05,
+ymin=-0.05, ymax=1.05,
 width=\figurewidth,
 height=\figureheight,
 xtick={-0.05,0,0.05,0.1,0.15,0.2,0.25,0.3,0.35,0.4},
 xticklabels={,0.00,0.05,0.10,0.15,0.20,0.25,0.30,0.35,},
-ytick={0,0.2,0.4,0.6,0.8,1,1.2},
-yticklabels={0.0,0.2,0.4,0.6,0.8,1.0,},
+ytick={-0.2,0,0.2,0.4,0.6,0.8,1,1.2},
+yticklabels={,0.0,0.2,0.4,0.6,0.8,1.0,},
 tick align=outside,
 tick pos=left,
-x grid style={lightgray!92.026143790849673!black},
-y grid style={lightgray!92.026143790849673!black},
+xmajorgrids,
+x grid style={lightgray!92.02614379084967!black},
+ymajorgrids,
+y grid style={lightgray!92.02614379084967!black},
 legend style={draw=white!80.0!black},
 legend cell align={left},
 legend entries={{dynamic},{static},{static3}}
 ]
-\addlegendimage{no markers, color0}
-\addlegendimage{no markers, color1}
-\addlegendimage{no markers, color2}
-\addplot [color0]
+\addplot [line width = 1.5pt ,semithick, color0]
 table {%
 0.0114654990938767 0
 0.0241817358542931 0.0816326530612245
@@ -59,7 +59,7 @@ table {%
 0.354803891625119 0.5
 0.367520128385535 nan
 };
-\addplot [color1, dash pattern=on 1pt off 3pt on 3pt off 3pt]
+\addplot [line width = 1.5pt ,semithick, color1, dash pattern=on 1pt off 3pt on 3pt off 3pt]
 table {%
 0.0114654990938767 0
 0.0241817358542931 0
@@ -91,7 +91,7 @@ table {%
 0.354803891625119 0
 0.367520128385535 nan
 };
-\addplot [color2, dotted]
+\addplot [line width = 1.5pt ,semithick, color2, dotted]
 table {%
 0.0114654990938767 0
 0.0241817358542931 0
@@ -123,18 +123,10 @@ table {%
 0.354803891625119 0
 0.367520128385535 nan
 };
-\path [draw=black, fill opacity=0] (axis cs:0,0)
---(axis cs:0,1.05);
 
-\path [draw=black, fill opacity=0] (axis cs:1,0)
---(axis cs:1,1.05);
 
-\path [draw=black, fill opacity=0] (axis cs:-0.00570142053268535,0)
---(axis cs:0.371970811251681,0);
 
-\path [draw=black, fill opacity=0] (axis cs:-0.00570142053268535,1)
---(axis cs:0.371970811251681,1);
 
 \end{axis}
-
+\node at ($(ax.outer south east)+(3pt,10pt)$) {$\cdot \nicefrac{1}{f_c}$};
 \end{tikzpicture}
