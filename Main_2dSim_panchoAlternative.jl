@@ -163,7 +163,7 @@ end
         return false
     end
     # It uses the ACDG algorithm to estimate the location and weights of the particles. Using the estimated number of particles we can bound the total variation on the solutions.
-    (thetas_est,weights_est) = SparseInverseProblemsMod.ADCG(model_dynamic, LSLoss(), target, frame_norms[seq[1]], callback=callback, max_iters=100)
+    (thetas_est,weights_est) = SparseInverseProblemsMod.ADCG(model_dynamic, SparseInverseProblemsMod.LSLoss(), target, frame_norms[seq[1]], callback=callback, max_iters=100)
     if length(thetas_est) > 0
         println("est_num = ", est_num_particles)
         println("thetas = ", thetas_est) 
