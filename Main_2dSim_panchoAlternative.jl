@@ -155,7 +155,7 @@ end
     # Function required to use the SparseInverseProblems.ADCG method.
     function callback(old_thetas, thetas, weights, output, old_obj_val)
         #evalute current OV
-        new_obj_val,t = loss(LSLoss(), output - target)
+        new_obj_val,t = SparseInverseProblemsMod.loss(SparseInverseProblemsMod.LSLoss(), output - target)
         #println("gap = $(old_obj_val - new_obj_val)")
         if old_obj_val - new_obj_val < 1E-4
             return true
