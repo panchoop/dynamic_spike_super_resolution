@@ -155,7 +155,7 @@ end
     # Function required to use the SparseInverseProblems.ADCG method.
     function callback(old_thetas, thetas, weights, output, old_obj_val)
         #evalute current OV
-        new_obj_val,t = SparseInverseProblems.loss(SparseInverseProblems.LSLoss(), output - target)
+        new_obj_val,t = loss(LSLoss(), output - target)
         #println("gap = $(old_obj_val - new_obj_val)")
         if old_obj_val - new_obj_val < 1E-4
             return true
@@ -163,7 +163,7 @@ end
         return false
     end
     # It uses the ACDG algorithm to estimate the location and weights of the particles. Using the estimated number of particles we can bound the total variation on the solutions.
-    (thetas_est,weights_est) = SparseInverseProblems.ADCG(model_dynamic, SparseInverseProblems.LSLoss(), target, frame_norms[seq[1]], callback=callback, max_iters=100)
+    (thetas_est,weights_est) = ADCG(model_dynamic, LSLoss(), target, frame_norms[seq[1]], callback=callback, max_iters=100)
     if length(thetas_est) > 0
         println("est_num = ", est_num_particles)
         println("thetas = ", thetas_est) 
