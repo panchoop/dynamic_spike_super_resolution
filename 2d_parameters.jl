@@ -1,5 +1,5 @@
-### Domain ###
-x_max = 1 # [mm]
+### Domain [mm]
+x_max = 1
 
 ### Models ###
 # The considered PSF for the considered imaging tecnique
@@ -22,7 +22,7 @@ sigma_noise = 0.01
 # total number of the experimets measurements (gives the length of the experience)
 	n_im = 1000
 # Vessels separation
-	dx = 0.0002
+	dx = 0.05
 
 ### Inverse problem ###
 # Considered norm to minimize

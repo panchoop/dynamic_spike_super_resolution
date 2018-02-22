@@ -7,16 +7,17 @@ from matplotlib2tikz import save as tikz_save
 import helpToTikz as fix
 
 ## Folder/Example to load
-example = "/2017-11-03T09-40-41-038"
+#example = "/2017-11-03T09-40-41-038"
 # example = "/2017-11-03T10-05-27-667"
 # example = "/2017-11-04T08-04-38-411"
 # example = "/2017-11-04T11-57-14-36"
+example = "/2018-02-21T19-30-07-189"
 folder = "data/2Dsimulations"+example
 
 ### Parameters for reconstruction figure
 # Threshold to accept or reject recostructions:
 # the error threshold is how much measurement missmatch we tolerate.
-threshold_error = 0.1
+threshold_error = 1
 # The weight threshold is at which mass we are going to consider the 
 # reconstruction a valid particle.
 threshold_weight = 0.1
@@ -32,14 +33,12 @@ frameNum3 = frameNum1+2
 seeFigs = False
 
 os.chdir(folder)
-# Getting the x_max value
-include = ("ufus_parameters.jl")
 # loading Simulated values
 errors = np.load("errors.npy")
 video = np.load("video.npy")
 
 # Getting the x_max value, dimensions of the simulation
-f = open("ufus_parameters.jl","r")
+f = open("2d_parameters.jl","r")
 d = f.readlines()
 f.close()
 for i in d:
@@ -96,7 +95,7 @@ if seeFigs:
 # To see a video of all the snapshots, set to True. It also helps to 
 # decide which frame to choose for images.
 
-if False:
+if True:
     for i in range(video.shape[1]):
         plt.figure()
         plt.pcolormesh(np.linspace(0, x_max, n_x), 
@@ -160,5 +159,9 @@ while i <= len(L2norms)-minSnapshot:
 		                           np.mean(L2norms[i-1:i+j-2])],color="r")
     i = i+j
     j = 1
+plt.savefig("L2profile.pdf")
 if seeFigs:
     plt.show()
+tikz_save("L2profile.tikz", figureheight="\\figureheight",
+		  figurewidth="\\figurewidth")
+fixTikz("L2profile.tikz")

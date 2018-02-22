@@ -1,5 +1,5 @@
-### Domain ###
-x_max = 1 # [mm]
+### Domain [mm]
+x_max = 1
 
 ### Models ###
 # The considered PSF for the considered imaging tecnique
