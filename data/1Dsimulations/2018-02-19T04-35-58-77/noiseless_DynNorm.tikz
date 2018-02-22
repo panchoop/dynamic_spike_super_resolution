@@ -6,8 +6,7 @@
 \definecolor{color2}{rgb}{0.172549019607843,0.627450980392157,0.172549019607843}
 
 \begin{axis}[
-name=ax,
-xlabel={$\Delta_{dyn}$},
+xlabel={$|| \cdot ||_{dyn}$},
 ylabel={Correct recontruction rate},
 xmin=-0.0254709133101425, xmax=0.849794183372471,
 ymin=-0.05, ymax=1.05,
@@ -20,14 +19,14 @@ yticklabels={,0.0,0.2,0.4,0.6,0.8,1.0,},
 tick align=outside,
 tick pos=left,
 xmajorgrids,
-x grid style={lightgray!92.02614379084967!black},
+x grid style={lightgray!92.026143790849673!black},
 ymajorgrids,
-y grid style={lightgray!92.02614379084967!black},
+y grid style={lightgray!92.026143790849673!black},
 legend style={at={(0.97,0.03)}, anchor=south east, draw=white!80.0!black},
 legend cell align={left},
 legend entries={{dynamic},{static},{static3}}
 ]
-\addplot [line width = 1.5pt ,semithick, color0]
+\addplot [line width = 1.5pt, color0]
 table {%
 0.0143138638117945 0.444444444444444
 0.0427315617560352 0.909090909090909
@@ -59,7 +58,7 @@ table {%
 0.781591708306294 1
 0.810009406250534 1
 };
-\addplot [line width = 1.5pt ,semithick, color1, dash pattern=on 1pt off 3pt on 3pt off 3pt]
+\addplot [line width = 1.5pt, color1, dash pattern=on 1pt off 3pt on 3pt off 3pt]
 table {%
 0.0143138638117945 0.222222222222222
 0.0427315617560352 0.636363636363636
@@ -91,7 +90,7 @@ table {%
 0.781591708306294 1
 0.810009406250534 1
 };
-\addplot [line width = 1.5pt ,semithick, color2, dotted]
+\addplot [line width = 1.5pt, color2, dotted]
 table {%
 0.0143138638117945 0.111111111111111
 0.0427315617560352 0.318181818181818
@@ -128,5 +127,5 @@ table {%
 
 
 \end{axis}
-\node at ($(ax.outer south east)+(3pt,10pt)$) {$\cdot \nicefrac{1}{f_c}$};
+
 \end{tikzpicture}

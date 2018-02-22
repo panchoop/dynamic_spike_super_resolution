@@ -29,7 +29,7 @@ legend entries={{$\alpha = 0$},{$\alpha = 0.025$},{$\alpha = 0.05$},{$\alpha = 0
 legend style={at={(0.97,0.03)}, anchor=south east, draw=white!80.0!black},
 legend cell align={left}
 ]
-\addplot [line width = 1.5pt, color0]
+\addplot [line width = 1pt, color0]
 table {%
 0.00190157098864346 0.392857142857143
 0.00390087268847766 0.521739130434783
@@ -61,7 +61,7 @@ table {%
 0.0558827168841667 1
 0.0578820185840009 1
 };
-\addplot [line width = 1.5pt, color1, dashed]
+\addplot [line width = 1pt, color1, dashed]
 table {%
 0.00190157098864346 0.285714285714286
 0.00390087268847766 0.478260869565217
@@ -93,7 +93,7 @@ table {%
 0.0558827168841667 1
 0.0578820185840009 1
 };
-\addplot [line width = 1.5pt, color2, dash pattern=on 1pt off 3pt on 3pt off 3pt]
+\addplot [line width = 1pt, color2, dash pattern=on 1pt off 3pt on 3pt off 3pt]
 table {%
 0.00190157098864346 0.25
 0.00390087268847766 0.217391304347826
@@ -125,7 +125,7 @@ table {%
 0.0558827168841667 1
 0.0578820185840009 1
 };
-\addplot [line width = 1.5pt, color3, dotted]
+\addplot [line width = 1pt, color3, dotted]
 table {%
 0.00190157098864346 0.142857142857143
 0.00390087268847766 0.217391304347826
@@ -157,7 +157,7 @@ table {%
 0.0558827168841667 1
 0.0578820185840009 1
 };
-\addplot [line width = 1.5pt, color4]
+\addplot [line width = 1pt, color4]
 table {%
 0.00190157098864346 0.0714285714285714
 0.00390087268847766 0.0434782608695652

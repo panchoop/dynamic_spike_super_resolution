@@ -4,6 +4,8 @@ import numpy as np
 import os
 from matplotlib import pyplot as plt
 from matplotlib2tikz import save as tikz_save
+# Since the package is not working properly, here I have hand fixes
+import helpToTikz as fix
 
 ### Plotting options:
 
@@ -14,7 +16,7 @@ specificFolder = ["data/1Dsimulations/"+"2018-02-21T02-58-59-371"]
 
 ### Success criteria parameters:
 ## Noiseless case:
-srf_th_noiseless = 10000
+srf_th_noiseless = 1000
 w_th_noiseless = 0.01
 ## Measurement noise
 srf_th_noise_dynamic = 40
@@ -25,7 +27,7 @@ srf_th_noise_comparison = 40
 w_th_noise_comparison = 0.05
 ## Curvature noise
 srf_th_curvature = 1
-w_th_curvature = 0.1
+w_th_curvature = 0.2
 ## SRF comparison
 w_th_comparison = 0.01
 srf_comparison = [1, 10, 100, 1000, 10000]
@@ -35,6 +37,8 @@ srf_comparison = [1, 10, 100, 1000, 10000]
 num_bins = 30
 # Parameter for latex thickness
 lineThickness = "1.5pt"
+lineThickNoise = "1pt"
+curvatureLinethick = '0.7pt'
 # Case compared in the noise case across
 # 0 no noise, 1 -> 0.025 noise, 2 -> 0.05 noise, 3-> 0.075 noise.
 noiseComparison = 3;
@@ -51,148 +55,29 @@ f_c = 20
 K = 2
 
 
-### Scripts to modify tikz files
-
-def readEliminate(filename, text, nextLines):
-	# Function to open a text file, and eliminate all lines that
-	# star with the text line. It also eliminates the following 
-	# predefined next lines.
-	f = open(filename,"r+")
-	d = f.readlines()
-	f.seek(0)
-	counterNextLine = 0
-	for i in d:
-		if (i[0:len(text)] != text)and(counterNextLine==0):
-			f.write(i)
-		else:
-			counterNextLine +=1
-			if counterNextLine > nextLines:
-				counterNextLine = 0
-	f.truncate()
-	f.close()
-
-def readInsert(filename, text_start, text_insert):
-	# Function to read lines and insert in the middle of a text 
-	# an additional text.
-	f = open(filename,"r+")
-	d = f.readlines()
-	f.seek(0)
-	for i in d:
-		if i[0:len(text_start)] == text_start:
-			f.write(i[0:len(text_start)]+text_insert+i[len(text_start):len(i)])
-		else:
-			f.write(i)
-	f.truncate()
-	f.close()
-
-def readReplace(filename, text_start, text_replace, text_insert):
-	# Function that dead lines, takes the one that starts as text_start
-	# finds the substring text_replace, and replaces it for text_insert.
-	f = open(filename,"r+")
-	d = f.readlines()
-	f.seek(0)
-	boolToken = False
-	for i in d:
-		boolToken = False
-		if i[0:len(text_start)] == text_start:
-			i = i.replace(text_replace,text_insert)
-			f.write(i)
-		else:
-			f.write(i)
-	f.truncate()
-	f.close()
-
-def readNewline(filename, text, newline):
-	# Function to insert a complete new line
-	f = open(filename,"r+")
-	d = f.readlines()
-	f.seek(0)
-	for i in d:
-		f.write(i)
-		if i[1:len(text)+1] == text:
-			f.write(newline)
-	f.truncate()
-	f.close()
-
-def scaleTikzLabels(filename, scaling):
-	# Function that will divide the LABELS of the ticks figure with
-	# an predefined value.
-	## retrieve the Ticks labels
-	f = open(filename,"r+")
-	d = f.readlines()
-	f.seek(0)
-	text = "xticklabels={"
-	xtickslabels=''
-	for i in d:
-		f.write(i)
-		if i[0:len(text)] == text:
-			xtickslabels= i[len(text):len(i)]
-	f.truncate()
-	f.close()	
-	while xtickslabels != '':
-		if xtickslabels[-1]!='}':
-			xtickslabels = xtickslabels[0:-1]
-		else:
-			xtickslabels=xtickslabels[0:-1]
-			break
-	xtickslabels=xtickslabels[1:-1]
-	## Convert the retrieved string of labels to float and divide it
-	newlabels = np.array(map(float,xtickslabels.split(",")))/scaling
-	## Convert to string in a appropiate format and replace the new labels
-	newlabelsString = ''
-	for value in newlabels:
-		aux = str(np.round(value,1))
-		newlabelsString += aux+","
-	## convert to string and replace the new labels
-	readReplace(filename, "xticklabels={", xtickslabels, newlabelsString[0:-1])
-
-def readRetrieve(filename, text):
-	# Function that for a specific line of text, will get the array 
-	# of floats that describes.
-	# it assumes that the last element in text is '{'
-	if text[-1] != '{':
-		print('This is not working')
-	f = open(filename,"r+")
-	d = f.readlines()
-	f.seek(0)
-	values=''
-	for i in d:
-		f.write(i)
-		if i[0:len(text)] == text:
-			values= i[len(text):len(i)]
-			print(values)
-			break
-	while values != '':
-		print(values)
-		if values[-1]!='}':
-			values = values[1:-1]
-		else:
-			values=values[1:-1]
-			break
-	return map(float, values.split(","))
-
-
-def fixTikz(filename, linewidth, scaling=True):
+### function to fix the generated tikz files
+def fixTikz(filename, linewidth, scaling=True, translucentLegend=False):
 	## Function to fix the mistakes by tikztolatex
 	# Legend line that gives bad legend.
-	readEliminate(filename, '\\addlegendimage{no marker',0)
+	fix.readEliminate(filename, '\\addlegendimage{no marker',0)
 	# Weird automatically included lines
-	readEliminate(filename, '\\path [draw=black', 1)
+	fix.readEliminate(filename, '\\path [draw=black', 1)
 	# Handmade linewidth insertion
-	readInsert(filename, '\\addplot [', 'line width = '+linewidth +', ')
+	fix.readInsert(filename, '\\addplot [', 'line width = '+linewidth +', ')
 	# Removing the defined linewidth
-	readReplace(filename, "\\addplot", " semithick,", "")
+	fix.readReplace(filename, "\\addplot", " semithick,", "")
 	# Somehow it includes in the tikz file a weird "minus sign" that Latex doesn't likes
-	readReplace(filename, "yticklabels={", "−", "-")
+	fix.readReplace(filename, "yticklabels={", "−", "-")
 	# Personalized scaling, with the symbol for the considered frequency f_c
 	if scaling==True:
-		scaleTikzLabels(filename, 1.0/float(f_c))
+		fix.scaleTikzLabels(filename, 1.0/float(f_c))
 		# Include lines that overrides the symbol of scientific notation
-		readNewline(filename, 'begin{axis}[', 'xtick scale label code/.code={},')
+		fix.readNewline(filename, 'begin{axis}[', 'xtick scale label code/.code={},')
 		# Includes a node that contains the mutiplier to the whole xlabels.
-		readNewline(filename, 'begin{axis}[', 'name=ax,\n')
-		readNewline(filename, 'end{axis}', '\\node at ($(ax.outer south east)+(-15pt,6pt)$) {$\cdot \\nicefrac{1}{f_c}$};\n')
-
+		fix.readNewline(filename, 'begin{axis}[', 'name=ax,\n')
+		fix.readNewline(filename, 'end{axis}', '\\node at ($(ax.outer south east)+(-15pt,6pt)$) {$\cdot \\nicefrac{1}{f_c}$};\n')
+	if translucentLegend==True:
+		fix.readInsert(filename, 'legend style={','fill=white, fill opacity=0.4, draw opacity=1, text opacity =0.9,')
 ### Selecting the folders to generate plots from
 
 if PlotAllFolders:
@@ -288,7 +173,6 @@ for i in range(len(subfolders)):
 	axes = plt.gca()
 	plt.savefig("noiseless.pdf")
 	tikz_save("noiseless.tikz", figureheight="\\figureheight", figurewidth="\\figurewidth")
-	#readRetrieve("noiseless.tikz","xtick={")
 	fixTikz("noiseless.tikz",lineThickness)
 	if visualize_plots==True:
 		plt.show()
@@ -323,7 +207,7 @@ for i in range(len(subfolders)):
 	plt.legend(np.append([r"$\alpha = 0$"],[ r"$\alpha = {0}$".format(str(datanoise[i]))  for i in range(len(datanoise))]))
 	plt.savefig("noisecomp-dyn.pdf")
 	tikz_save("noisecomp-dyn.tikz", figureheight="\\figureheight", figurewidth="\\figurewidth")
-	fixTikz("noisecomp-dyn.tikz",lineThickness)
+	fixTikz("noisecomp-dyn.tikz",lineThickNoise)
 	if visualize_plots==True:
 		plt.show()
 
@@ -342,7 +226,7 @@ for i in range(len(subfolders)):
 	plt.legend(np.append([r"$\alpha = 0$"],[ r"$\alpha = {0}$".format(str(datanoise[i])) for i in range(len(datanoise))]))
 	plt.savefig("noisecomp-static.pdf")
 	tikz_save("noisecomp-static.tikz", figureheight="\\figureheight", figurewidth="\\figurewidth")
-	fixTikz("noisecomp-static.tikz",lineThickness)
+	fixTikz("noisecomp-static.tikz",lineThickNoise)
 	if visualize_plots == True:
 		plt.show()
 
@@ -361,7 +245,7 @@ for i in range(len(subfolders)):
 	plt.legend(np.append([r"$\alpha = 0$"],[ r"$\alpha = {0}$".format(str(datanoise[i]))  for i in range(len(datanoise))]))
 	plt.savefig("noisecomp-static3.pdf")
 	tikz_save("noisecomp-static3.tikz", figureheight="\\figureheight", figurewidth="\\figurewidth")
-	fixTikz("noisecomp-static3.tikz",lineThickness)
+	fixTikz("noisecomp-static3.tikz",lineThickNoise)
 	if visualize_plots == True:
 		plt.show()
 
@@ -372,13 +256,13 @@ for i in range(len(subfolders)):
 	styles = ["-", "--", ":"]
 	plt.figure()
 	plot_case(separations, "dynamic", noiseComparison, srf_th, w_th, linestyle = styles[0])
-	plot_case(separations, "static", noiseComparison, srf_th, w_th, linestyle = styles[0])
-	plot_case(separations, "static3", noiseComparison, srf_th, w_th, linestyle = styles[0])
+	plot_case(separations, "static", noiseComparison, srf_th, w_th, linestyle = styles[1])
+	plot_case(separations, "static3", noiseComparison, srf_th, w_th, linestyle = styles[2])
 	axes = plt.gca()
 	plt.legend(["dynamic", "static", "static3"])
 	plt.savefig("noise_comp_across.pdf")
 	tikz_save("noise_comp_across.tikz", figureheight="\\figureheight", figurewidth="\\figurewidth")
-	fixTikz("noise_comp_across.tikz",lineThickness)
+	fixTikz("noise_comp_across.tikz",lineThickNoise)
 	if visualize_plots==True:
 		plt.show()
 
@@ -410,7 +294,7 @@ for i in range(len(subfolders)):
 	plt.legend([r"$\beta = 0$", r"$\beta = {0}$".format(str(positionnoise[-1]/2))])
 	plt.savefig("curvature.pdf")
 	tikz_save("curvature.tikz", figureheight="\\figureheight", figurewidth="\\figurewidth")
-	fixTikz("curvature.tikz",lineThickness,False)
+	fixTikz("curvature.tikz",curvatureLinethick,scaling=False)
 	if visualize_plots == True:
 		plt.show()
 
@@ -426,10 +310,12 @@ for i in range(len(subfolders)):
 	for i in range(len(positionnoise)):
 		plot_case(separations, "dynamic", 1+len(datanoise)+i, srf_th, w_th, linestyle = styles[i+1])
 	axes = plt.gca()
-	plt.legend(np.append([r"$\beta = 0$"],[r"$\beta = {0}$".format(str(positionnoise[i]/2)) for i in range(len(positionnoise))]))
+	leg=plt.legend(np.append([r"$\beta = 0$"],[r"$\beta = {0}$".format(str(positionnoise[i]/2)) for i in range(len(positionnoise))]))
+	leg.get_frame().set_alpha(0.5)
 	plt.savefig("curvcomp.pdf")
 	tikz_save("curvcomp.tikz", figureheight="\\figureheight", figurewidth="\\figurewidth")
-	fixTikz("curvcomp.tikz",lineThickness)
+	fixTikz("curvcomp.tikz",lineThickNoise, translucentLegend=True)
+	
 	if visualize_plots == True:
 		plt.show()
 	os.chdir("../../..")

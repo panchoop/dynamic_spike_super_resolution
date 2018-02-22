@@ -1,5 +1,4 @@
-# Testing the 4-10 particles example with lower iterations from the algorithm.
-
+# Testing the 4-10 particles example close to Zero.
 # Static Parameters
 f_c = 20
 x_max = 1.0
