@@ -95,7 +95,7 @@ if seeFigs:
 # To see a video of all the snapshots, set to True. It also helps to 
 # decide which frame to choose for images.
 
-if True:
+if False:
     for i in range(video.shape[1]):
         plt.figure()
         plt.pcolormesh(np.linspace(0, x_max, n_x), 
@@ -144,7 +144,7 @@ fixTikz("singleframe3.tikz")
 # Generating norm profile
 plt.figure()
 L2norms = np.sqrt(np.sum(np.power(video,2), 0))
-plt.plot(np.arange(1,len(L2norms)+1), L2norms)
+plt.plot(np.arange(1,len(L2norms)+1), L2norms, linestyle = '--')
 # Paint the close to constant cases
 minSnapshot = 5
 tolerance = 0.1

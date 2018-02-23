@@ -22,7 +22,7 @@ sigma_noise = 0.01
 # total number of the experimets measurements (gives the length of the experience)
 	n_im = 1000
 # Vessels separation
-	dx = 0.05
+	dx = 0.02
 
 ### Inverse problem ###
 # Considered norm to minimize
