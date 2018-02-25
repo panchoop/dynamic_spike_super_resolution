@@ -1,6 +1,22 @@
+# Sequencing process particle centered.
+
 push!(LOAD_PATH, "./models")
+push!(LOAD_PATH, ".")
+push!(LOAD_PATH, "./SparseInverseProblems/src")
+
 using SuperResModels
-using SparseInverseProblems
+using SparseInverseProblemsMod
+using Distributions
+# To see the progress in pmap
+# To use PmapProgressMeter you need to clone it manually
+# do in Julia: Pkg.clone("https://github.com/slundberg/PmapProgressMeter.jl")
+# if this is no longer existent, uncoment the alternative pmap in this code.
+@everywhere using ProgressMeter
+@everywhere using PmapProgressMeter
+
+using PyCall
+@pyimport numpy as np
+@pyimport matplotlib.pyplot as plt
 
 @everywhere begin
     include("2d_parameters.jl")
@@ -32,52 +48,83 @@ single_particle_norm = norm(phi(model_static, thetas, weights), lp_norm)
 # Particles_p are the symmetric equivalent, on the east and moving towards the north. 
 
 
-### Generate sequence ###
-println("Generating sequence...")
-video = SharedArray{Float64}(n_x * n_y, n_im)
-particles_m = [x_max/4]
-particles_p = [3*x_max/4]
+Nparticles = 500
+activation_prob = 0.0002
+expected_time = 34
 
+### Generate sequence ###
+println("Generating sequence... ")
+video = SharedArray{Float64}(n_x * n_y, n_im)
+
+function activate_particles(Nparticles,activation_prob, expected_time)
+    # particles are tuples of position,velocity, weight, survival time.
+    B = Binomial(Nparticles,activation_prob)
+    P = Binomial(1,0.5)
+    U = Uniform(x_max/10,9*x_max/10)
+    N = Poisson(expected_time)
+
+    function flowSpeeds(yposition)
+         return v_max/3 + yposition/x_max*v_max/3*2
+    end
+    N_new_particles = rand(B)
+    new_particles = []
+    for i in 1:N_new_particles
+        # decide if it is flowing downwards (=0) or upwards (=1)
+        direction = rand(P)
+        yposition = rand(U)
+        weight = 1
+        if direction == 0
+            position = (x_max/2-dx, yposition)
+            velocity = flowSpeeds(yposition)
+        else
+            position = (x_max/2+dx, yposition)
+            velocity = -flowSpeeds(yposition)
+        end
+        time = rand(N)
+        push!(new_particles,(position, velocity, weight, time))
+    end
+    return new_particles
+end
+
+function time_step(particles)
+    for j in length(particles):-1:1
+	particle = particles[j]
+	# update position
+        new_position = particle[1][2] + tau*particle[2]
+	# update time
+	new_time = particle[4]-1
+	# discard if time is over
+	if (new_time <= 0) | (new_position>x_max*19/20) | (new_position<x_max/20)
+	    deleteat!(particles,j)
+	else
+	    particles[j]=((particle[1][1], new_position),particle[2], particle[3], new_time)
+	end
+    end
+end
+particles = []
 
 for i in 1:n_im
-    # Obtain the current static particles, just spatial, there is no speed.
-    thetas = hcat([(x_max/2 - dx) * ones(1, length(particles_m)); particles_m'],
-                  [(x_max/2 + dx) * ones(1, length(particles_p)); particles_p'])
-    weights = ones(size(thetas, 2))
-    # Image it and add it to our data vector: video
-    if (length(weights) > 0)
-        video[:,i] = phi(model_static, thetas, weights)
-        video[:,i] = video[:,i] + sigma_noise * randn(size(video[:,i]))
+    # Move particles forward in time
+    time_step(particles)
+    # Activate new particles and push them inside the list of particles
+    new_particles = activate_particles(Nparticles,activation_prob, expected_time)
+    for new_particle in new_particles
+	push!(particles, new_particle)
     end
-    # Displace the particles by their speeds
-    particles_m -= v_max/2 * tau
-    particles_p += v_max/2 * tau
-    # Randomly deactivate particles
-        remove = []
-        for i in 1:length(particles_m)
-            if rand() < activation_probability
-                 push!(remove, i)
-            end
-        end
-        deleteat!(particles_m, remove)
-        remove = []
-        for i in 1:length(particles_p)
-        if rand() < activation_probability
-            push!(remove, i)
-        end
-	end
-	deleteat!(particles_p, remove)
-    # Randomly activate particles
-	if length(weights) == 0
-	    push!(particles_m, initial_position_generator())
-	    push!(particles_p, initial_position_generator())
-        end
-        if rand() < activation_probability
-            push!(particles_m, initial_position_generator())
-        end
-        if rand() < activation_probability
-            push!(particles_p, initial_position_generator())
-        end
+    # Represent the static particles to input into the phi function (forward operator)
+    thetas = zeros(2,length(particles))
+    weights = zeros(length(particles))
+    for j in 1:length(particles)
+	thetas[1,j] = particles[j][1][1]
+	thetas[2,j] = particles[j][1][2]
+	weights[j] = particles[j][3]
+    end
+    ## Image the particles
+    # include noise
+    video[:,i] = sigma_noise*randn(size(video[:,i]))
+    if (length(weights) > 0)
+        video[:,i] += phi(model_static, thetas, weights)
+    end
 end
 
 
@@ -108,7 +155,7 @@ end
     # Function required to use the SparseInverseProblems.ADCG method.
     function callback(old_thetas, thetas, weights, output, old_obj_val)
         #evalute current OV
-        new_obj_val,t = SparseInverseProblems.loss(SparseInverseProblems.LSLoss(), output - target)
+        new_obj_val,t = SparseInverseProblemsMod.loss(SparseInverseProblemsMod.LSLoss(), output - target)
         #println("gap = $(old_obj_val - new_obj_val)")
         if old_obj_val - new_obj_val < 1E-4
             return true
@@ -116,7 +163,7 @@ end
         return false
     end
     # It uses the ACDG algorithm to estimate the location and weights of the particles. Using the estimated number of particles we can bound the total variation on the solutions.
-    (thetas_est,weights_est) = SparseInverseProblems.ADCG(model_dynamic, SparseInverseProblems.LSLoss(), target, frame_norms[seq[1]], callback=callback, max_iters=2000)
+    (thetas_est,weights_est) = SparseInverseProblemsMod.ADCG(model_dynamic, SparseInverseProblemsMod.LSLoss(), target, frame_norms[seq[1]], callback=callback, max_iters=100)
     if length(thetas_est) > 0
         println("est_num = ", est_num_particles)
         println("thetas = ", thetas_est) 
@@ -128,7 +175,7 @@ end
 end
 
 println("Inverting...")
-all_thetas = pmap(seq -> posvel_from_seq(video, seq), short_seqs)
+all_thetas = pmap(seq -> begin sleep(1); posvel_from_seq(video, seq) end, Progress(length(short_seqs)), short_seqs)
 
 println("Reprojecting...")
 errors = zeros(length(short_seqs))
@@ -163,3 +210,37 @@ for i in 1:length(short_seqs)
 end
 np.save("errors", errors)
 cd("..")
+
+
+
+if false
+for i = 1:500
+plt.figure()
+plt.pcolormesh(np.linspace(0, 0.01, n_x), np.linspace(0, 0.01, n_x), reshape(video[:,i],n_x,n_y))
+plt.colorbar()
+plt.show()
+end
+end
+
+showFrames = 1:500
+plt.figure()
+# Compute the L2 norm at each time sample
+L2norms = sqrt.(sum(video[:,showFrames].^2,1))[:]
+plt.plot(1:length(L2norms), L2norms)
+# Paint the close to constant cases
+minSnapshot = 5
+tolerance = 0.05
+j = 1
+i = 1
+while i <= length(L2norms)-minSnapshot
+    while (j+i <= length(L2norms)-minSnapshot) & (abs.(L2norms[i]-L2norms[i+j])<=tolerance)
+	j = j +1
+    end
+    if j-1 >= minSnapshot
+	plt.plot([i, i+j-1], [mean(L2norms[i:i+j-1]), mean(L2norms[i:i+j-1])],color="r")
+    end
+    i = i+j
+    j = 1
+end
+plt.show()
+
