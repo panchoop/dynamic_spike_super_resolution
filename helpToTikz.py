@@ -70,7 +70,7 @@ def readNewline(filename, text, newline):
 	f.seek(0)
 	for i in d:
 		f.write(i)
-		if i[1:len(text)+1] == text:
+		if i[0:len(text)] == text:
 			f.write(newline)
 	f.truncate()
 	f.close()

@@ -72,10 +72,10 @@ def fixTikz(filename, linewidth, scaling=True, translucentLegend=False):
 	if scaling==True:
 		fix.scaleTikzLabels(filename, 1.0/float(f_c))
 		# Include lines that overrides the symbol of scientific notation
-		fix.readNewline(filename, 'begin{axis}[', 'xtick scale label code/.code={},')
+		fix.readNewline(filename, '\\begin{axis}[', 'xtick scale label code/.code={},')
 		# Includes a node that contains the mutiplier to the whole xlabels.
-		fix.readNewline(filename, 'begin{axis}[', 'name=ax,\n')
-		fix.readNewline(filename, 'end{axis}', '\\node at ($(ax.outer south east)+(-15pt,6pt)$) {$\cdot \\nicefrac{1}{f_c}$};\n')
+		fix.readNewline(filename, '\\begin{axis}[', 'name=ax,\n')
+		fix.readNewline(filename, '\\end{axis}', '\\node at ($(ax.outer south east)+(-15pt,6pt)$) {$\cdot \\nicefrac{1}{f_c}$};\n')
 	if translucentLegend==True:
 		fix.readInsert(filename, 'legend style={','fill=white, fill opacity=0.4, draw opacity=1, text opacity =0.9,')
 ### Selecting the folders to generate plots from

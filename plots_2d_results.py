@@ -110,26 +110,33 @@ if False:
 plt.figure()
 plt.pcolormesh(np.linspace(0, x_max, n_x), np.linspace(0, x_max, n_x),
 			   np.reshape(video[:,frameNum1],(n_x,n_x)))
-plt.colorbar()
 plt.savefig("singleframe1.pdf")
 if seeFigs:
     plt.show()
 tikz_save("singleframe1.tikz", figureheight="\\figureheight",
 		  figurewidth="\\figurewidth")
 fixTikz("singleframe1.tikz")
-
+fix.readReplace("singleframe1.tikz", "xticklabels", 
+			    "0.0,0.2,0.4,0.6,0.8,1.0", "0,0.2,0.4,0.6,0.8,1")
+fix.readReplaceAll("singleframe1.tikz","singleframe1", 
+				   "figures/singleframe1")			    
 
 plt.figure()
 plt.pcolormesh(np.linspace(0, x_max, n_x), np.linspace(0, x_max, n_x), 
 			   np.reshape(video[:,frameNum2],(n_x,n_x)))
-plt.colorbar()
 plt.savefig("singleframe2.pdf")
 if seeFigs:
     plt.show()
 tikz_save("singleframe2.tikz", figureheight="\\figureheight",
 		  figurewidth="\\figurewidth")
 fixTikz("singleframe2.tikz")
-
+fix.readReplace("singleframe2.tikz", "yticklabels", 
+			    "0.0,0.2,0.4,0.6,0.8,1.0", "")
+fix.readReplace("singleframe2.tikz", "xticklabels", 
+			    "0.0,0.2,0.4,0.6,0.8,1.0", "0,0.2,0.4,0.6,0.8,1")
+fix.readReplaceAll("singleframe2.tikz","singleframe2", 
+				   "figures/singleframe2")
+				   
 plt.figure()
 plt.pcolormesh(np.linspace(0, x_max, n_x), np.linspace(0, x_max, n_x), 
 			   np.reshape(video[:,frameNum3],(n_x,n_x)))
@@ -140,6 +147,15 @@ if seeFigs:
 tikz_save("singleframe3.tikz", figureheight="\\figureheight",
 		  figurewidth="\\figurewidth")
 fixTikz("singleframe3.tikz")
+fix.readReplace("singleframe3.tikz", "yticklabels", 
+			    "0.0,0.2,0.4,0.6,0.8,1.0", "")
+fix.readReplace("singleframe3.tikz", "xticklabels", 
+			    "0.0,0.2,0.4,0.6,0.8,1.0", "0,0.2,0.4,0.6,0.8,1")
+fix.readNewline("singleframe3.tikz", "\\begin{axis}[", 
+		     	"colorbar style = { width = 0.2cm, at = {(1.15,0.5)},"
+			    +" anchor = east,},")
+fix.readReplaceAll("singleframe3.tikz","singleframe3", 
+				   "figures/singleframe3")
 
 # Generating norm profile
 plt.figure()

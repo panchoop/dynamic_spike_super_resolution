@@ -2,14 +2,14 @@
 \begin{tikzpicture}
 
 \begin{axis}[
-xmin=0, xmax=1,
+colorbar style = { width = 0.2cm, at = {(1.15,0.5)}, anchor = east,},xmin=0, xmax=1,
 ymin=0, ymax=1,
 width=\figurewidth,
 height=\figureheight,
 xtick={0,0.2,0.4,0.6,0.8,1},
-xticklabels={0.0,0.2,0.4,0.6,0.8,1.0},
+xticklabels={0,0.2,0.4,0.6,0.8,1},
 ytick={0,0.2,0.4,0.6,0.8,1},
-yticklabels={0.0,0.2,0.4,0.6,0.8,1.0},
+yticklabels={},
 tick align=outside,
 tick pos=left,
 x grid style={lightgray!92.026143790849673!black},
@@ -20,7 +20,7 @@ point meta min=-0.0385574064194234,
 point meta max=1.56482122676166,
 colorbar style={ytick={-6.93889390390723e-18,0.2,0.4,0.6,0.8,1,1.2,1.4},yticklabels={0.0,0.2,0.4,0.6,0.8,1.0,1.2,1.4},ylabel={}}
 ]
-\addplot graphics [includegraphics cmd=\pgfimage,xmin=0, xmax=1, ymin=0, ymax=1] {singleframe3_img000.png};
+\addplot graphics [includegraphics cmd=\pgfimage,xmin=0, xmax=1, ymin=0, ymax=1] {figures/singleframe3_img000.png};
 
 
 
