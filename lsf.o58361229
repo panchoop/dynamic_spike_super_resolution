@@ -1,0 +1,10 @@
+ERROR: LoadError: ArgumentError: Module Distributions not found in current path.
+Run `Pkg.add("Distributions")` to install the Distributions package.
+Stacktrace:
+ [1] _require(::Symbol) at ./loading.jl:435
+ [2] require(::Symbol) at ./loading.jl:405
+ [3] include_from_node1(::String) at ./loading.jl:576
+ [4] include(::String) at ./sysimg.jl:14
+ [5] process_options(::Base.JLOptions) at ./client.jl:305
+ [6] _start() at ./client.jl:371
+while loading /cluster/home/romerohf/Dynamical_super_resolution_with_microbubbles/Main_2dSim.jl, in expression starting on line 9
