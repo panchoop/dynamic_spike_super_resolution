@@ -27,7 +27,7 @@ legend style={draw=white!80.0!black},
 legend cell align={left},
 legend entries={{dynamic},{static},{static3}}
 ]
-\addplot [line width = 1.5pt, color0]
+\addplot [line width = 1pt, color0]
 table {%
 0.00172834649487293 0
 0.00517208198993669 0
@@ -59,7 +59,7 @@ table {%
 0.0947092048615944 0
 0.0981529403566581 0
 };
-\addplot [line width = 1.5pt, color1]
+\addplot [line width = 1pt, color1, dashed]
 table {%
 0.00172834649487293 0
 0.00517208198993669 0
@@ -91,7 +91,7 @@ table {%
 0.0947092048615944 0
 0.0981529403566581 0
 };
-\addplot [line width = 1.5pt, color2]
+\addplot [line width = 1pt, color2, dotted]
 table {%
 0.00172834649487293 0
 0.00517208198993669 0

@@ -21,7 +21,7 @@ legend entries={{$\beta = 0$},{$\beta = 0.005$}},
 legend cell align={left},
 legend style={at={(0.03,0.97)}, anchor=north west, draw=white!80.0!black}
 ]
-\addplot [line width = 1.5pt, color0]
+\addplot [line width = 0.7pt, color0]
 table {%
 -1 -0.25
 -0.5 -0.125
@@ -29,7 +29,7 @@ table {%
 0.5 0.125
 1 0.25
 };
-\addplot [line width = 1.5pt, color1]
+\addplot [line width = 0.7pt, color1]
 table {%
 -1 -0.24875
 -0.5 -0.1246875

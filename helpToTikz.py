@@ -1,4 +1,5 @@
 # To edit file texts, with the specific purpose to edit tikz files
+# for plotting.
 
 import numpy as np
 
@@ -96,16 +97,19 @@ def scaleTikzLabels(filename, scaling):
 		else:
 			xtickslabels=xtickslabels[0:-1]
 			break
-	xtickslabels=xtickslabels[1:-1]
-	## Convert the retrieved string of labels to float and divide it
-	newlabels = np.array(map(float,xtickslabels.split(",")))/scaling
-	## Convert to string in a appropiate format and replace the new labels
-	newlabelsString = ''
-	for value in newlabels:
-		aux = str(np.round(value,1))
-		newlabelsString += aux+","
-	## convert to string and replace the new labels
-	readReplace(filename, "xticklabels={", xtickslabels, newlabelsString[0:-1])
+	if xtickslabels=='':
+		print("x label scaling didn't worked out as expected, no scaling applied.")
+	else:
+		xtickslabels=xtickslabels[1:-1]
+		## Convert the retrieved string of labels to float and divide it
+		newlabels = np.array(map(float,xtickslabels.split(",")))/scaling
+		## Convert to string in a appropiate format and replace the new labels
+		newlabelsString = ''
+		for value in newlabels:
+			aux = str(np.round(value,1))
+			newlabelsString += aux+","
+		## convert to string and replace the new labels
+		readReplace(filename, "xticklabels={", xtickslabels, newlabelsString[0:-1])
 
 def readRetrieve(filename, text):
 	# Function that for a specific line of text, will get the array 
@@ -116,9 +120,9 @@ def readRetrieve(filename, text):
 	f = open(filename,"r+")
 	d = f.readlines()
 	f.seek(0)
+	f.close()
 	values=''
 	for i in d:
-		f.write(i)
 		if i[0:len(text)] == text:
 			values= i[len(text):len(i)]
 			print(values)

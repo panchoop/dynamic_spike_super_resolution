@@ -12,7 +12,7 @@ import helpToTikz as fix
 # If you want to get the plots on a specific experiment-folder or in all of them
 PlotSpecificFolder = True
 PlotAllFolders = not(PlotSpecificFolder)
-specificFolder = ["data/1Dsimulations/"+"2018-02-21T02-58-59-371"]
+specificFolder = ["data/1Dsimulations/"+"2018-02-24T09-42-34-493"]
 
 ### Success criteria parameters:
 ## Noiseless case:
