@@ -1,0 +1,33 @@
+% This file was created by matplotlib2tikz v0.6.15.
+\begin{tikzpicture}
+
+\begin{axis}[
+colorbar style = { width = 0.2cm, at = {(1.15,0.5)}, anchor = east,},xmin=0, xmax=1,
+ymin=0, ymax=1,
+width=\figurewidth,
+height=\figureheight,
+xtick={0,0.2,0.4,0.6,0.8,1},
+xticklabels={0.0,0.2,0.4,0.6,0.8,1.0},
+ytick={0,0.2,0.4,0.6,0.8,1},
+yticklabels={0.0,0.2,0.4,0.6,0.8,1.0},
+tick align=outside,
+tick pos=left,
+x grid style={lightgray!92.026143790849673!black},
+y grid style={lightgray!92.026143790849673!black},
+colorbar,
+colormap={mymap}{[1pt]
+  rgb(0pt)=(0,0,0.3);
+  rgb(1pt)=(1,0.992156862745098,0.992156862745098)
+},
+point meta min=-0.000729918594541059,
+point meta max=0.238389710775408,
+colorbar style={ytick={0,0.05,0.1,0.15,0.2},yticklabels={0.00,0.05,0.10,0.15,0.20},ylabel={}}
+]
+\addplot graphics [includegraphics cmd=\pgfimage,xmin=0, xmax=1, ymin=0, ymax=1] {figures/bmode_img000.png};
+
+
+
+
+\end{axis}
+
+\end{tikzpicture}

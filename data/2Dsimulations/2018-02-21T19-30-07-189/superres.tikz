@@ -2,7 +2,7 @@
 \begin{tikzpicture}
 
 \begin{axis}[
-xmin=0, xmax=1,
+colorbar style = { width = 0.2cm, at = {(1.15,0.5)}, anchor = east,},xmin=0, xmax=1,
 ymin=0, ymax=1,
 width=\figurewidth,
 height=\figureheight,
@@ -20,7 +20,7 @@ point meta min=-13.7915489629484,
 point meta max=13.307625542182,
 colorbar style={ytick={-10,-5,0,5,10},yticklabels={-10,-5,0,5,10},ylabel={}}
 ]
-\addplot [fill opacity = 0.4, only marks, scatter, scatter src=explicit, colormap/viridis, visualization depends on={\thisrow{sizedata} \as\perpointmarksize}, scatter/@pre marker code/.append style={/tikz/mark size=3pt}]
+\addplot [fill opacity = 0.4, only marks, scatter, scatter src=explicit, colormap/viridis, visualization depends on={\thisrow{sizedata} \as\perpointmarksize}, scatter/@pre marker code/.append style={/tikz/mark size=1pt}]
 table [x=x, y=y, meta=colordata]{%
 x                      y                      colordata              sizedata
 +4.998190861348047e-01 +5.213946104866182e-01 +9.713757734096257e+00 +3.979782970684836e+00

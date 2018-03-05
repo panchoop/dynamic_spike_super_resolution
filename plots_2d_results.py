@@ -3,6 +3,7 @@
 import numpy as np
 import os
 from matplotlib import pyplot as plt
+from matplotlib.colors import LinearSegmentedColormap
 from matplotlib2tikz import save as tikz_save
 import helpToTikz as fix
 
@@ -11,13 +12,13 @@ import helpToTikz as fix
 # example = "/2017-11-03T10-05-27-667"
 # example = "/2017-11-04T08-04-38-411"
 # example = "/2017-11-04T11-57-14-36"
-example = "/2018-02-21T19-30-07-189"
+example = "/2018-02-26T11-02-23-312"
 folder = "data/2Dsimulations"+example
 
 ### Parameters for reconstruction figure
 # Threshold to accept or reject recostructions:
 # the error threshold is how much measurement missmatch we tolerate.
-threshold_error = 1
+threshold_error = 0.65
 # The weight threshold is at which mass we are going to consider the 
 # reconstruction a valid particle.
 threshold_weight = 0.1
@@ -25,9 +26,9 @@ threshold_weight = 0.1
 sizeAmp = 50;
 
 ### Parameters for single frame
-frameNum1 = 45
-frameNum2 = frameNum1+1
-frameNum3 = frameNum1+2
+frameNum1 = 20
+frameNum2 = frameNum1+4
+frameNum3 = frameNum1+8
 
 ### If you wanna see each generated figure
 seeFigs = False
@@ -53,9 +54,9 @@ def fixTikz(filename, scatter=False, picture=False):
     # that Latex doesn't likes
     fix.readReplaceAll(filename,"−", "-")
     if scatter==True:
-        fix.readInsert(filename, '\\addplot [', 'fill opacity = 0.4, ')
+        fix.readInsert(filename, '\\addplot [', 'fill opacity = 0.4, mark size=0.5pt,')
         fix.readReplaceAll(filename, "size=\\perpointmarksize",
-                           "size=3pt")
+                           "")
 
 # Generating reconstruction figure
 plt.figure()
@@ -67,7 +68,7 @@ for i in range(len(errors)):
 						  theta[:,theta[4,:]>threshold_weight]), axis=1)
 
 plt.scatter(all_thetas[0,:], all_thetas[1,:], c=all_thetas[3,:], 
-			s=all_thetas[4,:]*sizeAmp, alpha = 0.5)
+			s=1*sizeAmp, alpha = 0.5)
 plt.colorbar()
 plt.xlim((0, x_max))
 plt.ylim((0, x_max))
@@ -78,12 +79,27 @@ fixTikz("superres.tikz",scatter=True)
 fix.readEliminate("superres.tikz", '\\path [draw=black', 1)
 if seeFigs:
     plt.show()
-
+fix.readNewline("superres.tikz", "\\begin{axis}[", 
+		     	"colorbar style = { width = 0.2cm, at = {(1.15,0.5)},"
+			    +" anchor = east,},")
+fix.readReplaceAll("superres.tikz","superres", 
+				   "figures/superres")				    
+			    
+			    
 # Generating B mode figure
+
+# We crop the used cmap for the snapshots to create a new one
+seismic_cmap = plt.cm.get_cmap('seismic')
+colors = []
+colors.append(seismic_cmap(0.0))
+colors.append(seismic_cmap(0.5))
+my_cmap = LinearSegmentedColormap.from_list('my_cmap',colors, 100)
+
+
 plt.figure()
 n_x = int(np.round(np.sqrt(video.shape[0])))
 plt.pcolormesh(np.linspace(0, x_max, n_x), np.linspace(0, x_max, n_x),
-			   np.reshape(np.sum(video, 1),(n_x,n_x)))
+			   np.reshape(np.sum(video, 1)/float(video.shape[1]),(n_x,n_x)),cmap = my_cmap)
 plt.colorbar()
 plt.savefig("bmode.pdf")
 tikz_save("bmode.tikz", figureheight="\\figureheight",
@@ -91,25 +107,34 @@ tikz_save("bmode.tikz", figureheight="\\figureheight",
 fixTikz("bmode.tikz")
 if seeFigs:
     plt.show()
+fix.readNewline("bmode.tikz", "\\begin{axis}[", 
+				"colorbar style = { width = 0.2cm, at = {(1.15,0.5)},"
+			    +" anchor = east,},")
+fix.readReplaceAll("bmode.tikz","bmode", 
+				   "figures/bmode")	
 
 # To see a video of all the snapshots, set to True. It also helps to 
 # decide which frame to choose for images.
 
 if False:
+    plt.figure()
     for i in range(video.shape[1]):
-        plt.figure()
         plt.pcolormesh(np.linspace(0, x_max, n_x), 
     				   np.linspace(0, x_max, n_x), 
-		     		   np.reshape(video[:,i],(n_x,n_x)))
+		     		   np.reshape(video[:,i],(n_x,n_x)), cmap = 'seismic')
         plt.colorbar()
+        plt.clim((0,1.8))
         plt.title("frame: "+str(i))
-        plt.show()
+        #plt.show()
+        plt.pause(0.3)
+        plt.clf()
 
 # Generating different snapshots figure
 
 plt.figure()
 plt.pcolormesh(np.linspace(0, x_max, n_x), np.linspace(0, x_max, n_x),
-			   np.reshape(video[:,frameNum1],(n_x,n_x)))
+			   np.reshape(video[:,frameNum1],(n_x,n_x)), cmap = 'seismic')
+plt.clim((0,1.8))
 plt.savefig("singleframe1.pdf")
 if seeFigs:
     plt.show()
@@ -123,7 +148,8 @@ fix.readReplaceAll("singleframe1.tikz","singleframe1",
 
 plt.figure()
 plt.pcolormesh(np.linspace(0, x_max, n_x), np.linspace(0, x_max, n_x), 
-			   np.reshape(video[:,frameNum2],(n_x,n_x)))
+			   np.reshape(video[:,frameNum2],(n_x,n_x)), cmap = 'seismic')
+plt.clim((0,1.8))
 plt.savefig("singleframe2.pdf")
 if seeFigs:
     plt.show()
@@ -139,8 +165,9 @@ fix.readReplaceAll("singleframe2.tikz","singleframe2",
 				   
 plt.figure()
 plt.pcolormesh(np.linspace(0, x_max, n_x), np.linspace(0, x_max, n_x), 
-			   np.reshape(video[:,frameNum3],(n_x,n_x)))
+			   np.reshape(video[:,frameNum3],(n_x,n_x)), cmap = 'seismic')
 plt.colorbar()
+plt.clim((0,1.8))
 plt.savefig("singleframe3.pdf")
 if seeFigs:
     plt.show()
