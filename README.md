@@ -1,5 +1,6 @@
 ### Dynamic Spikes Super-Resolution
 <i> By Francisco Romero and Timothee Wintz. </i>
+
 v0.1
 
 Codes to generate the examples presented in the paper <b>Dynamic Spike Super-Resolution
