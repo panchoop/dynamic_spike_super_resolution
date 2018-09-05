@@ -178,24 +178,25 @@ end
 end
 
 println("Inverting...")
-all_thetas = zeros(5,length(short_seqs))
-errors = zeros(length(short_seqs))
-# all_thetas = pmap(seq -> begin sleep(1); posvel_from_seq(video, seq) end, Progress(length(short_seqs)), short_seqs)
 
-# println("Reprojecting...")
-# errors = zeros(length(short_seqs))
-# ### Measurements error, we simulate the measurements that would be obtained with our reconstructed values ###
-# for i in 1:length(short_seqs)
-#     seq=  short_seqs[i]
-#     target = video[:, seq][:]
-#     if length(all_thetas[i]) > 0
-#         reprojection = phi(model_dynamic, all_thetas[i][1:4,:], all_thetas[i][5,:])
-#         println("error = ", norm(target-reprojection))
-#         errors[i] = norm(target-reprojection)
-#     else
-#         errors[i] = norm(target)
-#     end
-# end
+all_thetas = pmap(seq -> begin sleep(1); posvel_from_seq(video, seq) end, Progress(length(short_seqs)), short_seqs)
+
+println("Reprojecting...")
+
+errors = zeros(length(short_seqs))
+### Measurements error, we simulate the measurements that would be obtained with our reconstructed values ###
+
+for i in 1:length(short_seqs)
+    seq=  short_seqs[i]
+    target = video[:, seq][:]
+    if length(all_thetas[i]) > 0
+        reprojection = phi(model_dynamic, all_thetas[i][1:4,:], all_thetas[i][5,:])
+        println("error = ", norm(target-reprojection))
+        errors[i] = norm(target-reprojection)
+    else
+        errors[i] = norm(target)
+    end
+end
 
 ### Save the simulated data ###
 data_folder = "data/2Dsimulations/"*now_str
