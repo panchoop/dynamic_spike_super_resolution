@@ -6,7 +6,7 @@ Codes to simulate examples to which apply the super resolution reconstruction
 theory on moving particles. The paper of reference is not yet published, but has
 as authors Giovanni Alberti, Habib Ammari, Francisco Romero, Timothee Wintz.
 
-The codes require the SparseInverProblems solver from https://github.com/nboyd/SparseInverseProblems.jl, we copied it and included small modifications that let it abort to avoid entering infinite loops.
+The codes require the SparseInverProblems solver from https://github.com/nboyd/SparseInverseProblems.jl, we imported it and included small modifications that let it abort to avoid entering infinite loops.
 
 There are simulations in one and two dimensions, the parameters to generate them can be modified in the files 1d_parameters.jl and 2d_parameters.jl respectively. The script to generate them are Main_1dSim.jl and Main_2dSim.jl respectively.
 Be advised: generation of examples is lengthy and it is recommended to use run these scripts in a parallel fashion.

@@ -7,6 +7,10 @@ push!(LOAD_PATH, "./SparseInverseProblems/src")
 using SuperResModels
 using SparseInverseProblemsMod
 using Distributions
+using QuadGK
+using Interpolations
+
+
 # To see the progress in pmap
 # To use PmapProgressMeter you need to clone it manually
 # do in Julia: Pkg.clone("https://github.com/slundberg/PmapProgressMeter.jl")
@@ -58,28 +62,21 @@ video = SharedArray{Float64}(n_x * n_y, n_im)
 
 function activate_particles(Nparticles,activation_prob, expected_time)
     # particles are tuples of position,velocity, weight, survival time.
+    # The position is a one dimensional variable, that once passed to the vessel function
+    # and displaced accordingly, would return the respective position.
     B = Binomial(Nparticles,activation_prob)
     P = Binomial(1,0.5)
-    U = Uniform(x_max/10,9*x_max/10)
+    U = Uniform(x_max*bndry_sep,t_max)
     N = Poisson(expected_time)
 
-    function flowSpeeds(yposition)
-         return v_max/3 + yposition/x_max*v_max/3*2
-    end
     N_new_particles = rand(B)
     new_particles = []
     for i in 1:N_new_particles
         # decide if it is flowing downwards (=0) or upwards (=1)
         direction = rand(P)
-        yposition = rand(U)
+        position = rand(U)
         weight = 1
-        if direction == 0
-            position = (x_max/2-dx, yposition)
-            velocity = flowSpeeds(yposition)
-        else
-            position = (x_max/2+dx, yposition)
-            velocity = -flowSpeeds(yposition)
-        end
+	    velocity = (direction-0.5)*2*particle_velocity
         time = rand(N)
         push!(new_particles,(position, velocity, weight, time))
     end
@@ -90,14 +87,14 @@ function time_step(particles)
     for j in length(particles):-1:1
 	particle = particles[j]
 	# update position
-        new_position = particle[1][2] + tau*particle[2]
+        new_position = particle[1] + tau*particle[2]
 	# update time
 	new_time = particle[4]-1
 	# discard if time is over
-	if (new_time <= 0) | (new_position>x_max*19/20) | (new_position<x_max/20)
+	if (new_time <= 0) | (new_position>t_max) | (new_position<bndry_sep*x_max)
 	    deleteat!(particles,j)
 	else
-	    particles[j]=((particle[1][1], new_position),particle[2], particle[3], new_time)
+	    particles[j]=(new_position,particle[2], particle[3], new_time)
 	end
     end
 end
@@ -112,11 +109,18 @@ for i in 1:n_im
 	push!(particles, new_particle)
     end
     # Represent the static particles to input into the phi function (forward operator)
+    # thetas are 2d vectors representing position
     thetas = zeros(2,length(particles))
     weights = zeros(length(particles))
     for j in 1:length(particles)
-	thetas[1,j] = particles[j][1][1]
-	thetas[2,j] = particles[j][1][2]
+    # The case in the upward or downward vessel
+    if particles[j][2]>0
+	    thetas[1,j] = vessel(particles[j][1])[1]
+	    thetas[2,j] = vessel(particles[j][1])[2]
+    else
+        thetas[1,j] = vessel(particles[j][1])[1]+dx
+        thetas[2,j] = vessel(particles[j][1])[2]-dx
+    end
 	weights[j] = particles[j][3]
     end
     ## Image the particles
@@ -126,7 +130,6 @@ for i in 1:n_im
         video[:,i] += phi(model_static, thetas, weights)
     end
 end
-
 
 ### Obtaining time frames in which the quantity of particles remained constant ###
 println("Getting short sequences without jump...")
@@ -175,22 +178,24 @@ end
 end
 
 println("Inverting...")
-all_thetas = pmap(seq -> begin sleep(1); posvel_from_seq(video, seq) end, Progress(length(short_seqs)), short_seqs)
-
-println("Reprojecting...")
+all_thetas = zeros(5,length(short_seqs))
 errors = zeros(length(short_seqs))
-### Measurements error, we simulate the measurements that would be obtained with our reconstructed values ###
-for i in 1:length(short_seqs)
-    seq=  short_seqs[i]
-    target = video[:, seq][:]
-    if length(all_thetas[i]) > 0
-        reprojection = phi(model_dynamic, all_thetas[i][1:4,:], all_thetas[i][5,:])
-        println("error = ", norm(target-reprojection))
-        errors[i] = norm(target-reprojection)
-    else
-        errors[i] = norm(target)
-    end
-end
+# all_thetas = pmap(seq -> begin sleep(1); posvel_from_seq(video, seq) end, Progress(length(short_seqs)), short_seqs)
+
+# println("Reprojecting...")
+# errors = zeros(length(short_seqs))
+# ### Measurements error, we simulate the measurements that would be obtained with our reconstructed values ###
+# for i in 1:length(short_seqs)
+#     seq=  short_seqs[i]
+#     target = video[:, seq][:]
+#     if length(all_thetas[i]) > 0
+#         reprojection = phi(model_dynamic, all_thetas[i][1:4,:], all_thetas[i][5,:])
+#         println("error = ", norm(target-reprojection))
+#         errors[i] = norm(target-reprojection)
+#     else
+#         errors[i] = norm(target)
+#     end
+# end
 
 ### Save the simulated data ###
 data_folder = "data/2Dsimulations/"*now_str
@@ -206,41 +211,42 @@ np.save("frame_norms", frame_norms)
 np.save("jumps", jumps)
 np.save("short_seq_array", short_seq_array)
 for i in 1:length(short_seqs)
-    np.save(string("thetas-", i), all_thetas[i])
+#    np.save(string("thetas-", i), all_thetas[i])
+    np.save(string("thetas-", i), (0,0,0,0,1))
 end
 np.save("errors", errors)
 cd("..")
 
 
+#
+# if false
+# for i = 1:500
+# plt.figure()
+# plt.pcolormesh(np.linspace(0, 0.01, n_x), np.linspace(0, 0.01, n_x), reshape(video[:,i],n_x,n_y))
+# plt.colorbar()
+# plt.show()
+# end
+# end
 
-if false
-for i = 1:500
-plt.figure()
-plt.pcolormesh(np.linspace(0, 0.01, n_x), np.linspace(0, 0.01, n_x), reshape(video[:,i],n_x,n_y))
-plt.colorbar()
-plt.show()
-end
-end
-
-showFrames = 1:500
-plt.figure()
-# Compute the L2 norm at each time sample
-L2norms = sqrt.(sum(video[:,showFrames].^2,1))[:]
-plt.plot(1:length(L2norms), L2norms)
-# Paint the close to constant cases
-minSnapshot = 5
-tolerance = 0.05
-j = 1
-i = 1
-while i <= length(L2norms)-minSnapshot
-    while (j+i <= length(L2norms)-minSnapshot) & (abs.(L2norms[i]-L2norms[i+j])<=tolerance)
-	j = j +1
-    end
-    if j-1 >= minSnapshot
-	plt.plot([i, i+j-1], [mean(L2norms[i:i+j-1]), mean(L2norms[i:i+j-1])],color="r")
-    end
-    i = i+j
-    j = 1
-end
-plt.show()
+# showFrames = 1:500
+# plt.figure()
+# # Compute the L2 norm at each time sample
+# L2norms = sqrt.(sum(video[:,showFrames].^2,1))[:]
+# plt.plot(1:length(L2norms), L2norms)
+# # Paint the close to constant cases
+# minSnapshot = 5
+# tolerance = 0.05
+# j = 1
+# i = 1
+# while i <= length(L2norms)-minSnapshot
+#     while (j+i <= length(L2norms)-minSnapshot) & (abs.(L2norms[i]-L2norms[i+j])<=tolerance)
+# 	j = j +1
+#     end
+#     if j-1 >= minSnapshot
+# 	plt.plot([i, i+j-1], [mean(L2norms[i:i+j-1]), mean(L2norms[i:i+j-1])],color="r")
+#     end
+#     i = i+j
+#     j = 1
+# end
+# plt.show()
 
