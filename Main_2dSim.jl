@@ -17,6 +17,8 @@ using Roots
 # if this is no longer existent, uncoment the alternative pmap in this code.
 @everywhere using ProgressMeter
 @everywhere using PmapProgressMeter
+@everywhere using Interpolations
+
 
 using PyCall
 @pyimport numpy as np

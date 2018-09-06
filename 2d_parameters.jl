@@ -8,13 +8,13 @@ x_max = 1
 	filter = (x, y) -> exp(-(x^2 + y^2)/2/sigma^2)
 	filter_dx = (x, y) -> -x/sigma^2*filter(x, y)
 	filter_dy = (x, y) -> -y/sigma^2*filter(x, y)
-# The number of time samples for reconstruction: 2K+1 
+# The number of time samples for reconstruction: 2K+1
 	K = 2
 # the maximum allowed speed for any considered particle
 	v_max = 15 #[mm/s]
         particle_velocity = 1 #[mm/s]
 # The sampling rate
-	tau = 1/500 
+	tau = 1/500
 
 ### Noise ###
 sigma_noise = 0.01
@@ -42,7 +42,10 @@ sigma_noise = 0.01
 ### a string line, that afterwards curves
 
 # Elliptic extension of a vessel
- 
+using Interpolations
+using Roots
+using QuadGK
+
 function vessel(t)
     # Straight line parameters and starting point
     line_len = 1/4
@@ -50,7 +53,7 @@ function vessel(t)
     # Ellipse curve parameters
     x_semiax = x_max - start_pos*x_max
     y_semiax = x_max - line_len*x_max
-    max_t = 2 
+    max_t = 2
     # when straight line
     if t < line_len*x_max
         return (start_pos*x_max, t)
@@ -69,7 +72,7 @@ function vessel(t)
     natural_curve(tt) = ellipse_curve(inv_interp(tt))
     x0 = start_pos*x_max
     y0 = line_len*x_max
-    return (natural_curve(tt)[1] + x0, natural_curve(tt)[2] + y0) 
+    return (natural_curve(tt)[1] + x0, natural_curve(tt)[2] + y0)
 end
 
 target_funct(t) = max(vessel(t)[1] - x_max*(1-bndry_sep), vessel(t)[2] - x_max*(1-bndry_sep))
@@ -79,24 +82,3 @@ if target_funct(lower_time)*target_funct(impossible_time) > 0
     print("This is not going to work")
 end
 t_max = find_zero(target_funct, (lower_time, impossible_time), Bisection())
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
