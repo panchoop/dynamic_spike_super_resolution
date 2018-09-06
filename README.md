@@ -7,12 +7,8 @@ Codes to generate the examples presented in the paper <b>Dynamic Spike Super-Res
 with Applications to Ultrafast Ultrasound</b>, authored by Giovanni Alberti, Habib Ammari,
 Francisco Romero and Timothée Wintz.
 
-<<<<<<< HEAD
 The codes require the SparseInverProblems solver from https://github.com/nboyd/SparseInverseProblems.jl, we imported it and included small modifications that let it abort to avoid entering infinite loops.
-=======
-The codes require the SparseInverProblems solver from https://github.com/nboyd/SparseInverseProblems.jl,
-we cloned it and included small modifications that let it abort to avoid entering infinite loops.
->>>>>>> e8b492688112ecbcd3159283d89604fe308b305b
+
 
 There are simulations in one and two dimensions, the parameters to generate them can be modified in the
 files 1d_parameters.jl and 2d_parameters.jl respectively. The script to generate them are Main_1dSim.jl 
