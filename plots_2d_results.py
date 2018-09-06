@@ -13,14 +13,14 @@ import helpToTikz as fix
 # example = "/2017-11-04T08-04-38-411"
 # example = "/2017-11-04T11-57-14-36"
 # example = "/2018-02-26T11-02-23-312"
-example = "2018-09-05T12-22-14-25"
+example = "/2018-02-26T11-02-23-312"
 folder = "data/2Dsimulations"+example
 
 ### Parameters for reconstruction figure
 # Threshold to accept or reject recostructions:
 # the error threshold is how much measurement missmatch we tolerate.
 threshold_error = 0.65
-# The weight threshold is at which mass we are going to consider the 
+# The weight threshold is at which mass we are going to consider the
 # reconstruction a valid particle.
 threshold_weight = 0.1
 # Size of the plotter figure
@@ -68,9 +68,13 @@ for i in range(len(errors)):
         all_thetas = np.concatenate((all_thetas,
 						  theta[:,theta[4,:]>threshold_weight]), axis=1)
 
-plt.scatter(all_thetas[0,:], all_thetas[1,:], c=all_thetas[3,:], 
+plt.scatter(all_thetas[0,:], all_thetas[1,:], c=np.sign(all_thetas[3,:]),
 			s=1*sizeAmp, alpha = 0.5)
 plt.colorbar()
+arrow_dx = np.sign(all_thetas[2,:])*0
+arrow_dy = np.sign(all_thetas[3,:])*0.05
+plt.quiver(all_thetas[0,:]-arrow_dx/2, all_thetas[1,:]-arrow_dy/2, arrow_dx,
+            arrow_dy, np.sign(all_thetas[3,:]), alpha=0.2, scale=1 )
 plt.xlim((0, x_max))
 plt.ylim((0, x_max))
 plt.savefig("superres.pdf")
@@ -80,13 +84,13 @@ fixTikz("superres.tikz",scatter=True)
 fix.readEliminate("superres.tikz", '\\path [draw=black', 1)
 if seeFigs:
     plt.show()
-fix.readNewline("superres.tikz", "\\begin{axis}[", 
+fix.readNewline("superres.tikz", "\\begin{axis}[",
 		     	"colorbar style = { width = 0.2cm, at = {(1.15,0.5)},"
 			    +" anchor = east,},")
-fix.readReplaceAll("superres.tikz","superres", 
-				   "figures/superres")				    
-			    
-			    
+fix.readReplaceAll("superres.tikz","superres",
+				   "figures/superres")
+
+
 # Generating B mode figure
 
 # We crop the used cmap for the snapshots to create a new one
@@ -108,20 +112,20 @@ tikz_save("bmode.tikz", figureheight="\\figureheight",
 fixTikz("bmode.tikz")
 if seeFigs:
     plt.show()
-fix.readNewline("bmode.tikz", "\\begin{axis}[", 
+fix.readNewline("bmode.tikz", "\\begin{axis}[",
 				"colorbar style = { width = 0.2cm, at = {(1.15,0.5)},"
 			    +" anchor = east,},")
-fix.readReplaceAll("bmode.tikz","bmode", 
-				   "figures/bmode")	
+fix.readReplaceAll("bmode.tikz","bmode",
+				   "figures/bmode")
 
-# To see a video of all the snapshots, set to True. It also helps to 
+# To see a video of all the snapshots, set to True. It also helps to
 # decide which frame to choose for images.
 
 if False:
     plt.figure()
     for i in range(video.shape[1]):
-        plt.pcolormesh(np.linspace(0, x_max, n_x), 
-    				   np.linspace(0, x_max, n_x), 
+        plt.pcolormesh(np.linspace(0, x_max, n_x),
+    				   np.linspace(0, x_max, n_x),
 		     		   np.reshape(video[:,i],(n_x,n_x)), cmap = 'seismic')
         plt.colorbar()
         plt.clim((0,1.8))
@@ -142,13 +146,13 @@ if seeFigs:
 tikz_save("singleframe1.tikz", figureheight="\\figureheight",
 		  figurewidth="\\figurewidth")
 fixTikz("singleframe1.tikz")
-fix.readReplace("singleframe1.tikz", "xticklabels", 
+fix.readReplace("singleframe1.tikz", "xticklabels",
 			    "0.0,0.2,0.4,0.6,0.8,1.0", "0,0.2,0.4,0.6,0.8,1")
-fix.readReplaceAll("singleframe1.tikz","singleframe1", 
-				   "figures/singleframe1")			    
+fix.readReplaceAll("singleframe1.tikz","singleframe1",
+				   "figures/singleframe1")
 
 plt.figure()
-plt.pcolormesh(np.linspace(0, x_max, n_x), np.linspace(0, x_max, n_x), 
+plt.pcolormesh(np.linspace(0, x_max, n_x), np.linspace(0, x_max, n_x),
 			   np.reshape(video[:,frameNum2],(n_x,n_x)), cmap = 'seismic')
 plt.clim((0,1.8))
 plt.savefig("singleframe2.pdf")
@@ -157,15 +161,15 @@ if seeFigs:
 tikz_save("singleframe2.tikz", figureheight="\\figureheight",
 		  figurewidth="\\figurewidth")
 fixTikz("singleframe2.tikz")
-fix.readReplace("singleframe2.tikz", "yticklabels", 
+fix.readReplace("singleframe2.tikz", "yticklabels",
 			    "0.0,0.2,0.4,0.6,0.8,1.0", "")
-fix.readReplace("singleframe2.tikz", "xticklabels", 
+fix.readReplace("singleframe2.tikz", "xticklabels",
 			    "0.0,0.2,0.4,0.6,0.8,1.0", "0,0.2,0.4,0.6,0.8,1")
-fix.readReplaceAll("singleframe2.tikz","singleframe2", 
+fix.readReplaceAll("singleframe2.tikz","singleframe2",
 				   "figures/singleframe2")
-				   
+
 plt.figure()
-plt.pcolormesh(np.linspace(0, x_max, n_x), np.linspace(0, x_max, n_x), 
+plt.pcolormesh(np.linspace(0, x_max, n_x), np.linspace(0, x_max, n_x),
 			   np.reshape(video[:,frameNum3],(n_x,n_x)), cmap = 'seismic')
 plt.colorbar()
 plt.clim((0,1.8))
@@ -175,14 +179,14 @@ if seeFigs:
 tikz_save("singleframe3.tikz", figureheight="\\figureheight",
 		  figurewidth="\\figurewidth")
 fixTikz("singleframe3.tikz")
-fix.readReplace("singleframe3.tikz", "yticklabels", 
+fix.readReplace("singleframe3.tikz", "yticklabels",
 			    "0.0,0.2,0.4,0.6,0.8,1.0", "")
-fix.readReplace("singleframe3.tikz", "xticklabels", 
+fix.readReplace("singleframe3.tikz", "xticklabels",
 			    "0.0,0.2,0.4,0.6,0.8,1.0", "0,0.2,0.4,0.6,0.8,1")
-fix.readNewline("singleframe3.tikz", "\\begin{axis}[", 
+fix.readNewline("singleframe3.tikz", "\\begin{axis}[",
 		     	"colorbar style = { width = 0.2cm, at = {(1.15,0.5)},"
 			    +" anchor = east,},")
-fix.readReplaceAll("singleframe3.tikz","singleframe3", 
+fix.readReplaceAll("singleframe3.tikz","singleframe3",
 				   "figures/singleframe3")
 
 # Generating norm profile
@@ -199,7 +203,7 @@ while i <= len(L2norms)-minSnapshot:
     while (j+i <= len(L2norms)-minSnapshot) & (np.abs(L2norms[i-1]-L2norms[i+j-1])<=tolerance):
         j = j +1
     if j-1 >= minSnapshot:
-        plt.plot([i, i+j-1], [np.mean(L2norms[i-1:i+j-2]), 
+        plt.plot([i, i+j-1], [np.mean(L2norms[i-1:i+j-2]),
 		                           np.mean(L2norms[i-1:i+j-2])],color="r")
     i = i+j
     j = 1

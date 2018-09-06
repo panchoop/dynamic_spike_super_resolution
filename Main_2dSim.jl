@@ -47,9 +47,9 @@ single_particle_norm = norm(phi(model_static, thetas, weights), lp_norm)
 @everywhere single_particle_norm = $single_particle_norm
 
 # The examples we seek to emulate correspond to two sets of particles moving along a two stripes on each side.
-# So particles_m stands for those located on the west side, moving towards the south. 
+# So particles_m stands for those located on the west side, moving towards the south.
 # The vector particles_m basically are the locations at time 0 of the particles, it also defines quantity.
-# Particles_p are the symmetric equivalent, on the east and moving towards the north. 
+# Particles_p are the symmetric equivalent, on the east and moving towards the north.
 
 
 Nparticles = 500
@@ -146,7 +146,7 @@ for i in 1:length(jumps)-1
 end
 
 ### Function that given the a subquence of the total video, will estimate the locations and weights of the
-### involved particles. 
+### involved particles.
 @everywhere function posvel_from_seq(video, seq)
     assert(length(seq) == 5)
     target = video[:,seq][:]
@@ -169,7 +169,7 @@ end
     (thetas_est,weights_est) = SparseInverseProblemsMod.ADCG(model_dynamic, SparseInverseProblemsMod.LSLoss(), target, frame_norms[seq[1]], callback=callback, max_iters=100)
     if length(thetas_est) > 0
         println("est_num = ", est_num_particles)
-        println("thetas = ", thetas_est) 
+        println("thetas = ", thetas_est)
         println("weights = ", weights_est)
         return [thetas_est; weights_est']
     else
@@ -212,8 +212,7 @@ np.save("frame_norms", frame_norms)
 np.save("jumps", jumps)
 np.save("short_seq_array", short_seq_array)
 for i in 1:length(short_seqs)
-#    np.save(string("thetas-", i), all_thetas[i])
-    np.save(string("thetas-", i), (0,0,0,0,1))
+    np.save(string("thetas-", i), all_thetas[i])
 end
 np.save("errors", errors)
 cd("..")
@@ -250,4 +249,3 @@ cd("..")
 #     j = 1
 # end
 # plt.show()
-
