@@ -9,7 +9,7 @@ using SparseInverseProblemsMod
 using Distributions
 using QuadGK
 using Interpolations
-
+using Roots
 
 # To see the progress in pmap
 # To use PmapProgressMeter you need to clone it manually

@@ -72,9 +72,6 @@ function vessel(t)
     return (natural_curve(tt)[1] + x0, natural_curve(tt)[2] + y0) 
 end
 
-
-using Roots
-
 target_funct(t) = max(vessel(t)[1] - x_max*(1-bndry_sep), vessel(t)[2] - x_max*(1-bndry_sep))
 impossible_time = 1.5
 lower_time = 0
