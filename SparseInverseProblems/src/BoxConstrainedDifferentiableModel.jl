@@ -48,9 +48,10 @@ end
 # Default implementation. Uses NLopt to do continuous optimization.
 function lmo(model :: BoxConstrainedDifferentiableModel, v :: Vector{Float64})
   lb,ub = parameterBounds(model)
+  println("Inside LMO, about the get the starting point")
   initial_x = getStartingPoint(model, v)
   p = length(lb)
-
+ println("Got inside lmo ! ")
   function f_and_g!(point :: Vector{Float64}, gradient_storage :: Vector{Float64})
     output = phi(model,reshape(point,p,1), [1.0])
     ip = dot(output,v)
@@ -58,7 +59,7 @@ function lmo(model :: BoxConstrainedDifferentiableModel, v :: Vector{Float64})
     gradient_storage[:] = -s*computeGradient(model, [1.0],reshape(point,length(point),1), v)
     return -s*ip
   end
-
+  println("Got inside again in lmo ! ")
   opt = Opt(:LD_MMA, p)
   initializeOptimizer!(model, opt)
   min_objective!(opt, f_and_g!)
