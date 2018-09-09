@@ -38,47 +38,23 @@ sigma_noise = 0.01
 # Probability of a particle to activate or deactivate
 	activation_probability=0.02
 
-### Function describing a curved domain describing a vessel. At the beggining we impose
-### a string line, that afterwards curves
+# Building the vessel network
+x0 = [0.1,0.1]
+# arrays of t_max, relative direction, curve_type, parameters
+curve1 = [0.3, -pi/6,1, "straight", [] ]
+curve2 = [0.4, 0,1,"ellipse", [1,2,0.5]]
+curve3 = [0.55, 0,1, "ellipse", [-1,2,1]]
+curve4 = [0.45, pi/2,1, "ellipse", [-1,2,1]]
+curve5 = [0.35, 0,1, "ellipse", [1,2,1]]
 
-# Elliptic extension of a vessel
-using Interpolations
-using Roots
-using QuadGK
+Vessel = Tree(curve1)      #curve 1
+addchild(Vessel,1, curve2) #curve 2
+addchild(Vessel,1, curve3) #curve 3
+addchild(Vessel,2, curve4) #curve 4
+addchild(Vessel,2, curve5) #curve 5
 
-function vessel(t)
-    # Straight line parameters and starting point
-    line_len = 1/4
-    start_pos = 1/4
-    # Ellipse curve parameters
-    x_semiax = x_max - start_pos*x_max
-    y_semiax = x_max - line_len*x_max
-    max_t = 2
-    # when straight line
-    if t < line_len*x_max
-        return (start_pos*x_max, t)
-    end
-    # else, the ellipse
-    tt = t - line_len*x_max
-    ellipse_curve(tt) = (-x_semiax*cos(tt) + x_semiax, y_semiax*sin(tt))
-    # We seek to obtain the parametrization with speed one.
-    curve_deriv(tt) = (x_semiax*sin(tt), y_semiax*cos(tt))
-    deriv_norm(tt) = sqrt(curve_deriv(tt)[1]^2 + curve_deriv(tt)[2]^2)
-    arclength(tt) = quadgk(deriv_norm, 0, tt)
-    # we invert the arclength
-    t_sample = [t for t = linspace(0,max_t,1000)]
-    arclength_sample = [arclength(t)[1] for t in t_sample]
-    inv_interp = LinearInterpolation(arclength_sample, t_sample)
-    natural_curve(tt) = ellipse_curve(inv_interp(tt))
-    x0 = start_pos*x_max
-    y0 = line_len*x_max
-    return (natural_curve(tt)[1] + x0, natural_curve(tt)[2] + y0)
-end
+# The tree is transform to obtain the curves precisely,
+# i.e. not defined relative to the neighbouring ones.
+Absolute_Vessel(Vessel, 1, x0, 0)
 
-target_funct(t) = max(vessel(t)[1] - x_max*(1-bndry_sep), vessel(t)[2] - x_max*(1-bndry_sep))
-impossible_time = 1.5
-lower_time = 0
-if target_funct(lower_time)*target_funct(impossible_time) > 0
-    print("This is not going to work")
-end
-t_max = find_zero(target_funct, (lower_time, impossible_time), Bisection())
+

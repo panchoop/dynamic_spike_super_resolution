@@ -10,6 +10,7 @@ using Distributions
 using QuadGK
 using Interpolations
 using Roots
+using Vessel_network
 
 # To see the progress in pmap
 # To use PmapProgressMeter you need to clone it manually
@@ -62,13 +63,12 @@ expected_time = 34
 println("Generating sequence... ")
 video = SharedArray{Float64}(n_x * n_y, n_im)
 
-function activate_particles(Nparticles,activation_prob, expected_time)
+function activate_particles(Nparticles,activation_prob, expected_time, Vessel)
     # particles are tuples of position,velocity, weight, survival time.
     # The position is a one dimensional variable, that once passed to the vessel
     # function and displaced accordingly, would return the respective position.
     B = Binomial(Nparticles,activation_prob)
     P = Binomial(1,0.5)
-    U = Uniform(x_max*bndry_sep,t_max)
     N = Poisson(expected_time)
 
     N_new_particles = rand(B)
@@ -76,7 +76,7 @@ function activate_particles(Nparticles,activation_prob, expected_time)
     for i in 1:N_new_particles
         # decide if it is flowing downwards (=0) or upwards (=1)
         direction = rand(P)
-        position = rand(U)
+        position = Uniform_sampler(Vessel)
         weight = 1
 	    velocity = (direction-0.5)*2*particle_velocity
         time = rand(N)
@@ -85,15 +85,16 @@ function activate_particles(Nparticles,activation_prob, expected_time)
     return new_particles
 end
 
-function time_step(particles)
+function time_step(Vessel,particles)
     for j in length(particles):-1:1
 	particle = particles[j]
 	# update position
-        new_position = particle[1] + tau*particle[2]
+	new_position = displacement(Vessel, particle[1][1], 
+						   particle[1][2], tau*particle[2])
 	# update time
 	new_time = particle[4]-1
-	# discard if time is over
-	if (new_time <= 0) | (new_position>t_max) | (new_position<bndry_sep*x_max)
+	# discard if time is over or displaced outside the network
+	if (new_time <= 0) | isnan(new_position)
 	    deleteat!(particles,j)
 	else
 	    particles[j]=(new_position,particle[2], particle[3], new_time)
@@ -116,12 +117,13 @@ for i in 1:n_im
     weights = zeros(length(particles))
     for j in 1:length(particles)
     # The case in the upward or downward vessel
+    coords = evaluation(Vessel, particles[j][1][1] , particles[j][1][2])
     if particles[j][2]>0
-	    thetas[1,j] = vessel(particles[j][1])[1]
-	    thetas[2,j] = vessel(particles[j][1])[2]
+	    thetas[1,j] = coords[1]
+	    thetas[2,j] = coords[2]
     else
-        thetas[1,j] = vessel(particles[j][1])[1]+dx
-        thetas[2,j] = vessel(particles[j][1])[2]-dx
+        thetas[1,j] = coords[1]+dx
+        thetas[2,j] = coords[2]-dx
     end
 	weights[j] = particles[j][3]
     end

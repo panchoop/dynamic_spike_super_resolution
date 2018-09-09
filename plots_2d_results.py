@@ -13,7 +13,10 @@ import helpToTikz as fix
 # example = "/2017-11-04T08-04-38-411"
 # example = "/2017-11-04T11-57-14-36"
 # example = "/2018-02-26T11-02-23-312"
-example = "/2018-02-26T11-02-23-312"
+#example = "/2018-02-26T11-02-23-312"
+example = "/2018-09-07T12-09-36-584"
+#example = "/2018-09-07T13-02-47-852"
+#example = "/2018-09-07T13-04-28-594"
 folder = "data/2Dsimulations"+example
 
 ### Parameters for reconstruction figure
@@ -24,7 +27,7 @@ threshold_error = 0.65
 # reconstruction a valid particle.
 threshold_weight = 0.1
 # Size of the plotter figure
-sizeAmp = 50;
+sizeAmp = 25;
 
 ### Parameters for single frame
 frameNum1 = 20
@@ -71,8 +74,8 @@ for i in range(len(errors)):
 plt.scatter(all_thetas[0,:], all_thetas[1,:], c=np.sign(all_thetas[3,:]),
 			s=1*sizeAmp, alpha = 0.5)
 plt.colorbar()
-arrow_dx = np.sign(all_thetas[2,:])*0
-arrow_dy = np.sign(all_thetas[3,:])*0.05
+arrow_dx = all_thetas[2,:]*0.05
+arrow_dy = all_thetas[3,:]*0.05
 plt.quiver(all_thetas[0,:]-arrow_dx/2, all_thetas[1,:]-arrow_dy/2, arrow_dx,
             arrow_dy, np.sign(all_thetas[3,:]), alpha=0.2, scale=1 )
 plt.xlim((0, x_max))
@@ -107,9 +110,9 @@ plt.pcolormesh(np.linspace(0, x_max, n_x), np.linspace(0, x_max, n_x),
 			   np.reshape(np.sum(video, 1)/float(video.shape[1]),(n_x,n_x)),cmap = my_cmap)
 plt.colorbar()
 plt.savefig("bmode.pdf")
-tikz_save("bmode.tikz", figureheight="\\figureheight",
-		  figurewidth="\\figurewidth")
-fixTikz("bmode.tikz")
+#tikz_save("bmode.tikz", figureheight="\\figureheight",
+#		  figurewidth="\\figurewidth")
+#fixTikz("bmode.tikz")
 if seeFigs:
     plt.show()
 fix.readNewline("bmode.tikz", "\\begin{axis}[",
