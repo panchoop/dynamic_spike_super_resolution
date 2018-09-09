@@ -21,7 +21,7 @@ sigma_noise = 0.01
 
 ### Medium ###
 # total number of the experimets measurements (gives the length of the experience)
-	n_im = 1000
+	n_im = 500
 # Vessels separation
 	dx = 0.02
 # microbubbles distance to booundary

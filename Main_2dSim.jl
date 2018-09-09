@@ -94,7 +94,7 @@ function time_step(Vessel,particles)
 	# update time
 	new_time = particle[4]-1
 	# discard if time is over or displaced outside the network
-	if (new_time <= 0) | isnan(new_position)
+	if (new_time <= 0) | isnan(new_position[1])
 	    deleteat!(particles,j)
 	else
 	    particles[j]=(new_position,particle[2], particle[3], new_time)
@@ -105,9 +105,9 @@ particles = []
 
 for i in 1:n_im
     # Move particles forward in time
-    time_step(particles)
+    time_step(Vessel, particles)
     # Activate new particles and push them inside the list of particles
-    new_particles = activate_particles(Nparticles,activation_prob,expected_time)
+    new_particles = activate_particles(Nparticles,activation_prob,expected_time, Vessel)
     for new_particle in new_particles
 	push!(particles, new_particle)
     end

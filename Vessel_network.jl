@@ -8,7 +8,7 @@ using Interpolations
 using Roots
 using QuadGK
 
-export Tree, Absolute_Vessel, displacement, evaluation
+export Tree, addchild, Absolute_Vessel, displacement, evaluation, Uniform_sampler
 
 type TreeNode
     parent::Int
@@ -140,4 +140,5 @@ function Uniform_sampler(Vessel)
             selector = selector - times[i]
         end
     end
+end
 end
