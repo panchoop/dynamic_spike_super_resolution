@@ -13,12 +13,15 @@ function ADCG(sim :: ForwardModel, lossFn :: Loss, y :: Vector{Float64}, tau :: 
   #cache the forward model applied to the current measure.
   output = zeros(length(y))
   for iter = 1:max_iters
+    println("Registering an iteration inside ADCG: ", iter)
     #compute the current residual
     residual = output - y
     #evalute the objective value and gradient of the loss
     objective_value, grad = loss(lossFn, residual)
+    println("Registering an iteration inside ADCG after loss: ", iter)
     #compute the next parameter value to add to the support
     theta,score = lmo(sim,grad)
+    println("Registering an iteration inside ADCG after lmo: ", iter)
     #score is - |<\psi(theta), gradient>|
     #update the lower bound on the optimal value
     bound = max(bound, objective_value+score*tau-dot(output,grad))
@@ -46,6 +49,7 @@ end
 function localUpdate(sim :: ForwardModel,lossFn :: Loss,
     thetas :: Matrix{Float64}, y :: Vector{Float64}, tau :: Float64, max_iters)
   for cd_iter = 1:max_iters
+    println("Printing from withing the Local update, iteration: ", cd_iter)
     weights = solveFiniteDimProblem(sim, lossFn, thetas, y, tau)
     #remove points with zero weight
     if any(weights.==0.0)

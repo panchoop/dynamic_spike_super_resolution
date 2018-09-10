@@ -64,8 +64,8 @@ video = SharedArray{Float64}(n_x * n_y, n_im)
 
 function activate_particles(Nparticles,activation_prob, expected_time)
     # particles are tuples of position,velocity, weight, survival time.
-    # The position is a one dimensional variable, that once passed to the vessel function
-    # and displaced accordingly, would return the respective position.
+    # The position is a one dimensional variable, that once passed to the vessel
+    # function and displaced accordingly, would return the respective position.
     B = Binomial(Nparticles,activation_prob)
     P = Binomial(1,0.5)
     U = Uniform(x_max*bndry_sep,t_max)
@@ -106,12 +106,12 @@ for i in 1:n_im
     # Move particles forward in time
     time_step(particles)
     # Activate new particles and push them inside the list of particles
-    new_particles = activate_particles(Nparticles,activation_prob, expected_time)
+    new_particles = activate_particles(Nparticles,activation_prob,expected_time)
     for new_particle in new_particles
 	push!(particles, new_particle)
     end
-    # Represent the static particles to input into the phi function (forward operator)
-    # thetas are 2d vectors representing position
+    # Represent the static particles to input into the phi function
+    # (the forward operator). Thetas are 2d vectors representing position
     thetas = zeros(2,length(particles))
     weights = zeros(length(particles))
     for j in 1:length(particles)
@@ -133,22 +133,27 @@ for i in 1:n_im
     end
 end
 
-### Obtaining time frames in which the quantity of particles remained constant ###
+### Obtaining time frames in which the quantity of particles remained constant
 println("Getting short sequences without jump...")
 # get the total mass at each time step
 frame_norms = [norm(video[:, i], lp_norm) for i in 1:n_im]
 @everywhere frame_norms = $frame_norms
-# Find locations in which there was a significative mass difference between two time steps.
-jumps = find(abs.(frame_norms[2:end] - frame_norms[1:end-1]) .> jump_threshold*single_particle_norm)
+# Find locations in which there was a significative mass difference between
+# two consecutive time steps.
+jumps = find(abs.(frame_norms[2:end] - frame_norms[1:end-1]) .>
+                                            jump_threshold*single_particle_norm)
 jumps = [0; jumps; n_im]
-# Obtain non-overlapping intervals of at least 2K+1 consecutive time samples in which the mass didn't changed.
+# Obtain non-overlapping intervals of at least 2K+1 consecutive time samples
+# in which the mass didn't changed.
 short_seqs = []
 for i in 1:length(jumps)-1
-    append!(short_seqs, [(jumps[i] + 5*j + 1):(jumps[i] + 5*j + 5) for j in 0:(div(jumps[i+1] - jumps[i], 5) -1)])
+    append!(short_seqs, [(jumps[i] + 5*j + 1):(jumps[i] + 5*j + 5)
+                                for j in 0:(div(jumps[i+1] - jumps[i], 5) -1)])
 end
+println("The number of jumps is: ", length(jumps))
 
-### Function that given the a subquence of the total video, will estimate the locations and weights of the
-### involved particles.
+### Function that given the a subquence of the total video, will estimate the
+### locations and weights of the involved particles.
 @everywhere function posvel_from_seq(video, seq)
     assert(length(seq) == 5)
     target = video[:,seq][:]
@@ -160,39 +165,49 @@ end
     # Function required to use the SparseInverseProblems.ADCG method.
     function callback(old_thetas, thetas, weights, output, old_obj_val)
         #evalute current OV
-        new_obj_val,t = SparseInverseProblemsMod.loss(SparseInverseProblemsMod.LSLoss(), output - target)
+        new_obj_val,t = SparseInverseProblemsMod.loss(
+                             SparseInverseProblemsMod.LSLoss(), output - target)
         #println("gap = $(old_obj_val - new_obj_val)")
         if old_obj_val - new_obj_val < 1E-4
             return true
         end
         return false
     end
-    # It uses the ACDG algorithm to estimate the location and weights of the particles. Using the estimated number of particles we can bound the total variation on the solutions.
-    (thetas_est,weights_est) = SparseInverseProblemsMod.ADCG(model_dynamic, SparseInverseProblemsMod.LSLoss(), target, frame_norms[seq[1]], callback=callback, max_iters=100)
+    # It uses the ACDG algorithm to estimate the location and weights of the
+    # particles. With the estimated number of particles we can bound the total
+    # variation on the solutions.
+    (thetas_est,weights_est) = SparseInverseProblemsMod.ADCG(model_dynamic,
+                                    SparseInverseProblemsMod.LSLoss(), target,
+                                        frame_norms[seq[1]], callback=callback,
+                                                                  max_iters=100)
     if length(thetas_est) > 0
         println("est_num = ", est_num_particles)
         println("thetas = ", thetas_est)
         println("weights = ", weights_est)
         return [thetas_est; weights_est']
     else
+        print("Failed to obtain a suitable solution")
         return Matrix{Float64}(5,0)
     end
 end
 
 println("Inverting...")
 
-all_thetas = pmap(seq -> begin sleep(1); posvel_from_seq(video, seq) end, Progress(length(short_seqs)), short_seqs)
+all_thetas = pmap(seq -> begin sleep(1); posvel_from_seq(video, seq) end,
+                                       Progress(length(short_seqs)), short_seqs)
 
 println("Reprojecting...")
 
 errors = zeros(length(short_seqs))
-### Measurements error, we simulate the measurements that would be obtained with our reconstructed values ###
+### Measurements error, we simulate the measurements that would be obtained
+### with our reconstructed values
 
 for i in 1:length(short_seqs)
     seq=  short_seqs[i]
     target = video[:, seq][:]
     if length(all_thetas[i]) > 0
-        reprojection = phi(model_dynamic, all_thetas[i][1:4,:], all_thetas[i][5,:])
+        reprojection = phi(model_dynamic, all_thetas[i][1:4,:]
+                                            ,all_thetas[i][5,:])
         println("error = ", norm(target-reprojection))
         errors[i] = norm(target-reprojection)
     else
