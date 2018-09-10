@@ -8,9 +8,7 @@ using SuperResModels
 using SparseInverseProblemsMod
 using Distributions
 using QuadGK
-using Interpolations
 using Roots
-using Vessel_network
 
 # To see the progress in pmap
 # To use PmapProgressMeter you need to clone it manually
@@ -19,7 +17,7 @@ using Vessel_network
 @everywhere using ProgressMeter
 @everywhere using PmapProgressMeter
 @everywhere using Interpolations
-
+@everywhere using Vessel_network
 
 using PyCall
 @pyimport numpy as np

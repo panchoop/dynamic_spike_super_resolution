@@ -14,9 +14,10 @@ import helpToTikz as fix
 # example = "/2017-11-04T11-57-14-36"
 # example = "/2018-02-26T11-02-23-312"
 #example = "/2018-02-26T11-02-23-312"
-example = "/2018-09-07T12-09-36-584"
+#example = "/2018-09-07T12-09-36-584"
 #example = "/2018-09-07T13-02-47-852"
 #example = "/2018-09-07T13-04-28-594"
+example = "/2018-09-06T19-05-19-344"
 folder = "data/2Dsimulations"+example
 
 ### Parameters for reconstruction figure
