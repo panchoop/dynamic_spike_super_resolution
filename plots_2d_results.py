@@ -17,7 +17,8 @@ import helpToTikz as fix
 #example = "/2018-09-07T12-09-36-584"
 #example = "/2018-09-07T13-02-47-852"
 #example = "/2018-09-07T13-04-28-594"
-example = "/2018-09-06T19-05-19-344"
+#example = "/2018-09-06T19-05-19-344"
+example = "/2018-09-10T10-14-06-854"
 folder = "data/2Dsimulations"+example
 
 ### Parameters for reconstruction figure
@@ -111,9 +112,9 @@ plt.pcolormesh(np.linspace(0, x_max, n_x), np.linspace(0, x_max, n_x),
 			   np.reshape(np.sum(video, 1)/float(video.shape[1]),(n_x,n_x)),cmap = my_cmap)
 plt.colorbar()
 plt.savefig("bmode.pdf")
-#tikz_save("bmode.tikz", figureheight="\\figureheight",
-#		  figurewidth="\\figurewidth")
-#fixTikz("bmode.tikz")
+tikz_save("bmode.tikz", figureheight="\\figureheight",
+		  figurewidth="\\figurewidth")
+fixTikz("bmode.tikz")
 if seeFigs:
     plt.show()
 fix.readNewline("bmode.tikz", "\\begin{axis}[",
