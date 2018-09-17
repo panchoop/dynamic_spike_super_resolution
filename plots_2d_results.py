@@ -18,7 +18,10 @@ import helpToTikz as fix
 #example = "/2018-09-07T13-02-47-852"
 #example = "/2018-09-07T13-04-28-594"
 #example = "/2018-09-06T19-05-19-344"
-example = "/2018-09-10T10-14-06-854"
+#example = "/2018-09-10T10-14-06-854"
+example = "/2018-09-12T13-20-45-595"
+#example = "/2018-09-12T14-09-51-46"
+
 folder = "data/2Dsimulations"+example
 
 ### Parameters for reconstruction figure
@@ -29,7 +32,7 @@ threshold_error = 0.65
 # reconstruction a valid particle.
 threshold_weight = 0.1
 # Size of the plotter figure
-sizeAmp = 25;
+sizeAmp = 10;
 
 ### Parameters for single frame
 frameNum1 = 20
@@ -72,14 +75,19 @@ for i in range(len(errors)):
         theta = np.load("thetas-" + str(i+1) + ".npy")
         all_thetas = np.concatenate((all_thetas,
 						  theta[:,theta[4,:]>threshold_weight]), axis=1)
+# to assign properly colors to the particles, we recognise them by their
+# direction of movement
+angles = np.arctan2(all_thetas[3,:], all_thetas[2])
+angles = angles + np.pi/4
+angles[angles>np.pi] = angles[angles >np.pi] - 2*np.pi
 
-plt.scatter(all_thetas[0,:], all_thetas[1,:], c=np.sign(all_thetas[3,:]),
+plt.scatter(all_thetas[0,:], all_thetas[1,:], c=np.sign(angles),
 			s=1*sizeAmp, alpha = 0.5)
-plt.colorbar()
-arrow_dx = all_thetas[2,:]*0.05
-arrow_dy = all_thetas[3,:]*0.05
+arrow_dx = all_thetas[2,:]*0.03
+arrow_dy = all_thetas[3,:]*0.03
 plt.quiver(all_thetas[0,:]-arrow_dx/2, all_thetas[1,:]-arrow_dy/2, arrow_dx,
-            arrow_dy, np.sign(all_thetas[3,:]), alpha=0.2, scale=1 )
+            arrow_dy, angles, alpha=0.6, scale=1 )
+#plt.colorbar()
 plt.xlim((0, x_max))
 plt.ylim((0, x_max))
 plt.savefig("superres.pdf")
